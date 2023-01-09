@@ -30,8 +30,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _BlushScale: 0.1
+    - _BlushScale: 0.03
     m_Colors:
-    - _BlushColor: {r: 0, g: 0, b: 0, a: 1}
-    - _PaintUV: {r: 0.71508145, g: 0.15797904, b: 0, a: 0}
+    - _BlushColor: {r: 0, g: 0, b: 0, a: 0}
+    - _PaintUV: {r: 0.44743735, g: 0.9134848, b: 0, a: 0}
   m_BuildTextureStacks: []

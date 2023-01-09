@@ -27,6 +27,10 @@ public class FPSCon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+           // jump();
+        }
         float xRot = Input.GetAxis("Mouse X") * Ysensityvity;
         float yRot = Input.GetAxis("Mouse Y") * Xsensityvity;
 
@@ -103,5 +107,12 @@ public class FPSCon : MonoBehaviour
         return q;
     }
 
+    void jump()
+    {
+        float jumpForce = 2.0f;
+        var jump = new Vector3(0.0f, 2.0f, 0.0f);
+        var rb = GetComponent<Rigidbody>();
+        rb.AddForce(jump * jumpForce, ForceMode.Impulse);
+    }
 
 }

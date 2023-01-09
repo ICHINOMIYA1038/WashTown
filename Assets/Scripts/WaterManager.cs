@@ -26,13 +26,14 @@ public class WaterManager : MonoBehaviour
         _material.SetTexture("_MainTex", MainTexture);
         var texture = CreateTempTexture(2048, 2048, new Vector4(1f,1f,1f,0f));
         // Ç±ÇÍÇåƒÇŒÇ»Ç¢Ç∆êFÇ™èëÇ´çûÇ‹ÇÍÇ»Ç¢
-        texture.Apply(); ;
+        texture.Apply(); 
         dirtyTexture = texture;
     }
 
     // Update is called once per frame
     void Update()
     {
+        /*
         if (Input.GetMouseButtonDown(0))
         {
             blushColor = Color.red;
@@ -42,27 +43,42 @@ public class WaterManager : MonoBehaviour
                 if (hit.transform.gameObject.tag == "washable")
                 {
                     Debug.DrawLine(ray.origin, hit.point);
-                    Vector2 hitPosi = hit.textureCoord2;
+                    Vector2 hitPosi = hit.textureCoord;
                     paint(hitPosi);
                 }
 
             }
-        }
+        }*/
 
-        if (Input.GetMouseButtonDown(1))
+        ///water
+        if (Input.GetMouseButton(0))
         {
-            ray = new Ray(src.transform.position + src.transform.forward * 5f, src.transform.forward);
+            ray = new Ray(src.transform.position + src.transform.forward * 3f, src.transform.forward);
             if (Physics.Raycast(ray, out hit, 10))
             {
+                Debug.DrawLine(ray.origin, hit.point, Color.blue, 5f);
                 if (hit.transform.gameObject.tag == "washable")
                 {
-                    blushColor = Color.blue;
-                    Debug.DrawLine(ray.origin, hit.point);
-                    Vector2 hitPosi = hit.textureCoord2;
-                    Debug.Log(hitPosi);
-                    dirtify(hitPosi);
+                    WashableObject washableObject = hit.transform.gameObject.GetComponent<WashableObject>();
+                    Vector2 hitPosi = hit.textureCoord;
+                    washableObject.changeTexture(hitPosi, blushScale * 3f, BlushTexture, new Color(0f, 0f, 0f, 0f));
                 }
+            }
+        }
 
+
+            if (Input.GetMouseButtonDown(1))
+        {
+            ray = new Ray(src.transform.position + src.transform.forward * 3f, src.transform.forward);
+            if (Physics.Raycast(ray, out hit, 10))
+            {
+                Debug.DrawLine(ray.origin, hit.point,Color.blue,5f);
+                if (hit.transform.gameObject.tag == "washable")
+                {
+                    WashableObject washableObject = hit.transform.gameObject.GetComponent<WashableObject>();
+                    Vector2 hitPosi = hit.textureCoord;
+                    washableObject.changeTexture(hitPosi, blushScale,BlushTexture, new Color(0f, 0f, 0f, 1f));
+                }
             }
         }
 
@@ -106,6 +122,7 @@ public class WaterManager : MonoBehaviour
 
     void dirtify(Vector2 hitPosi)
     {
+        var tempPosition = hitPosi;
         blushColor = new Vector4(0f, 0f, 0f, 1f);
         dirtyMaterial.SetVector("_PaintUV", hitPosi);
         dirtyMaterial.SetTexture("_Blush", BlushTexture);
