@@ -41,7 +41,7 @@ public class UIManager : MonoBehaviour
 
     void calcRatio()
     {
-        int ratio = (allPixel- dirtyCount )/ (float)allPixel;
+        float ratio = (allPixel- dirtyCount )/allPixel;
         text.SetText(""+ratio + "%");
     }
 }
