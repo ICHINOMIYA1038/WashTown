@@ -5,6 +5,7 @@ Shader "Unlit/DisplayShader"
         _MainTex ("Texture", 2D) = "white" {}
         _DirtyTex ("Texture",2D) = "white" {}
         _Color("BlushColor", VECTOR) = (1,0,0,1)
+        _TomatoColor("TomatoColor", VECTOR) = (1,1,0,1)
     }
     SubShader
     {
@@ -36,6 +37,7 @@ Shader "Unlit/DisplayShader"
             float4 _PaintUV;
             sampler2D _DirtyTex;
             float4 _Color;
+            float4 _TomatoColor;
 
             v2f vert (appdata v)
             {
@@ -50,10 +52,15 @@ Shader "Unlit/DisplayShader"
                 // sample the texture
                 fixed4 col = tex2D(_MainTex, i.uv);
                 fixed4 dirt = tex2D(_DirtyTex, i.uv);
-                if (dirt.a != 0) {
+                if (dirt.a >= 0.9){
                     return _Color;
                 }
-                return col;
+                
+                else return col;
+                
+                
+
+
             }
             ENDCG
         }

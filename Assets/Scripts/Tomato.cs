@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Tomato : MonoBehaviour
 {
-    Texture2D flattenTexture;
+    [SerializeField]Texture flattenTexture;
     float blushScale;
     [SerializeField] Vector3 velocity;
-    [SerializeField]Vector3 acceleration;
+    [SerializeField] Vector3 acceleration;
     // Start is called before the first frame update
     void Start()
     {
-
+       // flattenTexture = util.CreateTempTexture(256,256);
     }
 
     // Update is called once per frame
@@ -25,6 +25,8 @@ public class Tomato : MonoBehaviour
     {
         
     }
+
+
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -40,6 +42,7 @@ public class Tomato : MonoBehaviour
                 WashableObject washableObject = hit.transform.gameObject.GetComponent<WashableObject>();
                 Vector2 hitPosi = hit.textureCoord;
                 washableObject.changeTexture(hitPosi, blushScale * 10f, flattenTexture, new Color(0f, 0f, 0f, 0.5f));
+                Debug.Log("execute");
             }
         }
     }
