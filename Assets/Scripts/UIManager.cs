@@ -3,18 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class UIManager : MonoBehaviour
 {
     [SerializeField] WashableObject[] washableObjects;
     [SerializeField] TextMeshProUGUI text;
+    [SerializeField] progressGauge progress;
     int allPixel = 0;
     int dirtyCount = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        calcAllPixel();
+
     }
 
     // Update is called once per frame
@@ -35,13 +38,12 @@ public class UIManager : MonoBehaviour
         }
         allPixel = allCount;
         dirtyCount = dirtyNum;
-        Debug.Log(allPixel);
-        Debug.Log(dirtyNum);
     }
 
     void calcRatio()
     {
-        float ratio = (allPixel- dirtyCount )/allPixel;
-        text.SetText(""+ratio + "%");
+        float ratio = 100*(float)(allPixel - dirtyCount) / (float)allPixel;
+        text.text = String.Format("{0:#.##}%", ratio);
+        progress.setRatio(ratio / 100);
     }
 }

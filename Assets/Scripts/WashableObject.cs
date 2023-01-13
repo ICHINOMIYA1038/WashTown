@@ -15,9 +15,9 @@ public class WashableObject : MonoBehaviour
     int textureSize = 256;
     int allNum = 0;
     int dirtyCount = 0;
+    [Range(0f,1f)]
+    [SerializeField]float dirtyRatio;
 
-
-    // Start is called before the first frame update
     void Start()
     {
         this.gameObject.tag = "washable";
@@ -27,7 +27,6 @@ public class WashableObject : MonoBehaviour
         if (mainTexture == null)
         {
             var texture = CreateTempTexture(textureSize, textureSize, maincolor);
-            // ‚±‚ê‚ğŒÄ‚Î‚È‚¢‚ÆF‚ª‘‚«‚Ü‚ê‚È‚¢
             texture.Apply();
             mainTexture = texture;
             washableMaterial.SetTexture("_MainTex", mainTexture);
@@ -37,7 +36,7 @@ public class WashableObject : MonoBehaviour
         if (dirtyTexture == null)
         {
             var texture = CreateDirtyTexture(textureSize, textureSize, new Vector4(1f, 1f, 1f, 0f));
-            // ‚±‚ê‚ğŒÄ‚Î‚È‚¢‚ÆF‚ª‘‚«‚Ü‚ê‚È‚¢
+            
             texture.Apply();
             dirtyTexture = texture;
             washableMaterial.SetTexture("_DirtyTex", dirtyTexture);
@@ -47,11 +46,16 @@ public class WashableObject : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
 
     }
+
+    public Texture2D getDirtyTexture()
+    {
+        return ToTexture2D(dirtyTexture);
+    }
+
 
     public void changeTexture(Vector2 hitPosi, float blushScale, Texture BlushTexture, Color blushColor)
     {
@@ -72,7 +76,7 @@ public class WashableObject : MonoBehaviour
 
     private static Texture2D CreateTempTexture(int width, int height, Color defaultColor = default)
     {
-        var texture = new Texture2D(width, height, TextureFormat.RGBA32, false);
+        var texture = new Texture2D(width, height, TextureFormat.RGBAFloat, false);
 
         for (int y = 0; y < texture.height; y++)
             for (int x = 0; x < texture.width; x++)
@@ -80,21 +84,25 @@ public class WashableObject : MonoBehaviour
         return texture;
     }
 
-    private static Texture2D CreateDirtyTexture(int width, int height, Color defaultColor)
+    private  Texture2D CreateDirtyTexture(int width, int height, Color defaultColor)
     {
         float noise;
-        float scale = 256f;
-        Texture2D tempTexture = CreateTempTexture(width, height, new Vector4(1f, 1f, 1f, 0f));
+        Texture2D tempTexture = CreateTempTexture(width, height, defaultColor);
         for (int y = 0; y < tempTexture.height; y++)
         {
             for (int x = 0; x < tempTexture.width; x++)
             {
                 noise = Random.Range(0f, 1.0f);
+                if (noise < dirtyRatio)
+                {
+                    noise = 0f;
+                    tempTexture.SetPixel(x, y, new Vector4(0f, 0f, 0f, noise));
+                }
 
-                if (noise >= 0.95)
+                else if (noise >= dirtyRatio)
                 {
                     noise = 1f;
-                    tempTexture.SetPixel(x, y, new Vector4(0f, 0f, 0f, noise));
+                    tempTexture.SetPixel(x, y, new Vector4(1f, 0f, 0f, noise));
                 }
             }
         }

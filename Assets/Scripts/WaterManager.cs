@@ -25,7 +25,7 @@ public class WaterManager : MonoBehaviour
         ray = new Ray(src.transform.position, src.transform.forward);
         _material.SetTexture("_MainTex", MainTexture);
         var texture = CreateTempTexture(2048, 2048, new Vector4(1f,1f,1f,0f));
-        // ‚±‚ê‚ğŒÄ‚Î‚È‚¢‚ÆF‚ª‘‚«‚Ü‚ê‚È‚¢
+        // ?????????????????F????????????????
         texture.Apply(); 
         dirtyTexture = texture;
     }
@@ -107,7 +107,6 @@ public class WaterManager : MonoBehaviour
 
     void paint(Vector2 hitPosi)
     {
-
         _material.SetVector("_PaintUV", hitPosi);
         _material.SetTexture("_Blush", BlushTexture);
         _material.SetFloat("_BlushScale", blushScale);

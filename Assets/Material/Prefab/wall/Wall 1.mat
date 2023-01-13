@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: dirtymaterial
-  m_Shader: {fileID: 4800000, guid: ba0999825e5a24941af1583e102d8c63, type: 3}
+  m_Name: Wall 1
+  m_Shader: {fileID: 4800000, guid: 68c56a6aabf7fc146a26fcda02ade730, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -20,8 +20,8 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _Blush:
-        m_Texture: {fileID: 2800000, guid: fb6307fbe7bc28f42a2a8d461111011d, type: 3}
+    - _DirtyTex:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -29,9 +29,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
-    m_Floats:
-    - _BlushScale: 0.03
+    m_Floats: []
     m_Colors:
-    - _BlushColor: {r: 0, g: 0, b: 0, a: 0}
-    - _PaintUV: {r: 0.148793, g: 0.79400903, b: 0, a: 0}
+    - _Color: {r: 0, g: 1, b: 0, a: 0}
+    - _TomatoColor: {r: 1, g: 1, b: 0, a: 1}
   m_BuildTextureStacks: []
