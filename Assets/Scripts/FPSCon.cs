@@ -14,7 +14,7 @@ public class FPSCon : MonoBehaviour
 
     bool cursorLock = true;
 
-    //変数の宣言(角度の制限用)
+    //??????????(?p?x???????p)
     float minX = -90f, maxX = 90f;
 
     // Start is called before the first frame update
@@ -37,14 +37,14 @@ public class FPSCon : MonoBehaviour
         cameraRot *= Quaternion.Euler(-yRot, 0, 0);
         characterRot *= Quaternion.Euler(0, xRot, 0);
 
-        //Updateの中で作成した関数を呼ぶ
+        //Update????????????????????????
         cameraRot = ClampRotation(cameraRot);
 
         cam.transform.localRotation = cameraRot;
         transform.localRotation = characterRot;
         equip.transform.localRotation = cameraRot;
 
-        UpdateCursorLock();
+        //UpdateCursorLock();
     }
 
     private void FixedUpdate()
@@ -88,10 +88,10 @@ public class FPSCon : MonoBehaviour
         }
     }
 
-    //角度制限関数の作成
+    //?p?x??????????????
     public Quaternion ClampRotation(Quaternion q)
     {
-        //q = x,y,z,w (x,y,zはベクトル（量と向き）：wはスカラー（座標とは無関係の量）)
+        //q = x,y,z,w (x,y,z???x?N?g???i?????????j?Fw???X?J???[?i???W?????????W?????j)
 
         q.x /= q.w;
         q.y /= q.w;

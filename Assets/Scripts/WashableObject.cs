@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(MeshCollider))]
 public class WashableObject : MonoBehaviour
 {
-    Texture mainTexture;
+    [SerializeField]Texture mainTexture;
     Texture dirtyTexture;
     [SerializeField] Material washableMaterial;
     [SerializeField] Material dirtyMaterial;
@@ -32,7 +32,7 @@ public class WashableObject : MonoBehaviour
             washableMaterial.SetTexture("_MainTex", mainTexture);
 
         }
-
+        washableMaterial.SetTexture("_MainTex", mainTexture);
         if (dirtyTexture == null)
         {
             var texture = CreateDirtyTexture(textureSize, textureSize, new Vector4(1f, 1f, 1f, 0f));

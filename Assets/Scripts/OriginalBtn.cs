@@ -1,18 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class OriginalBtn : MonoBehaviour
+using UnityEngine.EventSystems;
+public class OriginalBtn : MonoBehaviour,IPointerClickHandler,IPointerDownHandler,IPointerUpHandler  
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public System.Action onClickCallback;
+    // タップ  
+    public void OnPointerClick(PointerEventData eventData) {
+
+        onClickCallback?.Invoke();
     }
+    // タップダウン  
+    public void OnPointerDown(PointerEventData eventData) { }
+    // タップアップ  
+    public void OnPointerUp(PointerEventData eventData) { }
+
 }

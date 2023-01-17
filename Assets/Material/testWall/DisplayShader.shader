@@ -52,12 +52,13 @@ Shader "Unlit/DisplayShader"
                 // sample the texture
                 fixed4 col = tex2D(_MainTex, i.uv);
                 fixed4 dirt = tex2D(_DirtyTex, i.uv);
-                if (dirt.a < 0.1){
+                if (dirt.a < 0.4f){
                     return col;
                 }
                 else if(dirt.a <= 0.6f){
                     return _TomatoColor;
                 }
+
                 else return _Color;
                 
                 
