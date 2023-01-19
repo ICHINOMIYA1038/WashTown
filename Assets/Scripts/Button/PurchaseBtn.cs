@@ -9,8 +9,8 @@ public class PurchaseBtn : OriginalBtn
     int nextSceneIndex;
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = true;
+       // Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = true;
         this.onClickCallback = clickEvent;
     }
 
@@ -22,7 +22,7 @@ public class PurchaseBtn : OriginalBtn
 
     void clickEvent()
     {
-        
+        SceneManager.LoadScene(nextSceneIndex);
 
     }
 }

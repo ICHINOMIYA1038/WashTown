@@ -1,0 +1,71 @@
+{
+    "itemData": [
+        {
+            "itemName": "洗剤",
+            "fileName": "image1.png",
+            "cost": 100,
+            "effect": "よく汚れが落ちます。"
+        },
+        {
+            "itemName": "拡張ノズル",
+            "fileName": "image2.png",
+            "cost": 300000,
+            "effect": "よく汚れが落ちます。"
+        },
+        {
+            "itemName": "ネット",
+            "fileName": "image3.png",
+            "cost": 200,
+            "effect": "妨害を防ぎます。"
+        },
+        {
+            "itemName": "洗剤",
+            "fileName": "image1.png",
+            "cost": 100,
+            "effect": "よく汚れが落ちます。"
+        },
+        {
+            "itemName": "洗剤",
+            "fileName": "image1.png",
+            "cost": 100,
+            "effect": "よく汚れが落ちます。"
+        },
+        {
+            "itemName": "洗剤",
+            "fileName": "image1.png",
+            "cost": 100,
+            "effect": "よく汚れが落ちます。"
+        },
+        {
+            "itemName": "洗剤",
+            "fileName": "image1.png",
+            "cost": 100,
+            "effect": "よく汚れが落ちます。"
+        },
+        {
+            "itemName": "洗剤g",
+            "fileName": "image1.png",
+            "cost": 100,
+            "effect": "よく汚れが落ちます。"
+        },
+        {
+            "itemName": "洗剤",
+            "fileName": "image1.png",
+            "cost": 100,
+            "effect": "よく汚れが落ちます。"
+        },
+        {
+            "itemName": "image1.png",
+            "fileName": "image1.png",
+            "cost": 100,
+            "effect": "よく汚れが落ちます。"
+        },
+        {
+            "itemName": "image1.png",
+            "fileName": "image1.png",
+            "cost": 100,
+            "effect": "よく汚れが落ちます。"
+        }
+
+    ]
+}

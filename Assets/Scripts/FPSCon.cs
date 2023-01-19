@@ -44,7 +44,7 @@ public class FPSCon : MonoBehaviour
         transform.localRotation = characterRot;
         equip.transform.localRotation = cameraRot;
 
-        //UpdateCursorLock();
+        UpdateCursorLock();
     }
 
     private void FixedUpdate()

@@ -1,11 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class GameManager : MonoBehaviour
 {
+    string playerName;
+    int dataSlot = 5;
+    SaveData savedata;
+    PlayerData playerData;
+    int playerIndex = 0;
+    string itemList = "111111111";
     /// <summary>
-    /// ShopRankの定数
+    /// ShopRank??????
     /// </summary>
     enum ShopRank
     {
@@ -17,7 +24,7 @@ public class GameManager : MonoBehaviour
         five,
     }
     /// <summary>
-    /// TownRankの定数
+    /// TownRank??????
     /// </summary>
     enum TownRank
     {
@@ -30,7 +37,7 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// shopRankのしきい値
+    /// shopRank?????????l
     /// </summary>
     enum ShopRateThreshHold
     {
@@ -42,7 +49,7 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// TownRankのしきい値
+    /// TownRank?????????l
     /// </summary>
     enum TownRateThreshHold
     {
@@ -54,25 +61,25 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// townRankの値　初期値は0,最大5まで
+    /// townRank???l?@?????l??0,????5????
     /// </summary>
     int townRank=0;
     /// <summary>
-    /// shopRankの値　初期値は0,最大5まで
+    /// shopRank???l?@?????l??0,????5????
     /// </summary>
     int shopRank=0;
     /// <summary>
-    /// townRateはtownRankを決めるためのレート値
+    /// townRate??townRank?????????????????[?g?l
     /// </summary>
-    int townRate =0;
+    int townRate =100;
     /// <summary>
-    /// shopRateはshopRankを決めるためのレート値
+    /// shopRate??shopRank?????????????????[?g?l
     /// </summary>
-    int shopRate = 0;
+    int shopRate = 200;
     /// <summary>
-    /// 店の持っているお金(4byteなので、2147483647が最大なので気を付ける)
+    /// ?X????????????????(4byte???????A2147483647?????????????C???t????)
     /// </summary>
-    int money = 0;
+    int money = 10000;
 
     void addTownRate(int num)
     {
@@ -91,6 +98,30 @@ public class GameManager : MonoBehaviour
     void checkShopRate()
     {
         
+    }
+
+    public void createSaveData()
+    {
+        if (savedata != null)
+        {
+            return;
+        }
+        savedata = new SaveData(dataSlot);
+
+    }
+
+    public void save()
+    {
+        createSaveData();
+        StreamWriter writer;
+        
+        savedata.upDateData(playerName,money,shopRate,townRate,itemList,playerIndex);
+        string jsonstr = JsonUtility.ToJson(savedata);
+        writer = new StreamWriter(Application.dataPath + "/savedata/savedata.json", false);
+        writer.Write(jsonstr);
+        writer.Flush();
+        writer.Close();
+
     }
 
 }

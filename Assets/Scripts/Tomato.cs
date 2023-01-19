@@ -37,8 +37,6 @@ public class Tomato : MonoBehaviour
                 WashableObject washableObject = hit.transform.gameObject.GetComponent<WashableObject>();
                 Vector2 hitPosi = hit.textureCoord;
                 washableObject.changeTexture(hitPosi, blushScale, flattenTexture, new Color(0f, 1f, 0f, 0.5f));
-                Debug.Log("execute");
-                Debug.Log(hitPosi);
             }
         }
     }
