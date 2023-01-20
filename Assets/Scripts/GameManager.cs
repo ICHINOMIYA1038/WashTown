@@ -5,6 +5,8 @@ using System.IO;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField]
+    MainUIManager mainUIManager;
     string playerName;
     int dataSlot = 5;
     SaveData savedata;
@@ -81,6 +83,37 @@ public class GameManager : MonoBehaviour
     /// </summary>
     int money = 10000;
 
+    public int getMoney()
+    {
+        return money;
+    }
+
+    public void setMoney(int num)
+    {
+        money = num;
+        mainUIManager.changeMoney();
+    }
+
+    public int getShopRank()
+    {
+        return shopRank;
+    }
+
+    public int getTownRank()
+    {
+        return townRank;
+    }
+
+    public void setShopRank(int rank)
+    {
+        shopRank = rank;
+    }
+
+    public void setTownRank(int rank)
+    {
+        townRank = rank;
+    }
+
     void addTownRate(int num)
     {
         townRate += num;
@@ -122,6 +155,11 @@ public class GameManager : MonoBehaviour
         writer.Flush();
         writer.Close();
 
+    }
+
+    public void load()
+    {
+        
     }
 
 }

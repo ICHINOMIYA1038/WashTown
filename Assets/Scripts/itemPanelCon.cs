@@ -23,6 +23,8 @@ public class itemPanelCon : MonoBehaviour
     shopJsonData data;
     string basePath;
     int num = 10;
+    [SerializeField]
+    PurchaseManager purchaseManager;
 
     private void Start()
     {
@@ -37,6 +39,9 @@ public class itemPanelCon : MonoBehaviour
         for (int i = 0; i < num; i++)
         {
             panels[i] = Instantiate(original, parent.transform);
+            var itemclickbtn = panels[i].GetComponent<itemClickBtn>();
+            itemclickbtn.itemIndex = i;
+            itemclickbtn.purchaseManager = purchaseManager;
             string path = basePath + data.itemData[i].fileName;
             byte[] bytes = File.ReadAllBytes(path);
             Texture2D loadTexture = new Texture2D(1, 1); //mock size 1x1
@@ -55,9 +60,6 @@ public class itemPanelCon : MonoBehaviour
     {
         string jsonText = text.ToString();
         data = JsonUtility.FromJson<shopJsonData>(jsonText);
-
-
-
     }
 
 }
