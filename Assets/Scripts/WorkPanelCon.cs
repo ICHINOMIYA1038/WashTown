@@ -25,6 +25,10 @@ public class WorkPanelCon : MonoBehaviour
     workJsonData data;
     string basePath;
     int num = 10;
+    workChoiceBtn choicedBtn;
+    int choicedSceneIndex;
+    [SerializeField]
+    TextMeshProUGUI indexText;
 
     private void Start()
     {
@@ -39,6 +43,9 @@ public class WorkPanelCon : MonoBehaviour
         for (int i = 0; i < num; i++)
         {
             panels[i] = Instantiate(original, parent.transform);
+            workChoiceBtn tempBtn = panels[i].GetComponent<workChoiceBtn>();
+            tempBtn.workPanelCon = this;
+            tempBtn.index = i;
             string path =  basePath + data.workData[i].filename;
             byte[] bytes = File.ReadAllBytes(path);
             Texture2D loadTexture = new Texture2D(1, 1); //mock size 1x1
@@ -46,6 +53,7 @@ public class WorkPanelCon : MonoBehaviour
             panels[i].transform.GetChild(1).GetComponent<RawImage>().texture = loadTexture;
             panels[i].transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = data.workData[i].header;
             panels[i].transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = data.workData[i].body;
+
         }
     }
 
@@ -57,8 +65,29 @@ public class WorkPanelCon : MonoBehaviour
        string jsonText = text.ToString();
        data = JsonUtility.FromJson<workJsonData>(jsonText);
        
-       
-       
     }
 
+    public void choice(workChoiceBtn workChoicedBtn)
+    {
+        if (choicedBtn != null) choicedBtn.unchoiceEvent();
+        if (workChoicedBtn == choicedBtn)
+        {
+            choicedBtn = null;
+            choicedSceneIndex = 0;
+        }
+        else
+        {
+            choicedBtn = workChoicedBtn;
+            choicedSceneIndex = workChoicedBtn.index;
+        }
+        indexText.text = ""+choicedSceneIndex;
+
+
+
+    }
+
+    public int getIndex()
+    {
+        return choicedBtn.index;
+    }
 }

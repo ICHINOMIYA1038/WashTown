@@ -83,6 +83,11 @@ public class PurchaseManager : MonoBehaviour
 
     public void textUpdate()
     {
+        for(int j = 0; j < 5; j++)
+        {
+            numTexts[j].text = "";
+            itemNameTexts[j].text =  "";
+        }
         int i = 0;
         foreach (var elem in purchaseList)
         {
@@ -121,6 +126,13 @@ public class PurchaseManager : MonoBehaviour
     {
         string jsonText = text.ToString();
         shopData = JsonUtility.FromJson<shopJsonData>(jsonText);
+    }
+
+    public void cancel()
+    {
+        purchaseList.Clear();
+        textUpdate();
+        Debug.Log("aa");
     }
 
 }

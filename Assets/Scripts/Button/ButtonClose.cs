@@ -5,6 +5,7 @@ using UnityEngine;
 public class ButtonClose : OriginalBtn
 {
     [SerializeField] GameObject canvas;
+    [SerializeField] CanvasManager canvasManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,5 +16,6 @@ public class ButtonClose : OriginalBtn
     void closeCanvas()
     {
         canvas.gameObject.SetActive(false);
+        canvasManager.close();
     }
 }

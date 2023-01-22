@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class PurchaseBtn : OriginalBtn
 {
-    [SerializeField]
-    int nextSceneIndex;
+    int index = 1;
+    
     void Start()
     {
        // Cursor.lockState = CursorLockMode.Locked;
@@ -22,7 +22,8 @@ public class PurchaseBtn : OriginalBtn
 
     void clickEvent()
     {
-        SceneManager.LoadScene(nextSceneIndex);
+        
+        SceneManager.LoadScene(index);
 
     }
 }
