@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class workChoiceBtn : OriginalBtn
+public class choiceBtn : OriginalBtn
 {
     public int index = 1;
-    public WorkPanelCon workPanelCon;
+    public LoadDataCon loadDataCon;
     [SerializeField]
     GameObject panel;
     bool choiced = false;
@@ -20,7 +20,7 @@ public class workChoiceBtn : OriginalBtn
     {
         if (choiced) unchoiceEvent();
         else choiceEvent();
-        workPanelCon.choice(this);
+        loadDataCon.choice(this);
 
     }
 

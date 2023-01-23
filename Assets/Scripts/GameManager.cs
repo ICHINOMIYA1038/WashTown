@@ -157,9 +157,13 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void load()
+    public void load(int index)
     {
-        
+        dataSlot = index;
+        string jsonText = text.ToString();
+        var textReader = new StreamReader(Application.dataPath + "/savedata/savedata.json");
+        string text = 
+        data = JsonUtility.FromJson<SaveData>(jsonText);
     }
 
 }
