@@ -75,6 +75,7 @@ public class LoadDataCon : MonoBehaviour
             choicedSceneIndex = choicedBtn.index;
         }
         indexText.text = "" + choicedSceneIndex;
+        Debug.Log(choicedSceneIndex);
     }
 
     public int getIndex()

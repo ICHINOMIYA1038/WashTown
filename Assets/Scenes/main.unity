@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2263,7 +2263,6 @@ GameObject:
   - component: {fileID: 286968430}
   - component: {fileID: 286968429}
   - component: {fileID: 286968428}
-  - component: {fileID: 286968431}
   - component: {fileID: 286968432}
   - component: {fileID: 286968433}
   - component: {fileID: 286968434}
@@ -2322,19 +2321,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &286968431
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 286968427}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad7f741fe5d1a9f4c9a2603c51afd6da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainUIManager: {fileID: 286968433}
 --- !u!114 &286968432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2361,7 +2347,7 @@ MonoBehaviour:
   - {fileID: 2085965745}
   sumText: {fileID: 734860909}
   text: {fileID: 4900000, guid: 004cce1f88b5b4d7b835e52811694d83, type: 3}
-  gameManager: {fileID: 286968431}
+  gameManager: {fileID: 0}
 --- !u!114 &286968433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2375,7 +2361,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moneyText: {fileID: 1086193605}
-  gameManager: {fileID: 286968431}
+  gameManager: {fileID: 0}
 --- !u!114 &286968434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7828,7 +7814,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f90a1fdbbd074108b17f3221a46fae7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 286968431}
+  gameManager: {fileID: 0}
   option: 0
 --- !u!114 &1105439473
 MonoBehaviour:
@@ -9283,7 +9269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f90a1fdbbd074108b17f3221a46fae7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 286968431}
+  gameManager: {fileID: 0}
   option: 1
 --- !u!1 &1404454589
 GameObject:
@@ -11870,7 +11856,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f90a1fdbbd074108b17f3221a46fae7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 286968431}
+  gameManager: {fileID: 0}
   option: 0
 --- !u!1 &1740185873
 GameObject:

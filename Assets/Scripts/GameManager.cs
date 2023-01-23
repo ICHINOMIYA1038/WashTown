@@ -13,6 +13,17 @@ public class GameManager : MonoBehaviour
     PlayerData playerData;
     int playerIndex = 0;
     string itemList = "111111111";
+
+    int SceneIndex = SCENE_TITLE;
+    public static readonly int SCENE_TITLE = 0;
+    public static readonly int SCENE_MAIN = 1;
+    public static readonly int SCENE_ACTION = 2;
+
+    private void Start()
+    {
+        DontDestroyOnLoad(this);
+    }
+
     /// <summary>
     /// ShopRank??????
     /// </summary>
@@ -91,7 +102,11 @@ public class GameManager : MonoBehaviour
     public void setMoney(int num)
     {
         money = num;
-        mainUIManager.changeMoney();
+        if (SceneIndex == SCENE_MAIN)
+        {
+            mainUIManager.changeMoney();
+        }
+        
     }
 
     public int getShopRank()
@@ -157,13 +172,27 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void load(int index)
+    public void Load(int index)
     {
         dataSlot = index;
-        string jsonText = text.ToString();
+        
         var textReader = new StreamReader(Application.dataPath + "/savedata/savedata.json");
-        string text = 
-        data = JsonUtility.FromJson<SaveData>(jsonText);
+        textReader.Read();
+        string jsonText = textReader.ToString();
+        textReader.Close();
+        savedata = JsonUtility.FromJson<SaveData>(jsonText);
+        Debug.Log(savedata.playerData[index].name);
+    }
+
+    public void SceneChanage(int src, int dst)
+    {
+        SceneIndex = dst;
+        if(src==SCENE_TITLE && dst == SCENE_MAIN)
+        {
+            
+        }
+
+        
     }
 
 }

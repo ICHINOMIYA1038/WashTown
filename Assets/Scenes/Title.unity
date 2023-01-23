@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -381,8 +381,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 284635837}
   m_HandleRect: {fileID: 284635836}
   m_Direction: 2
-  m_Value: 1.0000001
-  m_Size: 0.24543391
+  m_Value: 1
+  m_Size: 0.24543393
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1263,10 +1263,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1029465817}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8cb27505bb05024ab060f8eeacb4795, type: 3}
+  m_Script: {fileID: 11500000, guid: dec84f4dc75a68e4e9f38abd0fef61e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  workPanelCon: {fileID: 0}
+  loadDatacon: {fileID: 842157812}
+  gameManager: {fileID: 1629854117}
 --- !u!1 &1111813912
 GameObject:
   m_ObjectHideFlags: 0
@@ -1380,6 +1381,51 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1629854116
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1629854118}
+  - component: {fileID: 1629854117}
+  m_Layer: 0
+  m_Name: GameMaster
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1629854117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629854116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad7f741fe5d1a9f4c9a2603c51afd6da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainUIManager: {fileID: 0}
+--- !u!4 &1629854118
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629854116}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 421.26495, y: 221.1668, z: 2.1544538}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1780937811
 GameObject:
   m_ObjectHideFlags: 0
