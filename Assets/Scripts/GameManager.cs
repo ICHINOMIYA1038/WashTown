@@ -2,26 +2,46 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    /*
+    public static GameManager instance;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this);
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
+    */
+
+
     [SerializeField]
     MainUIManager mainUIManager;
-    string playerName;
+    public static string playerName;
     int dataSlot = 5;
-    SaveData savedata;
+    static SaveData savedata;
     PlayerData playerData;
-    int playerIndex = 0;
+    public static int playerIndex = 0;
     string itemList = "111111111";
 
-    int SceneIndex = SCENE_TITLE;
+    public static int SceneIndex = SCENE_TITLE;
     public static readonly int SCENE_TITLE = 0;
     public static readonly int SCENE_MAIN = 1;
     public static readonly int SCENE_ACTION = 2;
 
-    private void Start()
+    public void Start()
     {
-        DontDestroyOnLoad(this);
+      //  playerName
+      //  Debug.Log(playerName);
     }
 
     /// <summary>
@@ -76,23 +96,23 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// townRank???l?@?????l??0,????5????
     /// </summary>
-    int townRank=0;
+    public static int townRank =0;
     /// <summary>
     /// shopRank???l?@?????l??0,????5????
     /// </summary>
-    int shopRank=0;
+    public static int shopRank =0;
     /// <summary>
     /// townRate??townRank?????????????????[?g?l
     /// </summary>
-    int townRate =100;
+    public static int townRate =100;
     /// <summary>
     /// shopRate??shopRank?????????????????[?g?l
     /// </summary>
-    int shopRate = 200;
+    public static int shopRate = 200;
     /// <summary>
     /// ?X????????????????(4byte???????A2147483647?????????????C???t????)
     /// </summary>
-    int money = 10000;
+    public static int money = 10000;
 
     public int getMoney()
     {
@@ -102,11 +122,7 @@ public class GameManager : MonoBehaviour
     public void setMoney(int num)
     {
         money = num;
-        if (SceneIndex == SCENE_MAIN)
-        {
-            mainUIManager.changeMoney();
-        }
-        
+        mainUIManager.changeMoney();
     }
 
     public int getShopRank()
@@ -172,27 +188,29 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void Load(int index)
+    public static void Load(int index)
     {
-        dataSlot = index;
+        playerIndex = index;
         
         var textReader = new StreamReader(Application.dataPath + "/savedata/savedata.json");
-        textReader.Read();
-        string jsonText = textReader.ToString();
+        string jsonText = textReader.ReadToEnd();
         textReader.Close();
         savedata = JsonUtility.FromJson<SaveData>(jsonText);
-        Debug.Log(savedata.playerData[index].name);
+        money = savedata.playerData[index].money;
+        playerName = savedata.playerData[index].name;
+        townRate = savedata.playerData[index].townRate;
+        shopRate = savedata.playerData[index].shopRate;
     }
 
-    public void SceneChanage(int src, int dst)
+    public static void SceneChanage(int src, int dst)
     {
         SceneIndex = dst;
         if(src==SCENE_TITLE && dst == SCENE_MAIN)
         {
-            
-        }
-
-        
+            SceneManager.LoadScene(dst);
+        } 
     }
+
+
 
 }

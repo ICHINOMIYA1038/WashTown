@@ -7,8 +7,6 @@ public class GameStartButton : OriginalBtn
 {
     [SerializeField]
     LoadDataCon loadDatacon;
-    [SerializeField]
-    GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,8 +17,8 @@ public class GameStartButton : OriginalBtn
     void ClickEvent()
     {
         var playerNum = loadDatacon.getIndex();
-        gameManager.Load(playerNum);
-        gameManager.SceneChanage(GameManager.SCENE_TITLE,GameManager.SCENE_MAIN);
+        GameManager.Load(playerNum);
+        GameManager.SceneChanage(GameManager.SCENE_TITLE,GameManager.SCENE_MAIN);
         SceneManager.LoadScene(1);
 
 

@@ -132,7 +132,12 @@ public class PurchaseManager : MonoBehaviour
     {
         purchaseList.Clear();
         textUpdate();
-        Debug.Log("aa");
+    }
+
+    public void buy()
+    {
+        gameManager.setMoney(GameManager.money - costSum());
+        cancel();
     }
 
 }

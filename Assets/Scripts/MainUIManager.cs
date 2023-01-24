@@ -8,11 +8,14 @@ public class MainUIManager : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI moneyText;
     [SerializeField]
+    TextMeshProUGUI playerNameText;
+    [SerializeField]
     GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
         changeMoney();
+        changeName();
     }
 
     // Update is called once per frame
@@ -34,5 +37,10 @@ public class MainUIManager : MonoBehaviour
     public void changeTownRank()
     {
 
+    }
+
+    public void changeName()
+    {
+        playerNameText.text = GameManager.playerName;
     }
 }

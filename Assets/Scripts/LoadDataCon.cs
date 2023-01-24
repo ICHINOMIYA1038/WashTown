@@ -9,8 +9,6 @@ using UnityEngine.UI;
 public class LoadDataCon : MonoBehaviour
 { 
     [SerializeField]
-    TextAsset text;
-    [SerializeField]
     GameObject parent;
     [SerializeField]
     GameObject original;
@@ -44,9 +42,10 @@ public class LoadDataCon : MonoBehaviour
             //Texture2D loadTexture = new Texture2D(1, 1); //mock size 1x1
             //loadTexture.LoadImage(bytes);
             //panels[i].transform.GetChild(1).GetComponent<RawImage>().texture = loadTexture;
-            panels[i].transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "" + data.playerData[i].name;
-            panels[i].transform.GetChild(3).GetComponent<TextMeshProUGUI>().text =""+ data.playerData[i].shopRate;
-            panels[i].transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "" + data.playerData[i].townRate;
+            panels[i].transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "name:" + data.playerData[i].name;
+            panels[i].transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "shopRate:"+ data.playerData[i].shopRate;
+            panels[i].transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "townRate:" + data.playerData[i].townRate;
+            panels[i].transform.GetChild(5).GetComponent<TextMeshProUGUI>().text = "money:" + data.playerData[i].money;
 
         }
     }
@@ -56,7 +55,9 @@ public class LoadDataCon : MonoBehaviour
     /// </summary>
     private void readJson()
     {
-        string jsonText = text.ToString();
+        var textReader = new StreamReader(Application.dataPath + "/savedata/savedata.json");
+        string jsonText = textReader.ReadToEnd();
+        textReader.Close();
         data = JsonUtility.FromJson<SaveData>(jsonText);
 
     }
