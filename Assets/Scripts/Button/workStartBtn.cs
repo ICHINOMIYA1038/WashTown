@@ -21,7 +21,7 @@ public class workStartBtn : OriginalBtn
             return;
         }
         var index = workPanelCon.getIndex();
-        if (index == 0)
+        if (index == -1)
         {
             return;
         }

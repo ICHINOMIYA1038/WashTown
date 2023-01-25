@@ -5,18 +5,7 @@ using UnityEngine;
 
 public class util : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    
     public static  Texture2D CreateTempTexture(int width, int height, Color defaultColor = default)
     {
         var texture = new Texture2D(width, height, TextureFormat.RGBA32, false);

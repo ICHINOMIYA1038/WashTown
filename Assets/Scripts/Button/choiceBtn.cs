@@ -5,7 +5,7 @@ using UnityEngine;
 public class choiceBtn : OriginalBtn
 {
     public int index = 1;
-    public LoadDataCon loadDataCon;
+    public choicedManager choicedManager;
     [SerializeField]
     GameObject panel;
     bool choiced = false;
@@ -20,11 +20,11 @@ public class choiceBtn : OriginalBtn
     {
         if (choiced) unchoiceEvent();
         else choiceEvent();
-        loadDataCon.choice(this);
+        choicedManager.choice(this);
 
     }
 
-    void choiceEvent()
+    public void choiceEvent()
     {
         choiced = true;
         panel.SetActive(true);

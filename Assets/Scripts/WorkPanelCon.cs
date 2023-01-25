@@ -13,7 +13,7 @@ using UnityEngine.UI;
 ///　パネル自体は元となるプレハブで管理する。
 ///　プレハブ内に、クリックした時の処理をするクラスのインスタンスを持たせている。
 /// </summary>
-public class WorkPanelCon : MonoBehaviour
+public class WorkPanelCon : choicedManager
 {
     [SerializeField]
     TextAsset text;
@@ -25,10 +25,6 @@ public class WorkPanelCon : MonoBehaviour
     workJsonData data;
     string basePath;
     int num = 10;
-    workChoiceBtn choicedBtn;
-    int choicedSceneIndex;
-    [SerializeField]
-    TextMeshProUGUI indexText;
 
     private void Start()
     {
@@ -43,8 +39,8 @@ public class WorkPanelCon : MonoBehaviour
         for (int i = 0; i < num; i++)
         {
             panels[i] = Instantiate(original, parent.transform);
-            workChoiceBtn tempBtn = panels[i].GetComponent<workChoiceBtn>();
-            tempBtn.workPanelCon = this;
+            choiceBtn tempBtn = panels[i].GetComponent<choiceBtn>();
+            tempBtn.choicedManager = this;
             tempBtn.index = i;
             string path =  basePath + data.workData[i].filename;
             byte[] bytes = File.ReadAllBytes(path);
@@ -67,27 +63,4 @@ public class WorkPanelCon : MonoBehaviour
        
     }
 
-    public void choice(workChoiceBtn workChoicedBtn)
-    {
-        if (choicedBtn != null) choicedBtn.unchoiceEvent();
-        if (workChoicedBtn == choicedBtn)
-        {
-            choicedBtn = null;
-            choicedSceneIndex = 0;
-        }
-        else
-        {
-            choicedBtn = workChoicedBtn;
-            choicedSceneIndex = workChoicedBtn.index;
-        }
-        indexText.text = ""+choicedSceneIndex;
-
-
-
-    }
-
-    public int getIndex()
-    {
-        return choicedBtn.index;
-    }
 }

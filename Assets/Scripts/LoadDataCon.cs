@@ -6,7 +6,7 @@ using System.IO;
 using UnityEngine.UI;
 
 
-public class LoadDataCon : MonoBehaviour
+public class LoadDataCon : choicedManager
 { 
     [SerializeField]
     GameObject parent;
@@ -35,7 +35,7 @@ public class LoadDataCon : MonoBehaviour
         {
             panels[i] = Instantiate(original, parent.transform);
             choiceBtn tempBtn = panels[i].GetComponent<choiceBtn>();
-            tempBtn.loadDataCon = this;
+            tempBtn.choicedManager = this;
             tempBtn.index = i;
             //string path = basePath + data.workData[i].filename;
             //byte[] bytes = File.ReadAllBytes(path);
@@ -62,25 +62,4 @@ public class LoadDataCon : MonoBehaviour
 
     }
 
-    public void choice(choiceBtn btn)
-    {
-        if (choicedBtn != null) choicedBtn.unchoiceEvent();
-        if (btn == choicedBtn)
-        {
-            choicedBtn = null;
-            choicedSceneIndex = 0;
-        }
-        else
-        {
-            choicedBtn = btn;
-            choicedSceneIndex = choicedBtn.index;
-        }
-        indexText.text = "" + choicedSceneIndex;
-        Debug.Log(choicedSceneIndex);
-    }
-
-    public int getIndex()
-    {
-        return choicedBtn.index;
-    }
 }

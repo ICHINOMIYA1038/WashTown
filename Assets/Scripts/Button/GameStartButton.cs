@@ -17,6 +17,10 @@ public class GameStartButton : OriginalBtn
     void ClickEvent()
     {
         var playerNum = loadDatacon.getIndex();
+        if (playerNum == -1)
+        {
+            return;
+        }
         GameManager.Load(playerNum);
         GameManager.SceneChanage(GameManager.SCENE_TITLE,GameManager.SCENE_MAIN);
         SceneManager.LoadScene(1);
