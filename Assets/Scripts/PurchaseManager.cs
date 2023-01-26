@@ -134,9 +134,24 @@ public class PurchaseManager : MonoBehaviour
         textUpdate();
     }
 
+    public void addItem()
+    {
+        foreach(var elem in purchaseList)
+        {
+            GameManager.itemList[elem.Key] += elem.Value;
+            if (GameManager.itemList[elem.Key] > 99)
+            {
+                GameManager.itemList[elem.Key] = 99;
+            }
+        }
+       
+    }
+
     public void buy()
     {
+        addItem();
         gameManager.setMoney(GameManager.money - costSum());
+        gameManager.textUpdate();
         cancel();
     }
 

@@ -5,7 +5,7 @@ using System.IO;
 using UnityEngine.UI;
 using TMPro;
 
-public class InventoryPanelCon : MonoBehaviour
+public class InventoryPanelCon : choicedManager
 { 
     [SerializeField]
     TextAsset text;
@@ -16,12 +16,14 @@ public class InventoryPanelCon : MonoBehaviour
     GameObject[] panels;
     shopJsonData data;
     string basePath;
-    int num = 10;
+    int num = 8;
 
-    private void Start()
+
+    public void Start()
     {
         show();
     }
+
 
     public void show()
     {
@@ -31,13 +33,29 @@ public class InventoryPanelCon : MonoBehaviour
         for (int i = 0; i < num; i++)
         {
             panels[i] = Instantiate(original, parent.transform);
-           
+            choiceBtn tempBtn = panels[i].GetComponent<choiceBtn>();
+            tempBtn.choicedManager = this;
+            tempBtn.index = i;
             string path = basePath + data.itemData[i].fileName;
             byte[] bytes = File.ReadAllBytes(path);
             Texture2D loadTexture = new Texture2D(1, 1); //mock size 1x1
             loadTexture.LoadImage(bytes);
             panels[i].transform.GetChild(1).GetComponent<RawImage>().texture = loadTexture;
             panels[i].transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = data.itemData[i].itemName;
+            panels[i].transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "èäéùêî:" + GameManager.itemList[i];
+        }
+    }
+
+    public void UpdateText()
+    {
+        if (!parent.activeSelf)
+        {
+            return;
+        }
+        for (int i = 0; i < num; i++)
+        {
+            panels[i].transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = data.itemData[i].itemName;
+            panels[i].transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "èäéùêî:" + GameManager.itemList[i];
         }
     }
 

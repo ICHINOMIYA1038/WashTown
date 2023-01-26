@@ -16,8 +16,8 @@ public class ItemChoicedPanel : choicedManager
     string basePath;
     int num = 3;
     List<choiceBtn> btnList;
-    List<int> indexList;
-
+    public List<int> indexList;
+     
     public void Start()
     {
         show();
@@ -42,11 +42,23 @@ public class ItemChoicedPanel : choicedManager
             loadTexture.LoadImage(bytes);
             panels[i].transform.GetChild(1).GetComponent<RawImage>().texture = loadTexture;
             panels[i].transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = data.itemData[i].itemName;
-            panels[i].transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "" + data.itemData[i].cost;
-
+            panels[i].transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = ""+GameManager.itemList[i];
         }
     }
 
+    public void UpdateText() 
+    {
+        if (!parent.gameObject.activeSelf)
+        {
+            return;
+        }
+        for (int i = 0; i < num; i++)
+        {
+            panels[i].transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = data.itemData[i].itemName;
+            panels[i].transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "" + GameManager.itemList[i];
+
+        }
+    }
 
     public override void choice(choiceBtn btn)
     {

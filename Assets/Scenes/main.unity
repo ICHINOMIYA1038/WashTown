@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 262.0923, g: 324.7036, b: 429.77197, a: 1}
+  m_IndirectSpecularColor: {r: 262.3369, g: 325.0498, b: 430.21924, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2287,6 +2287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cddcd1fa2d032047aafc95a88b62a43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  indexText: {fileID: 0}
   text: {fileID: 4900000, guid: 004cce1f88b5b4d7b835e52811694d83, type: 3}
   parent: {fileID: 1814811244}
   original: {fileID: 2164250773421639522, guid: f92b34158d9b247ebacba28718356951, type: 3}
@@ -2314,7 +2315,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad7f741fe5d1a9f4c9a2603c51afd6da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemChoicedPanel: {fileID: 286968437}
   mainUIManager: {fileID: 286968433}
+  inventoryPanelCon: {fileID: 286968434}
 --- !u!114 &286968437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2330,6 +2333,7 @@ MonoBehaviour:
   indexText: {fileID: 0}
   parent: {fileID: 853996641}
   original: {fileID: 2164250773421639522, guid: 95ebeb6d984d4f244ad5091b57e79ef6, type: 3}
+  indexList: 
 --- !u!1 &299096905
 GameObject:
   m_ObjectHideFlags: 0
@@ -4056,7 +4060,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1111813913}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.99999994
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4777,8 +4781,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 118.588165, y: -79.94262}
-  m_SizeDelta: {x: 142.7923, y: 56.283}
+  m_AnchoredPosition: {x: 109.7, y: -78.61762}
+  m_SizeDelta: {x: 107.0175, y: 53.633}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &660536553
 MonoBehaviour:
@@ -4793,6 +4797,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   workPanelCon: {fileID: 286968429}
+  itemChoicedPanel: {fileID: 0}
 --- !u!114 &660536554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14553,7 +14558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da0863d1b8a82f64d9c3006f6fe687cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ClothingItem: {fileID: 11400000, guid: 559937c1cf9898a409babe455dc796ca, type: 2}
+  ClothingItem: {fileID: 0}
   VariationIndex: 1
   IsEquipped: 1
 --- !u!1 &558158365972139896
@@ -14842,7 +14847,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30650df60a2f3ac4a961ad12d6e5c43e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FacialHairItem: {fileID: 11400000, guid: f4f4c44743a58b8459b3010d38c22aa1, type: 2}
+  FacialHairItem: {fileID: 0}
 --- !u!4 &558158367243501905
 Transform:
   m_ObjectHideFlags: 0
@@ -15301,7 +15306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e6b4a97727c6a949912873a69585a58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HairItem: {fileID: 11400000, guid: 2eb3e60357bd7a9459fa11a1e8ae448f, type: 2}
+  HairItem: {fileID: 0}
 --- !u!33 &558158367329862615
 MeshFilter:
   m_ObjectHideFlags: 0

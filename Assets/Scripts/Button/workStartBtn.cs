@@ -8,10 +8,11 @@ public class workStartBtn : OriginalBtn
 
     [SerializeField]
     WorkPanelCon workPanelCon;
+    List<int> indexList;
     [SerializeField]
-    int 
+    ItemChoicedPanel itemChoicedPanel;
 
-    private void Start()
+    public void Start()
     {
         this.onClickCallback = pushBtn;
     }
@@ -27,8 +28,11 @@ public class workStartBtn : OriginalBtn
         {
             return;
         }
+        indexList = itemChoicedPanel.indexList;
         
         SceneManager.LoadScene(index);
     }
+
+   
 }
 

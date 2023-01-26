@@ -24,24 +24,33 @@ public class GameManager : MonoBehaviour
     */
 
 
-    [SerializeField]
-    MainUIManager mainUIManager;
+
     public static string playerName;
     int dataSlot = 5;
     static SaveData savedata;
     PlayerData playerData;
     public static int playerIndex = 0;
-    string itemList = "111111111";
+    public static int[] itemList;
 
     public static int SceneIndex = SCENE_TITLE;
     public static readonly int SCENE_TITLE = 0;
     public static readonly int SCENE_MAIN = 1;
     public static readonly int SCENE_ACTION = 2;
 
+    /// <summary>
+    /// UIのUpdateに関するオブジェクト
+    /// </summary>
+    [SerializeField]
+    ItemChoicedPanel itemChoicedPanel;
+    [SerializeField]
+    MainUIManager mainUIManager;
+    [SerializeField]
+    InventoryPanelCon inventoryPanelCon;
+
+
     public void Start()
     {
-      //  playerName
-      //  Debug.Log(playerName);
+        itemList = new int[10] {0,0,0,0,0,0,0,0,0,0};
     }
 
     /// <summary>
@@ -125,6 +134,16 @@ public class GameManager : MonoBehaviour
         mainUIManager.changeMoney();
     }
 
+    public void textUpdate()
+    {
+        
+        mainUIManager.changeMoney();
+        itemChoicedPanel.UpdateText();
+        inventoryPanelCon.UpdateText();
+        
+
+    }
+
     public int getShopRank()
     {
         return shopRank;
@@ -200,6 +219,7 @@ public class GameManager : MonoBehaviour
         playerName = savedata.playerData[index].name;
         townRate = savedata.playerData[index].townRate;
         shopRate = savedata.playerData[index].shopRate;
+        itemList = savedata.playerData[index].itemList;
     }
 
     public static void SceneChanage(int src, int dst)

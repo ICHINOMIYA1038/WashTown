@@ -59,7 +59,7 @@ public class SaveData
     public PlayerData[] playerData = null;
 
 
-    public void upDateData(string name,int money, int shopRate, int townRate, string itemList, int playerIndex)
+    public void upDateData(string name,int money, int shopRate, int townRate, int[] itemList, int playerIndex)
     {
         PlayerData data = new PlayerData(name,money, shopRate, townRate, itemList);
         playerData[playerIndex] = data;
@@ -88,10 +88,11 @@ public class PlayerData
     //townRateに依存して客層が変わる
     [SerializeField]
     public int townRate;
-    [SerializeField]
-    public string itemList = string.Empty;
 
-    public PlayerData(string name, int money, int shopRate, int townRate, string itemList)
+    [SerializeField]
+    public int[] itemList;
+
+    public PlayerData(string name, int money, int shopRate, int townRate, int[] itemList)
     {
         this.name = name;
         this.money = money;

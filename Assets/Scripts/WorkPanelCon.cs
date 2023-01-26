@@ -50,6 +50,7 @@ public class WorkPanelCon : choicedManager
             panels[i].transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = data.workData[i].header;
             panels[i].transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = data.workData[i].body;
 
+
         }
     }
 
