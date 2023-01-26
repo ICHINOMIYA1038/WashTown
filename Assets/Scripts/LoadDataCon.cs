@@ -16,10 +16,7 @@ public class LoadDataCon : choicedManager
     SaveData data;
     string basePath;
     int num = 3;
-    choiceBtn choicedBtn;
     int choicedSceneIndex;
-    [SerializeField]
-    TextMeshProUGUI indexText;
 
     private void Start()
     {

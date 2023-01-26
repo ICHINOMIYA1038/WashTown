@@ -16,16 +16,15 @@ public class Effect : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             effect.SendEvent("OnStop");
-            //StopPlayÇÕEvent NameÇ≈éwíËÇµÇΩîCà”ÇÃñºèÃ
+            //StopPlay??Event Name???w???????C????????
         }
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             effect.SendEvent("OnPlay");
-            //OnPlayÇÕEvent NameÇ≈éwíËÇµÇΩîCà”ÇÃñºèÃ
+            //OnPlay??Event Name???w???????C????????
             effect.SetVector3("position", position);
             effect.SetVector3("normal", normal);
             Ray ray = new Ray(this.transform.position, this.transform.forward);
-            ray.
         }
     }
 }

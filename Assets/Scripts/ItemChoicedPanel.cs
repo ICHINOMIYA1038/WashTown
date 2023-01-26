@@ -12,7 +12,7 @@ public class ItemChoicedPanel : choicedManager
     [SerializeField]
     GameObject original;
     GameObject[] panels;
-    ItemData data;
+    shopJsonData data;
     string basePath;
     int num = 3;
 
@@ -31,15 +31,37 @@ public class ItemChoicedPanel : choicedManager
             choiceBtn tempBtn = panels[i].GetComponent<choiceBtn>();
             tempBtn.choicedManager = this;
             tempBtn.index = i;
-            string path = basePath + data.fileName;
+            string path = basePath + data.itemData[i].fileName;
+            Debug.Log(path);
             byte[] bytes = File.ReadAllBytes(path);
             Texture2D loadTexture = new Texture2D(1, 1); //mock size 1x1
             loadTexture.LoadImage(bytes);
             panels[i].transform.GetChild(1).GetComponent<RawImage>().texture = loadTexture;
-            panels[i].transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = data.itemName;
-            panels[i].transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = ""+data.cost;
+            panels[i].transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = data.itemData[i].itemName;
+            panels[i].transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "" + data.itemData[i].cost;
 
         }
+    }
+
+    List<choiceBtn> btnList;
+
+    public new void choice(choiceBtn btn)
+    {
+        if (btnList.Contains(btn)){
+            btnList.Remove(btn);
+        }
+        btnList.Add(btn);
+    }
+
+
+
+    public new int getIndex()
+    {
+        if (choicedBtn == null)
+        {
+            return -1;
+        }
+        return choicedBtn.index;
     }
 
     private void readJson()
@@ -47,7 +69,7 @@ public class ItemChoicedPanel : choicedManager
         var textReader = new StreamReader(Application.dataPath + "/Json/itemJson.json");
         string jsonText = textReader.ReadToEnd();
         textReader.Close();
-        data = JsonUtility.FromJson<ItemData>(jsonText);
+        data = JsonUtility.FromJson<shopJsonData>(jsonText);
 
     }
 }

@@ -5,8 +5,8 @@ using TMPro;
 
 public class choicedManager : MonoBehaviour
 {
-    choiceBtn choicedBtn;
-    int choicedIndex;
+    protected choiceBtn choicedBtn;
+    protected int choicedIndex;
     [SerializeField]
     TextMeshProUGUI indexText;
     // Start is called before the first frame update
