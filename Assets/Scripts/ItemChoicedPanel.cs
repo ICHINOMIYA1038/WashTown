@@ -15,10 +15,14 @@ public class ItemChoicedPanel : choicedManager
     shopJsonData data;
     string basePath;
     int num = 3;
+    List<choiceBtn> btnList;
+    List<int> indexList;
 
     public void Start()
     {
         show();
+        btnList = new List<choiceBtn>();
+        indexList = new List<int>();
     }
     public void show()
     {
@@ -43,15 +47,23 @@ public class ItemChoicedPanel : choicedManager
         }
     }
 
-    List<choiceBtn> btnList;
 
-    public new void choice(choiceBtn btn)
+    public override void choice(choiceBtn btn)
     {
         if (btnList.Contains(btn)){
             btnList.Remove(btn);
         }
-        btnList.Add(btn);
+        else btnList.Add(btn);
     }
+
+    public void extractIndex()
+    {
+        foreach(var elem in btnList)
+        {
+            indexList.Add(elem.index);
+        }
+    } 
+    
 
 
 

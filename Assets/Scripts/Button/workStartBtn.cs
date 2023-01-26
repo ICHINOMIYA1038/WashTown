@@ -8,6 +8,8 @@ public class workStartBtn : OriginalBtn
 
     [SerializeField]
     WorkPanelCon workPanelCon;
+    [SerializeField]
+    int 
 
     private void Start()
     {
@@ -25,6 +27,7 @@ public class workStartBtn : OriginalBtn
         {
             return;
         }
+        
         SceneManager.LoadScene(index);
     }
 }

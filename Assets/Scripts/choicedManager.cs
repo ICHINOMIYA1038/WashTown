@@ -11,7 +11,7 @@ public class choicedManager : MonoBehaviour
     TextMeshProUGUI indexText;
     // Start is called before the first frame update
 
-    public void choice(choiceBtn btn)
+    virtual public void choice(choiceBtn btn)
     {
         if (choicedBtn != null) choicedBtn.unchoiceEvent();
         if (btn == choicedBtn)
