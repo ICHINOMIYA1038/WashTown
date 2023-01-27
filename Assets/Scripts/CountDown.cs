@@ -11,6 +11,7 @@ public class CountDown : MonoBehaviour
     [SerializeField]
     int timer;
     int remainTime;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -33,5 +34,7 @@ public class CountDown : MonoBehaviour
             remainTime -= 1;
             text.text = "" + remainTime;
         }
+        this.gameObject.SetActive(false);
     }
+
 }

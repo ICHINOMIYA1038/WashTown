@@ -7,8 +7,7 @@ public class choicedManager : MonoBehaviour
 {
     protected choiceBtn choicedBtn;
     protected int choicedIndex;
-    [SerializeField]
-    TextMeshProUGUI indexText;
+
     // Start is called before the first frame update
 
     virtual public void choice(choiceBtn btn)
@@ -17,17 +16,14 @@ public class choicedManager : MonoBehaviour
         if (btn == choicedBtn)
         {
             choicedBtn = null;
-            choicedIndex = 0;
+            choicedIndex = -1;
         }
         else
         {
             choicedBtn = btn;
             choicedIndex = choicedBtn.index;
         }
-        if (indexText != null)
-        {
-            indexText.text = "" + choicedIndex;
-        }
+  
     }
 
     public int getIndex()

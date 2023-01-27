@@ -2,24 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tomato : MonoBehaviour
+public class Tomato : ObstacleObject
 {
     [SerializeField]Texture flattenTexture;
     [SerializeField]float blushScale;
     [SerializeField] Vector3 velocity;
     [SerializeField] Vector3 acceleration;
-    // Start is called before the first frame update
-    void Start()
-    {
-       // flattenTexture = util.CreateTempTexture(256,256);
-    }
 
     // Update is called once per frame
     void Update()
     {
-        velocity += acceleration*Time.deltaTime;
-        transform.position += velocity*Time.deltaTime;
-        thrown();
+        if (isLaunching)
+        {
+            Launch();
+        }
     }
 
     void thrown()
@@ -41,9 +37,24 @@ public class Tomato : MonoBehaviour
         }
     }
 
+    override public void Launch()
+    {
+        velocity += acceleration * Time.deltaTime;
+        transform.position += velocity * Time.deltaTime;
+        thrown();
+    }
+
+    override public void respwan()
+    {
+        this.transform.position = initPosi;
+        velocity = initVelocity;
+        isLaunching = false;
+
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
-        Destroy(this.gameObject);
+        respwan();
     }
 
 

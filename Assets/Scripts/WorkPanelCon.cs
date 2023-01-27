@@ -25,6 +25,8 @@ public class WorkPanelCon : choicedManager
     workJsonData data;
     string basePath;
     int num = 10;
+    [SerializeField]
+    TextMeshProUGUI indexText;
 
     private void Start()
     {
@@ -52,6 +54,25 @@ public class WorkPanelCon : choicedManager
 
 
         }
+    }
+
+    override public void choice(choiceBtn btn)
+    {
+        
+        if (choicedBtn != null) choicedBtn.unchoiceEvent();
+        if (btn == choicedBtn)
+        {
+            indexText.text = "シーンを選択してください。";
+            choicedBtn = null;
+            choicedIndex = -1;
+        }
+        else
+        {
+            choicedBtn = btn;
+            choicedIndex = choicedBtn.index;
+            indexText.text = "選択されたシーン:" + btn.index;
+        }
+
     }
 
     /// <summary>

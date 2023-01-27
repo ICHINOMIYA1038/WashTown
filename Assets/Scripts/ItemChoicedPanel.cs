@@ -62,10 +62,24 @@ public class ItemChoicedPanel : choicedManager
 
     public override void choice(choiceBtn btn)
     {
-        if (btnList.Contains(btn)){
-            btnList.Remove(btn);
+        //所持数のチェック
+        if (GameManager.itemList[btn.index] <= 0)
+        {
+            btn.unchoiceEvent();
+            return;
         }
-        else btnList.Add(btn);
+        if (btnList.Contains(btn))
+        {
+            btnList.Remove(btn);
+            GameManager.itemList[btn.index] += 1;
+            UpdateText();
+        }
+        else
+        {
+            btnList.Add(btn);
+            GameManager.itemList[btn.index] -= 1;
+            UpdateText();
+        }
     }
 
     public void extractIndex()
@@ -96,4 +110,6 @@ public class ItemChoicedPanel : choicedManager
         data = JsonUtility.FromJson<shopJsonData>(jsonText);
 
     }
+
+    
 }

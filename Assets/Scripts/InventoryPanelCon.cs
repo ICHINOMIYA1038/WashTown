@@ -17,7 +17,8 @@ public class InventoryPanelCon : choicedManager
     shopJsonData data;
     string basePath;
     int num = 8;
-
+    [SerializeField] TextMeshProUGUI itemName;
+    [SerializeField] TextMeshProUGUI itemEffectText;
 
     public void Start()
     {
@@ -38,11 +39,11 @@ public class InventoryPanelCon : choicedManager
             tempBtn.index = i;
             string path = basePath + data.itemData[i].fileName;
             byte[] bytes = File.ReadAllBytes(path);
-            Texture2D loadTexture = new Texture2D(1, 1); //mock size 1x1
+            Texture2D loadTexture = new Texture2D(1, 1); 
             loadTexture.LoadImage(bytes);
             panels[i].transform.GetChild(1).GetComponent<RawImage>().texture = loadTexture;
             panels[i].transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = data.itemData[i].itemName;
-            panels[i].transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "Š”:" + GameManager.itemList[i];
+            panels[i].transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "æ‰€æŒå“:" + GameManager.itemList[i];
         }
     }
 
@@ -55,12 +56,35 @@ public class InventoryPanelCon : choicedManager
         for (int i = 0; i < num; i++)
         {
             panels[i].transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = data.itemData[i].itemName;
-            panels[i].transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "Š”:" + GameManager.itemList[i];
+            panels[i].transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "æ‰€æŒå“:" + GameManager.itemList[i];
         }
     }
 
+    override public void choice(choiceBtn btn)
+    {
+        
+        if (choicedBtn != null) choicedBtn.unchoiceEvent();
+        if (btn == choicedBtn)
+        {
+            choicedBtn = null;
+            choicedIndex = -1;
+        }
+        else
+        {
+            choicedBtn = btn;
+            choicedIndex = choicedBtn.index;
+            itemName.text = data.itemData[choicedIndex].itemName;
+            itemEffectText.text = data.itemData[choicedIndex].effect;
+        }
+        
+
+    }
+
+
+
+
     /// <summary>
-    /// Jsonƒtƒ@ƒCƒ‹‚ğ“Ç‚İ‚ŞBworkJsonData‚Í©ì‚ÌŒ^B
+    /// Json?t?@?C?????????????BworkJsonData?????????^?B
     /// </summary>
     private void readJson()
     {
