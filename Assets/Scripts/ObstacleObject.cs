@@ -9,12 +9,7 @@ public class ObstacleObject : MonoBehaviour
     protected Vector3 initVelocity;
 
     
-    public void Start()
-    {
-        initPosi = this.transform.position;
-        initVelocity = this.transform.position;
-        // flattenTexture = util.CreateTempTexture(256,256);
-    }
+    
     virtual public void Launch()
     {
 

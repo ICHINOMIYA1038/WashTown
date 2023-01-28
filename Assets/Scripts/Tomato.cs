@@ -9,6 +9,12 @@ public class Tomato : ObstacleObject
     [SerializeField] Vector3 velocity;
     [SerializeField] Vector3 acceleration;
 
+    public void Start()
+    {
+        initPosi = transform.position;
+        initVelocity = velocity;
+        // flattenTexture = util.CreateTempTexture(256,256);
+    }
     // Update is called once per frame
     void Update()
     {

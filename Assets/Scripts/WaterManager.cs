@@ -53,8 +53,8 @@ public class WaterManager : MonoBehaviour
         ///water
         if (Input.GetMouseButton(0))
         {
-            ray = new Ray(src.transform.position + src.transform.forward * 3f, src.transform.forward);
-            if (Physics.Raycast(ray, out hit, 10))
+            ray = new Ray(src.transform.position + src.transform.forward * 5f, src.transform.forward);
+            if (Physics.Raycast(ray, out hit, 30))
             {
                 Debug.DrawLine(ray.origin, hit.point, Color.blue, 5f);
                 if (hit.transform.gameObject.tag == "washable")
@@ -69,7 +69,7 @@ public class WaterManager : MonoBehaviour
 
             if (Input.GetMouseButtonDown(1))
         {
-            ray = new Ray(src.transform.position + src.transform.forward * 3f, src.transform.forward);
+            ray = new Ray(src.transform.position + src.transform.forward * 5f, src.transform.forward);
             if (Physics.Raycast(ray, out hit, 10))
             {
                 Debug.DrawLine(ray.origin, hit.point,Color.blue,5f);
