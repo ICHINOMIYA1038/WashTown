@@ -63,16 +63,17 @@ public class ItemChoicedPanel : choicedManager
     public override void choice(choiceBtn btn)
     {
         //所持数のチェック
-        if (GameManager.itemList[btn.index] <= 0)
-        {
-            btn.unchoiceEvent();
-            return;
-        }
+        
         if (btnList.Contains(btn))
         {
             btnList.Remove(btn);
             GameManager.itemList[btn.index] += 1;
             UpdateText();
+        }
+        else if (GameManager.itemList[btn.index] <= 0)
+        {
+            btn.unchoiceEvent();
+            return;
         }
         else
         {

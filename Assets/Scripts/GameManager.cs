@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
-        itemList = new int[10] {0,0,0,0,0,0,0,0,0,0};
+        
     }
 
     /// <summary>
@@ -210,7 +210,7 @@ public class GameManager : MonoBehaviour
     public static void Load(int index)
     {
         playerIndex = index;
-        
+        itemList = new int[10];
         var textReader = new StreamReader(Application.dataPath + "/savedata/savedata.json");
         string jsonText = textReader.ReadToEnd();
         textReader.Close();
