@@ -119,7 +119,7 @@ public class WashableObject : MonoBehaviour
             for (int x = 0; x < texture.width; x++)
             {
                 float a = texture.GetPixel(x, y).a;
-                if (a == 1)
+                if (a > 0.2)
                 {
                     count += 1;
                 }

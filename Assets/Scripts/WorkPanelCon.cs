@@ -41,7 +41,7 @@ public class WorkPanelCon : choicedManager
         for (int i = 0; i < num; i++)
         {
             panels[i] = Instantiate(original, parent.transform);
-            choiceBtn tempBtn = panels[i].GetComponent<choiceBtn>();
+            workChoiceBtn tempBtn = panels[i].GetComponent<workChoiceBtn>();
             tempBtn.choicedManager = this;
             tempBtn.index = i;
             string path =  basePath + data.workData[i].filename;
@@ -51,7 +51,11 @@ public class WorkPanelCon : choicedManager
             panels[i].transform.GetChild(1).GetComponent<RawImage>().texture = loadTexture;
             panels[i].transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = data.workData[i].header;
             panels[i].transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = data.workData[i].body;
-
+            tempBtn.status = GameManager.workIndex[i];
+            if (tempBtn.getStatus()== 0)
+            {
+                tempBtn.comingSoonPanel.SetActive(true);
+            }
 
         }
     }
@@ -62,7 +66,7 @@ public class WorkPanelCon : choicedManager
         if (choicedBtn != null) choicedBtn.unchoiceEvent();
         if (btn == choicedBtn)
         {
-            indexText.text = "シーンを選択してください。";
+            indexText.text = "引き受ける依頼を選択してください。";
             choicedBtn = null;
             choicedIndex = -1;
         }
@@ -70,9 +74,15 @@ public class WorkPanelCon : choicedManager
         {
             choicedBtn = btn;
             choicedIndex = choicedBtn.index;
-            indexText.text = "選択されたシーン:" + btn.index;
+            indexText.text = "引き受けた依頼:" + data.workData[choicedIndex].header;
         }
 
+    }
+
+    int getStatus(choiceBtn btn)
+    {
+        workChoiceBtn workBtn = (workChoiceBtn)btn;
+        return workBtn.status;
     }
 
     /// <summary>
@@ -83,6 +93,19 @@ public class WorkPanelCon : choicedManager
        string jsonText = text.ToString();
        data = JsonUtility.FromJson<workJsonData>(jsonText);
        
+    }
+
+    public override int getIndex()
+    {
+        if (choicedBtn == null)
+        {
+            return -1;
+        }
+        if (getStatus(choicedBtn) != 1)
+        {
+            return -1;
+        }
+        return choicedBtn.index;
     }
 
 }

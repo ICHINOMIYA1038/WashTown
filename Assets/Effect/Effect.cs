@@ -9,12 +9,13 @@ public class Effect : MonoBehaviour
     Vector3 position;
     Vector3 normal;
     Vector3 dir;
+    [SerializeField]GameObject src;
     // Start is called before the first frame update
 
     // Update is called once per frame
     void Update()
     {
-        dir = this.transform.forward;
+        dir = -this.transform.forward;
 
         if (Input.GetMouseButtonUp(0))
         {

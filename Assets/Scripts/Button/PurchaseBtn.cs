@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PurchaseBtn : OriginalBtn
 {
-    int index = 1;
+    [SerializeField]int index = 1;
     
     void Start()
     {

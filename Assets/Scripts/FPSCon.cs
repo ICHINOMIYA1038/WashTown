@@ -13,9 +13,9 @@ public class FPSCon : MonoBehaviour
     public GameObject equip;
     Quaternion cameraRot, characterRot;
     float Xsensityvity = 3f, Ysensityvity = 3f;
-    bool canMove = true;
+    public bool canMove = true;
 
-    bool cursorLock = true;
+    public bool cursorLock = true;
 
     //??????????(?p?x???????p)
     float minX = -90f, maxX = 90f;
@@ -32,6 +32,10 @@ public class FPSCon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!canMove)
+        {
+            return;
+        }
         if (Input.GetKeyDown(KeyCode.Space)&&!isJumping)
         {
             jump();

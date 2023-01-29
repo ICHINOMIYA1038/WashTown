@@ -28,9 +28,11 @@ public class workStartBtn : OriginalBtn
         {
             return;
         }
+        itemChoicedPanel.extractIndex();
         indexList = itemChoicedPanel.indexList;
-        
-        SceneManager.LoadScene(index);
+        GameManager.gameEnd = false;
+        SceneManager.LoadScene(index + 2);
+
     }
 
    

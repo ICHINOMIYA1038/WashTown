@@ -23,7 +23,9 @@ public class GameManager : MonoBehaviour
     }
     */
 
-
+    //依頼パネルから選択できる仕事
+    //1 選択可能 0 選択不可　-1　準備中
+    public static int[] workIndex = new int[] { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
     public static string playerName;
     int dataSlot = 5;
@@ -36,6 +38,8 @@ public class GameManager : MonoBehaviour
     public static readonly int SCENE_TITLE = 0;
     public static readonly int SCENE_MAIN = 1;
     public static readonly int SCENE_ACTION = 2;
+
+    public static bool gameEnd = false;
 
     /// <summary>
     /// UIのUpdateに関するオブジェクト

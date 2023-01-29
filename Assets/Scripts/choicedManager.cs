@@ -26,7 +26,7 @@ public class choicedManager : MonoBehaviour
   
     }
 
-    public int getIndex()
+    public virtual int getIndex()
     {
         if (choicedBtn == null)
         {

@@ -7,16 +7,16 @@ public class choiceBtn : OriginalBtn
     public int index = 1;
     public choicedManager choicedManager;
     [SerializeField]
-    GameObject panel;
-    bool choiced = false;
+    protected GameObject panel;
+    protected bool choiced = false;
 
-    void Start()
+    virtual public void Start()
     { 
         this.onClickCallback = clickEvent;
         panel.SetActive(false);
     }
 
-    void clickEvent()
+    virtual public void clickEvent()
     {
         if (choiced) unchoiceEvent();
         else choiceEvent();
@@ -24,15 +24,17 @@ public class choiceBtn : OriginalBtn
 
     }
 
-    public void choiceEvent()
+    virtual public void choiceEvent()
     {
         choiced = true;
         panel.SetActive(true);
     }
 
-    public void unchoiceEvent()
+    virtual public void  unchoiceEvent()
     {
         choiced = false;
         panel.SetActive(false);
     }
+
+
 }
