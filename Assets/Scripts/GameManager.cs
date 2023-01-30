@@ -23,8 +23,8 @@ public class GameManager : MonoBehaviour
     }
     */
 
-    //依頼パネルから選択できる仕事
-    //1 選択可能 0 選択不可　-1　準備中
+    //?????p?l???????I?????????d??
+    //1 ?I?????\ 0 ?I???s???@-1?@??????
     public static int[] workIndex = new int[] { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
     public static string playerName;
@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
     public static bool gameEnd = false;
 
     /// <summary>
-    /// UIのUpdateに関するオブジェクト
+    /// UI??Update?????????I?u?W?F?N?g
     /// </summary>
     [SerializeField]
     ItemChoicedPanel itemChoicedPanel;
@@ -204,7 +204,7 @@ public class GameManager : MonoBehaviour
         
         savedata.upDateData(playerName,money,shopRate,townRate,itemList,playerIndex);
         string jsonstr = JsonUtility.ToJson(savedata);
-        writer = new StreamWriter(Application.dataPath + "/savedata/savedata.json", false);
+        writer = new StreamWriter(Application.streamingAssetsPath + "/savedata/savedata.json", false);
         writer.Write(jsonstr);
         writer.Flush();
         writer.Close();
@@ -215,9 +215,12 @@ public class GameManager : MonoBehaviour
     {
         playerIndex = index;
         itemList = new int[10];
-        var textReader = new StreamReader(Application.dataPath + "/savedata/savedata.json");
+
+        var textReader = new StreamReader(Application.streamingAssetsPath + "/savedata/savedata.json");
         string jsonText = textReader.ReadToEnd();
         textReader.Close();
+        
+        
         savedata = JsonUtility.FromJson<SaveData>(jsonText);
         money = savedata.playerData[index].money;
         playerName = savedata.playerData[index].name;

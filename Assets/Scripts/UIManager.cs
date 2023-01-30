@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject mainCanvas;
     [SerializeField] GameObject endCnavas;
     [SerializeField] GameObject gameClearCanvas;
+    int earnMoney = 5000;
 
 
     int allPixel = 0;
@@ -61,7 +62,7 @@ public class UIManager : MonoBehaviour
     void completeCheck()
     {
         Debug.Log(dirtyCount);
-        if(dirtyCount <= 1)
+        if(dirtyCount <= 4)
         {
             complete();
         }  
@@ -74,7 +75,7 @@ public class UIManager : MonoBehaviour
         mainCanvas.SetActive(false);
         gameClearCanvas.SetActive(true);
         StartCoroutine(endCanvasAppear());
-        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
         fpscon.cursorLock = false;
     }
@@ -83,5 +84,6 @@ public class UIManager : MonoBehaviour
     {
         yield return new WaitForSeconds(3.0f);
         endCnavas.SetActive(true);
+        GameManager.money += earnMoney;
     }
 }

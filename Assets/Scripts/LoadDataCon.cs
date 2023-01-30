@@ -5,7 +5,10 @@ using TMPro;
 using System.IO;
 using UnityEngine.UI;
 
-
+/// <summary>
+/// セーブデータをロードする時のパネルコントローラー
+/// jsonファイルを読み取り、表示し、ボタンが押された時に色を変化させスタートボタンへindexを返す働きをする。
+/// </summary>
 public class LoadDataCon : choicedManager
 { 
     [SerializeField]
@@ -25,7 +28,7 @@ public class LoadDataCon : choicedManager
 
     public void show()
     {
-        basePath = Application.dataPath + "/Image/WorkImage/";
+        basePath = Application.streamingAssetsPath + "/Image/WorkImage/";
         readJson();
         panels = new GameObject[num];
         for (int i = 0; i < num; i++)
@@ -52,7 +55,7 @@ public class LoadDataCon : choicedManager
     /// </summary>
     private void readJson()
     {
-        var textReader = new StreamReader(Application.dataPath + "/savedata/savedata.json");
+        var textReader = new StreamReader(Application.streamingAssetsPath + "/savedata/savedata.json");
         string jsonText = textReader.ReadToEnd();
         textReader.Close();
         data = JsonUtility.FromJson<SaveData>(jsonText);

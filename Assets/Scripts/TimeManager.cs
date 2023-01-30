@@ -63,7 +63,7 @@ public class TimeManager : MonoBehaviour
 
     public void textUpdate()
     {
-        text.text = String.Format("{0:#.##}", timeLeft);
+        text.text = String.Format("制限時間:{0:#.##}", timeLeft);
     }
 
     /// <summary>

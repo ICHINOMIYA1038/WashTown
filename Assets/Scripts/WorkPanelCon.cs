@@ -35,7 +35,7 @@ public class WorkPanelCon : choicedManager
 
     public void show()
     {
-        basePath = Application.dataPath + "/Image/WorkImage/";
+        basePath = Application.streamingAssetsPath + "/Image/WorkImage/";
         readJson();
         panels = new GameObject[num];
         for (int i = 0; i < num; i++)
@@ -90,9 +90,10 @@ public class WorkPanelCon : choicedManager
     /// </summary>
     private void readJson()
     {
-       string jsonText = text.ToString();
-       data = JsonUtility.FromJson<workJsonData>(jsonText);
-       
+        var textReader = new StreamReader(Application.streamingAssetsPath + "/Json/work.json");
+        string jsonText = textReader.ReadToEnd();
+        textReader.Close();
+        data = JsonUtility.FromJson<workJsonData>(jsonText);
     }
 
     public override int getIndex()

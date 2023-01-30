@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.IO;
 
 public class PurchaseManager : MonoBehaviour
 {
@@ -124,7 +125,9 @@ public class PurchaseManager : MonoBehaviour
     /// </summary>
     private void readJson()
     {
-        string jsonText = text.ToString();
+        var textReader = new StreamReader(Application.streamingAssetsPath + "/Json/itemJson.json");
+        string jsonText = textReader.ReadToEnd();
+        textReader.Close();
         shopData = JsonUtility.FromJson<shopJsonData>(jsonText);
     }
 

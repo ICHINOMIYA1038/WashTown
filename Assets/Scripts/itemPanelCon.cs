@@ -33,7 +33,7 @@ public class itemPanelCon : MonoBehaviour
 
     public void show()
     {
-        basePath = Application.dataPath + "/Image/WorkImage/";
+        basePath = Application.streamingAssetsPath + "/Image/WorkImage/";
         readJson();
         panels = new GameObject[num];
         for (int i = 0; i < num; i++)
@@ -58,7 +58,9 @@ public class itemPanelCon : MonoBehaviour
     /// </summary>
     private void readJson()
     {
-        string jsonText = text.ToString();
+        var textReader = new StreamReader(Application.streamingAssetsPath + "/Json/itemJson.json");
+        string jsonText = textReader.ReadToEnd();
+        textReader.Close();
         data = JsonUtility.FromJson<shopJsonData>(jsonText);
     }
 
