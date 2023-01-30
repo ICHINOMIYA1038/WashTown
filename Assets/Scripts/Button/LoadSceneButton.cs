@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PurchaseBtn : OriginalBtn
+public class LoadSceneButton : OriginalBtn
 {
     [SerializeField]int index = 1;
     
@@ -22,7 +22,6 @@ public class PurchaseBtn : OriginalBtn
 
     void clickEvent()
     {
-        
         SceneManager.LoadScene(index);
 
     }

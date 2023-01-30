@@ -18,7 +18,8 @@ public class TimeManager : MonoBehaviour
     bool isStarting;
     bool timerEnd;
     [SerializeField]TextMeshProUGUI text;
-    [SerializeField] bool autoBegin; 
+    [SerializeField] bool autoBegin;
+    [SerializeField]  UIManager uiManager;
 
     
     
@@ -53,6 +54,7 @@ public class TimeManager : MonoBehaviour
     public void timerEndEvent()
     {
         text.text = "Timer End";
+        uiManager.Failure();
     }
 
     public void timeUpdate()
@@ -114,4 +116,5 @@ public class TimeManager : MonoBehaviour
         isStarting = false;
     }
 
+   
 }

@@ -2,67 +2,67 @@
     "itemData": [
         {
             "itemName": "洗剤",
-            "fileName": "image1.png",
-            "cost": 100,
-            "effect": "よく汚れが落ちます。"
+            "fileName": "detergent.png",
+            "cost": 500,
+            "effect": "洗剤を使用することで、汚れが落ちやすくなります。\nこのアイテムは自動的に使用されます。"
         },
         {
             "itemName": "拡張ノズル",
-            "fileName": "image2.png",
+            "fileName": "nozzle.png",
             "cost": 1000,
-            "effect": "よく汚れが落ちます。"
+            "effect": "装着することで汚れの落ちる範囲が広がります。\nこのアイテムは自動的に使用されます。"
         },
         {
-            "itemName": "ネット",
-            "fileName": "image3.png",
-            "cost": 200,
-            "effect": "妨害を防ぎます。"
+            "itemName": "フェンス",
+            "fileName": "fence.png",
+            "cost": 2000,
+            "effect": "妨害を防ぎます。\nこのアイテムは自動的に使用されます。"
         },
         {
             "itemName": "洗剤",
-            "fileName": "image1.png",
+            "fileName": "detergent.png",
             "cost": 100,
             "effect": "よく汚れが落ちます。"
         },
         {
             "itemName": "洗剤",
-            "fileName": "image1.png",
+            "fileName": "detergent.png",
             "cost": 100,
             "effect": "よく汚れが落ちます。"
         },
         {
             "itemName": "洗剤",
-            "fileName": "image1.png",
+            "fileName": "detergent.png",
             "cost": 100,
             "effect": "よく汚れが落ちます。"
         },
         {
             "itemName": "洗剤",
-            "fileName": "image1.png",
+            "fileName": "detergent.png",
             "cost": 100,
             "effect": "よく汚れが落ちます。"
         },
         {
             "itemName": "洗剤g",
-            "fileName": "image1.png",
+            "fileName": "detergent.png",
             "cost": 100,
             "effect": "よく汚れが落ちます。"
         },
         {
             "itemName": "洗剤",
-            "fileName": "image1.png",
+            "fileName": "detergent.png",
             "cost": 100,
             "effect": "よく汚れが落ちます。"
         },
         {
-            "itemName": "image1.png",
-            "fileName": "image1.png",
+            "itemName": "洗剤",
+            "fileName": "detergent.png",
             "cost": 100,
             "effect": "よく汚れが落ちます。"
         },
         {
-            "itemName": "image1.png",
-            "fileName": "image1.png",
+            "itemName": "洗剤",
+            "fileName": "detergent.png",
             "cost": 100,
             "effect": "よく汚れが落ちます。"
         }

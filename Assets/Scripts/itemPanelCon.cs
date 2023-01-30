@@ -33,7 +33,7 @@ public class itemPanelCon : MonoBehaviour
 
     public void show()
     {
-        basePath = Application.streamingAssetsPath + "/Image/WorkImage/";
+        basePath = Application.streamingAssetsPath + "/Image/ItemImage/";
         readJson();
         panels = new GameObject[num];
         for (int i = 0; i < num; i++)

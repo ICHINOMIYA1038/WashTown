@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WaterManager : MonoBehaviour
 {
+    [SerializeField]ActionSoundManager soundManager;
     [SerializeField] Material dirtyMaterial;
     [SerializeField] Texture MainTexture;
     Texture dirtyTexture;
@@ -14,6 +15,10 @@ public class WaterManager : MonoBehaviour
     [SerializeField] Material _material2;
     [SerializeField] GameObject[] waterLines;
     [SerializeField] Material washableMaterial;
+    /// <summary>
+    /// 水のSEが再生されているか否か。重複を防ぐために定義している。
+    /// </summary>
+    bool isAudioPlaying = false;
     bool flag;
     float ratio = 0f;
     [SerializeField] GameObject src;
@@ -25,7 +30,6 @@ public class WaterManager : MonoBehaviour
         ray = new Ray(src.transform.position, src.transform.forward);
         _material.SetTexture("_MainTex", MainTexture);
         var texture = CreateTempTexture(2048, 2048, new Vector4(1f,1f,1f,0f));
-        // ?????????????????F????????????????
         texture.Apply(); 
         dirtyTexture = texture;
     }
@@ -33,6 +37,10 @@ public class WaterManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.gameEnd == true)
+        {
+            return;
+        }
         /*
         if (Input.GetMouseButtonDown(0))
         {
@@ -53,6 +61,12 @@ public class WaterManager : MonoBehaviour
         ///water
         if (Input.GetMouseButton(0))
         {
+            if (!isAudioPlaying)
+            {
+                soundManager.playSoundWater();
+                isAudioPlaying = true;
+            }
+           
             ray = new Ray(src.transform.position + src.transform.forward * 5f, src.transform.forward);
             if (Physics.Raycast(ray, out hit, 30))
             {
@@ -100,6 +114,8 @@ public class WaterManager : MonoBehaviour
             {
                 waterLine.transform.localScale = new Vector3(ratio, 1, 1);
             }
+            soundManager.stopSoundWater();
+            isAudioPlaying = false; 
         }
     }
 
