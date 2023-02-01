@@ -10,7 +10,7 @@
 
 # Demo
 **Pleaze click image, then video will start.**
-[!['altテキスト'](./demoImage/topImage.png)](https://www.youtube.com/watch?v=d9GrC7sAbiU)
+[!['altテキスト'](./demoImage/washtownImage.png)](https://www.youtube.com/watch?v=d9GrC7sAbiU)
 
 # Rule
 * このゲームは高圧洗浄機を使って、汚れた物を洗うゲームです。<br>
