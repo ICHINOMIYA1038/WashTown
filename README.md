@@ -39,21 +39,16 @@ Shader "Custom/dirtyTexture"
        [HideInInspector]
        _PaintUV("Hit UV Position", VECTOR) = (0,0,0,0)
     }
-
         SubShader{
-
             CGINCLUDE
-
                 struct app_data {
                     float4 vertex:POSITION;
                     float4 uv:TEXCOORD0;
                 };
-
                 struct v2f {
                     float4 screen:SV_POSITION;
                     float4 uv:TEXCOORD0;
                 };
-
                 sampler2D _MainTex;
                 sampler2D _Blush;
                 float4 _PaintUV;
@@ -65,15 +60,12 @@ Shader "Custom/dirtyTexture"
                 CGPROGRAM
     #pragma vertex vert
     #pragma fragment frag
-
                 v2f vert(app_data i) {
                     v2f o;
                     o.screen = UnityObjectToClipPos(i.vertex);
                     o.uv = i.uv;
                     return o;
                 }
-
-
                 float4 frag(v2f i) : SV_TARGET {
                     float h = _BlushScale;
                     if (_PaintUV.x - h < i.uv.x && i.uv.x < _PaintUV.x + h &&
@@ -82,10 +74,8 @@ Shader "Custom/dirtyTexture"
                         if (col.a!= 0)
                             return _BlushColor;
                     }
-
                     return tex2D(_MainTex, i.uv);
                 }
-
                 ENDCG
             }
        }
