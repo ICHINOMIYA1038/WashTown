@@ -1,16 +1,16 @@
-# Hide And Beep　
+# WashTown
 
 # description 
 * タイトル:Wash Town
 * ジャンル:洗浄アクション
 * ターゲットプラットフォーム:PC
 * 制作期間 2022/12/20〜2022/1/31
-* [Proposal Document](./demoImage/WashTown_Proposal.pdf)
+* [Proposal Document](./demoImage/WashTown_ProposalDocument.pdf)
 
 
 # Demo
 **Pleaze click image, then video will start.**
-[!['altテキスト'](./demoImage/topImage.png)]([https://youtu.be/KxBCKCH05N8](https://www.youtube.com/watch?v=d9GrC7sAbiU))
+[!['altテキスト'](./demoImage/topImage.png)](https://www.youtube.com/watch?v=d9GrC7sAbiU)
 
 # Rule
 * プレイヤーは門を開けて小学校を**脱出すること**が目的です。<br>
