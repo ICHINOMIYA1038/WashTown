@@ -24,7 +24,9 @@
 ![アイテム購入画面ののデモ画像](./demoImage/itemPurchaseDemo.gif "アイテム購入画面のデモ画像")<br>
 * 高圧洗浄機を使って、汚れた物をキレイにしていく快感が得られます。<br>
 ![洗浄画面のデモ画像](./demoImage/demoWash.gif  "洗浄画面のデモ")<br>
-
+・壁の汚れや、それを落とす処理は、シェーダーを書いて実現しています。
+<details>
+<summary>シェーダーコード(抜粋)</summary>
 ```
 Shader "Custom/dirtyTexture"
 {
@@ -82,7 +84,8 @@ Shader "Custom/dirtyTexture"
 }
 
 ```
-
+</details>
+    
 # Requirement
 * Unity 2021.3.11f1
 
