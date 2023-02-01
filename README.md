@@ -27,6 +27,7 @@
 ・壁の汚れや、それを落とす処理は、シェーダーを書いて実現しています。
 <details>
 <summary>シェーダーコード(抜粋)</summary>
+
 ```
 Shader "Custom/dirtyTexture"
 {
@@ -82,8 +83,8 @@ Shader "Custom/dirtyTexture"
             }
        }
 }
-
 ```
+
 </details>
     
 # Requirement
