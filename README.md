@@ -5,12 +5,12 @@
 * ジャンル:洗浄アクション
 * ターゲットプラットフォーム:PC
 * 制作期間 2022/12/20〜2022/1/31
-* [Proposal Document](./HideAndBeep_Proposal.pdf)
+* [Proposal Document](./demoImage/WashTown_Proposal.pdf)
 
 
 # Demo
 **Pleaze click image, then video will start.**
-[!['altテキスト'](./topImage.png)](https://youtu.be/KxBCKCH05N8)
+[!['altテキスト'](./demoImage/topImage.png)]([https://youtu.be/KxBCKCH05N8](https://www.youtube.com/watch?v=d9GrC7sAbiU))
 
 # Rule
 * プレイヤーは門を開けて小学校を**脱出すること**が目的です。<br>
@@ -22,9 +22,9 @@
 
 # Features
 * マップ上の音を管理し、優先度の高い順にゾンビが索敵します。<br>
-![サウンドのデモ画像](./soundDemo.gif "サウンド管理のデモ画像")<br>
+![サウンドのデモ画像](./demoImage/itemPurchaseDemo.gif "アイテム購入画面のデモ画像")<br>
 * PUN2（PhotonUnityNetworking2）を用いたP2P通信<br>
-![P2P通信のデモ画像](./SampleP2P.gif "P2P通信のデモ画像")<br>
+![P2P通信のデモ画像](./demoImage/demoWash.gif  "洗浄画面のデモ")<br>
 
 # Requirement
 * Unity 2021.3.11f1
