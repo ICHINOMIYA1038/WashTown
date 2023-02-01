@@ -56,6 +56,11 @@ public class WashableObject : MonoBehaviour
         return ToTexture2D(dirtyTexture);
     }
 
+    public void setDirtyRatio(float ratio)
+    {
+        dirtyRatio = ratio;
+    }
+
 
     public void changeTexture(Vector2 hitPosi, float blushScale, Texture BlushTexture, Color blushColor)
     {

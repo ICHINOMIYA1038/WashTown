@@ -31,8 +31,9 @@ public class workStartBtn : OriginalBtn
         itemChoicedPanel.extractIndex();
         indexList = itemChoicedPanel.indexList;
         GameManager.gameEnd = false;
+        ItemManager.setItemList(indexList);
         SceneManager.LoadScene(index + 2);
-
+       
     }
 
    

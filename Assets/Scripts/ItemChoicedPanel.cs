@@ -42,7 +42,7 @@ public class ItemChoicedPanel : choicedManager
             loadTexture.LoadImage(bytes);
             panels[i].transform.GetChild(1).GetComponent<RawImage>().texture = loadTexture;
             panels[i].transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = data.itemData[i].itemName;
-            panels[i].transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = ""+GameManager.itemList[i];
+            panels[i].transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "" + GameManager.itemList[i];
         }
     }
 

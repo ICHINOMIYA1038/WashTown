@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 262.0923, g: 324.7036, b: 429.77197, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1059,7 +1059,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 250925d3cb0bc8649980190d23d9a26b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item1: {fileID: 2041411344}
+  item1: {fileID: 0}
+  item2: {fileID: 0}
+  item3: {fileID: 2041411344}
+  itemImage1: {fileID: 1858970394}
+  itemImage2: {fileID: 477615486}
+  itemImage3: {fileID: 129070413}
+  indexList: 000000000100000002000000
+  watermanager: {fileID: 701974063}
+  washableObject: {fileID: 904918657}
 --- !u!1 &211541597
 GameObject:
   m_ObjectHideFlags: 0
@@ -2273,7 +2281,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 4c3d015718e15784eb974b05ea008228, type: 3}
+  m_Texture: {fileID: 2800000, guid: 900d26097943ec143a757a826498e58b, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -2684,7 +2692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2300a4cddd424a75bf601ef26df9d9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeLimit: 30
+  timeLimit: 60
   timeLeft: 0
   text: {fileID: 497683504}
   autoBegin: 1
@@ -10237,7 +10245,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 900d26097943ec143a757a826498e58b, type: 3}
+  m_Texture: {fileID: 2800000, guid: 4c3d015718e15784eb974b05ea008228, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0

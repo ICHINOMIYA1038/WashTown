@@ -4,19 +4,19 @@
             "itemName": "洗剤",
             "fileName": "detergent.png",
             "cost": 500,
-            "effect": "洗剤を使用することで、汚れが落ちやすくなります。\nこのアイテムは自動的に使用されます。"
+            "effect": "汚れが少し落ちた状態でスタートします。"
         },
         {
             "itemName": "拡張ノズル",
             "fileName": "nozzle.png",
             "cost": 1000,
-            "effect": "装着することで汚れの落ちる範囲が広がります。\nこのアイテムは自動的に使用されます。"
+            "effect": "汚れの落ちる範囲が広がります。"
         },
         {
             "itemName": "フェンス",
             "fileName": "fence.png",
             "cost": 2000,
-            "effect": "妨害を防ぎます。\nこのアイテムは自動的に使用されます。"
+            "effect": "妨害を防ぎます。"
         },
         {
             "itemName": "洗剤",

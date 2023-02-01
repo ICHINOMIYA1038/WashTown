@@ -2,8 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 選択ボタン
+/// 複数の候補から一つだけを選択するためのボタン
+/// 選択ボタンはそれぞれ独自のインデックスをもち、
+/// それをchoicedManagerに渡すことによって選択することができる。
+/// </summary>
 public class choiceBtn : OriginalBtn
 {
+
     public int index = 1;
     public choicedManager choicedManager;
     [SerializeField]

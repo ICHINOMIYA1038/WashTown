@@ -112,7 +112,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0.45147, y: 0.0000076294}
-  m_SizeDelta: {x: 40, y: 40}
+  m_SizeDelta: {x: 45, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2164250773308904007
 CanvasRenderer:
@@ -191,7 +191,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 50, y: 50}
+  m_SizeDelta: {x: 55, y: 55}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &2164250773421639551
 CanvasRenderer:
@@ -243,7 +243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a38252ae242404e429d9e3df674edc7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioClip: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: c4974a46355533844bc88f1a3e5b25f1, type: 3}
   audioSource: {fileID: 0}
   index: 1
   choicedManager: {fileID: 0}
@@ -412,8 +412,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u6240\u6301\u6570:"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0ebda64749e174253bf5a82cb88fa3da, type: 2}
-  m_sharedMaterial: {fileID: -1412369661745177714, guid: 0ebda64749e174253bf5a82cb88fa3da, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 414f16f03e6714790bc2d3dfa3d7899f, type: 2}
+  m_sharedMaterial: {fileID: 6200734623228321737, guid: 414f16f03e6714790bc2d3dfa3d7899f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -514,8 +514,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 25.4583, y: -9.2238}
-  m_SizeDelta: {x: 37.3253, y: 11.8977}
+  m_AnchoredPosition: {x: 27.337, y: -9.3913}
+  m_SizeDelta: {x: 48.3071, y: 12.2327}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2164250774771060931
 CanvasRenderer:
@@ -547,8 +547,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: stuff
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0ebda64749e174253bf5a82cb88fa3da, type: 2}
-  m_sharedMaterial: {fileID: -1412369661745177714, guid: 0ebda64749e174253bf5a82cb88fa3da, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 414f16f03e6714790bc2d3dfa3d7899f, type: 2}
+  m_sharedMaterial: {fileID: 6200734623228321737, guid: 414f16f03e6714790bc2d3dfa3d7899f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -608,7 +608,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -0.35632324, w: 0}
+  m_margin: {x: -0.25198364, y: 0, z: -0.021362305, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

@@ -16,7 +16,7 @@ public class WaterManager : MonoBehaviour
     [SerializeField] GameObject[] waterLines;
     [SerializeField] Material washableMaterial;
     /// <summary>
-    /// 水のSEが再生されているか否か。重複を防ぐために定義している。
+    /// ????SE???????????????????????B?d?????h???????????`?????????B
     /// </summary>
     bool isAudioPlaying = false;
     bool flag;
@@ -168,5 +168,21 @@ public class WaterManager : MonoBehaviour
             for (int x = 0; x < texture.width; x++)
                 texture.SetPixel(x, y, defaultColor);
         return texture;
+    }
+
+    public void changeBlushScale(int flag)
+    {
+        if(flag == 0)
+        {
+            blushScale = 0.03f;
+        }
+        if (flag == 1)
+        {
+            blushScale = 0.05f;
+        }
+        if(flag == 2)
+        {
+            blushScale = 0.1f;
+        }
     }
 }

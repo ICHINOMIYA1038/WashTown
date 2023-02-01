@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// タイトルでゲームを開始するためのボタン
+/// loadDataconでプレイヤーデータのインデックスを受け取り、ゲームマネージャーからデータをロードする。
+/// </summary>
 public class GameStartButton : OriginalBtn
 {
     [SerializeField]

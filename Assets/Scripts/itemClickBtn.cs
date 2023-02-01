@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 購入画面のアイテムをクリックした時に処理をするボタン
+/// </summary>
 public class itemClickBtn : OriginalBtn
 {
-
-    public PurchaseManager purchaseManager;
     public int itemIndex;
-    
+    public PurchaseManager purchaseManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,8 +18,6 @@ public class itemClickBtn : OriginalBtn
 
     void clickEvent()
     {
-        Debug.Log(purchaseManager.add(itemIndex, 1));
+        purchaseManager.add(itemIndex, 1);
     }
-
-    
 }

@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// キャンバスマネージャー
+/// 複数のキャンバスを取りまとめる。
+/// 現在開いているキャンバスの情報を取得して、重複して開かれた場合には、以前、開かれていたキャンバスを非アクティブにする。
+/// </summary>
 public class CanvasManager : MonoBehaviour
 {
     MenuBtn menuBtn;
