@@ -33,5 +33,5 @@ Material:
     - _BlushScale: 0.1
     m_Colors:
     - _BlushColor: {r: 0, g: 1, b: 0, a: 0.5}
-    - _PaintUV: {r: 0.535251, g: 0.5054474, b: 0, a: 0}
+    - _PaintUV: {r: 0.41741663, g: 0.5471337, b: 0, a: 0}
   m_BuildTextureStacks: []
