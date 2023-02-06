@@ -7152,6 +7152,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5575566749750672122, guid: 60cd620bac44240c7a62c99606f2fc5a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5575566749750672122, guid: 60cd620bac44240c7a62c99606f2fc5a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
     - target: {fileID: 8576486214765598358, guid: 60cd620bac44240c7a62c99606f2fc5a, type: 3}
       propertyPath: m_Name
       value: car scene (1)
