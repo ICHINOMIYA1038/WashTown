@@ -90,49 +90,77 @@ Shader "Custom/dirtyTexture"
 # Class Diagram (now on Creating)
 ```mermaid
 ---
-title: クラス図(1/3)
+title: クラス図(1/4)
 ---
 classDiagram
     note "メンバは主要な部分のみ抜粋"
-    InteractiveObject <|-- SoundObject
-    InteractiveObject <|-- DoorCon
-    InteractiveObject <|-- LockerScript
+    OriginalBtn <|-- ButtonClose
+    OriginalBtn <|-- btnTest
+    OriginalBtn <|-- itemClickBtn
+    OriginalBtn <|-- BuyBtn
+    OriginalBtn <|-- GameStartButton
+    OriginalBtn <|-- LoadSceneButton
+    OriginalBtn <|-- MenuBtn
+    OriginalBtn <|-- TitleBtn
+    OriginalBtn <|-- choiceBtn
+    OriginalBtn <|-- clearBtn
+    OriginalBtn <|-- saveBtn
+    OriginalBtn <|-- workChoiceBtn
+    OriginalBtn <|-- workStartBtn
+  
     
-    SoundObject <-- PianoCon
-    SoundObject <-- Radiocon
-    SoundObject <-- ClockController
-    ProgressBar <-- ProgressBarCon
-    note for InteractiveObject "utilクラスの中に作成\n共通して利用"
-    IcanInteract <.. BookShelf :Interface
-    IcanInteract <.. BoxCon :Interface
-    IcanInteract <.. LeverCon :Interface
-    IcanInteract <.. BoxCon :Interface  
+    choicedManager <-- InventoryPanelCon
+    choicedManager <-- ItemChoicedPanel
+    choicedManager <-- LoadDataCon
+    choicedManager <-- WorkPanelCon
+    ObstacleObject <-- Tomato
+    class WashableObject
+    class WaterManager
+    
 ```
    
 ```mermaid
 ---
-title: クラス図(2/3)
+title: クラス図(2/4)
 ---
     classDiagram
+    class FPSCon
+    class GameManager
+    class ItemManager
+    class JsonData
+    class MainUIManager
+    class UIManager
+    class Move
     class SoundManager
-    class RandomMatchMaker
-    class PlayerController
-    class ZombieController
-    class volumeController
-    class LockerIncheck
+    class StarGenerator
+    class getTextureFromShader
 ```
 
 ```mermaid
 ---
-title: クラス図(3/3)
+title: クラス図(3/4)
 ---
     classDiagram
-    class FootSound
-    link FootSound "https://github.com/ICHINOMIYA1038/HideAndBeep/blob/main/Assets/Scripts/FootSound.cs"
-    class MapSoundManager
-    click MapSoundManager href "https://www.github.com" "This is a tooltip for a link"
-    class GameManager
-    class GoalTrigger
+    class CheckCamera
+    class ActionSoundManager
+    class CountDown
+    class ObstacleManager
+    class PurchaseManager
+    class TimeManager
+    class dataInitialization
+```
+
+
+```mermaid
+---
+title: クラス図(4/4)
+---
+    classDiagram
+    class itemPanelCon
+    class progressGauge
+    class shaderTest
+    class util
+    class CanvasManager
 ```
     
 # Requirement
