@@ -86,6 +86,54 @@ Shader "Custom/dirtyTexture"
 ```
 
 </details>
+
+# Class Diagram (now on Creating)
+```mermaid
+---
+title: クラス図(1/3)
+---
+classDiagram
+    note "メンバは主要な部分のみ抜粋"
+    InteractiveObject <|-- SoundObject
+    InteractiveObject <|-- DoorCon
+    InteractiveObject <|-- LockerScript
+    
+    SoundObject <-- PianoCon
+    SoundObject <-- Radiocon
+    SoundObject <-- ClockController
+    ProgressBar <-- ProgressBarCon
+    note for InteractiveObject "utilクラスの中に作成\n共通して利用"
+    IcanInteract <.. BookShelf :Interface
+    IcanInteract <.. BoxCon :Interface
+    IcanInteract <.. LeverCon :Interface
+    IcanInteract <.. BoxCon :Interface  
+```
+   
+```mermaid
+---
+title: クラス図(2/3)
+---
+    classDiagram
+    class SoundManager
+    class RandomMatchMaker
+    class PlayerController
+    class ZombieController
+    class volumeController
+    class LockerIncheck
+```
+
+```mermaid
+---
+title: クラス図(3/3)
+---
+    classDiagram
+    class FootSound
+    link FootSound "https://github.com/ICHINOMIYA1038/HideAndBeep/blob/main/Assets/Scripts/FootSound.cs"
+    class MapSoundManager
+    click MapSoundManager href "https://www.github.com" "This is a tooltip for a link"
+    class GameManager
+    class GoalTrigger
+```
     
 # Requirement
 * Unity 2021.3.11f1
