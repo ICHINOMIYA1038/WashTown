@@ -145,9 +145,6 @@ title: クラス図(3/4)
     class PurchaseManager
     class TimeManager
     class dataInitialization
-        ObstacleObject <-- Tomato
-    class WashableObject
-    class WaterManager
 ```
 
 
@@ -161,6 +158,9 @@ title: クラス図(4/4)
     class shaderTest
     class util
     class CanvasManager
+    ObstacleObject <-- Tomato
+    class WashableObject
+    class WaterManager
 ```
     
 # Requirement
