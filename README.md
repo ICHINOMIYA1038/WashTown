@@ -113,9 +113,6 @@ classDiagram
     choicedManager <-- ItemChoicedPanel
     choicedManager <-- LoadDataCon
     choicedManager <-- WorkPanelCon
-    ObstacleObject <-- Tomato
-    class WashableObject
-    class WaterManager
     
 ```
    
@@ -148,6 +145,9 @@ title: クラス図(3/4)
     class PurchaseManager
     class TimeManager
     class dataInitialization
+        ObstacleObject <-- Tomato
+    class WashableObject
+    class WaterManager
 ```
 
 
