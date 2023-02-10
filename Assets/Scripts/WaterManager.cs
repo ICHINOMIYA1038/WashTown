@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// プレイヤーが発射する水を管理するクラス
+/// </summary>
 public class WaterManager : MonoBehaviour
 {
     [SerializeField]ActionSoundManager soundManager;
@@ -9,14 +12,17 @@ public class WaterManager : MonoBehaviour
     [SerializeField] Texture MainTexture;
     Texture dirtyTexture;
     [SerializeField] Texture BlushTexture;
-    [SerializeField] float blushScale;
+    float blushScale = 0.03f;
+    [SerializeField] float blushScale1 = 0.03f;
+    [SerializeField] float blushScale2 = 0.05f;
+    [SerializeField] float blushScale3 = 0.1f;
     [SerializeField] Vector4 blushColor;
     [SerializeField] Material _material;
     [SerializeField] Material _material2;
     [SerializeField] GameObject[] waterLines;
     [SerializeField] Material washableMaterial;
     /// <summary>
-    /// ????SE???????????????????????B?d?????h???????????`?????????B
+    /// 音声が流れているかどうか。重複を防ぐフラグ
     /// </summary>
     bool isAudioPlaying = false;
     bool flag;
@@ -24,9 +30,15 @@ public class WaterManager : MonoBehaviour
     [SerializeField] GameObject src;
     Ray ray;
     RaycastHit hit;
-    // Start is called before the first frame update
+
+    /// <summary>
+    /// ブラシサイズの初期化
+    /// マテリアルのセット
+    ///　洗浄するためのdirtyTextureをセット
+    /// </summary>
     void Start()
     {
+        blushScale = blushScale1;
         ray = new Ray(src.transform.position, src.transform.forward);
         _material.SetTexture("_MainTex", MainTexture);
         var texture = CreateTempTexture(2048, 2048, new Vector4(1f,1f,1f,0f));
@@ -37,27 +49,12 @@ public class WaterManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //ゲームが終了していたら、処理をやめる。
         if (GameManager.gameEnd == true)
         {
             return;
         }
-        /*
-        if (Input.GetMouseButtonDown(0))
-        {
-            blushColor = Color.red;
-            ray = new Ray(src.transform.position + src.transform.forward * 5f, src.transform.forward);
-            if (Physics.Raycast(ray, out hit, 10))
-            {
-                if (hit.transform.gameObject.tag == "washable")
-                {
-                    Debug.DrawLine(ray.origin, hit.point);
-                    Vector2 hitPosi = hit.textureCoord;
-                    paint(hitPosi);
-                }
-
-            }
-        }*/
-
+       
         ///water
         if (Input.GetMouseButton(0))
         {
@@ -96,17 +93,6 @@ public class WaterManager : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButton(0))
-        {
-            ratio += 0.01f;
-            if (ratio > 1) { ratio = 1; }
-            foreach (var waterLine in waterLines)
-            {
-                waterLine.transform.localScale = new Vector3(ratio, 1, 1);
-            }
-
-
-        }
         else if (Input.GetMouseButtonUp(0))
         {
             ratio = 0f;
@@ -174,15 +160,15 @@ public class WaterManager : MonoBehaviour
     {
         if(flag == 0)
         {
-            blushScale = 0.03f;
+            blushScale = blushScale1;
         }
         if (flag == 1)
         {
-            blushScale = 0.05f;
+            blushScale = blushScale2;
         }
         if(flag == 2)
         {
-            blushScale = 0.1f;
+            blushScale = blushScale3;
         }
     }
 }
