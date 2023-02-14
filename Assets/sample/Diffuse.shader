@@ -65,7 +65,7 @@ Shader "Unlit/Diffuse"
 
 
                 //光の色
-                fixed3 ligColor = _LightColor0.xyz; //ディレクショナルライトのカラーを取得
+            fixed3 ligColor = _LightColor0.xyz; //ディレクショナルライトのカラーを取得
                 //
                 half3 normalmap = UnpackNormal(tex2D(_NormalTex, i.uv)); //ノーマルマップをプラットフォームに合わせて自動解釈
                 float3 normal = (i.tangent * normalmap.x) + (i.binormal * normalmap.y) + (i.normal * normalmap.z); //ノーマルマップをもとに法線を合成
