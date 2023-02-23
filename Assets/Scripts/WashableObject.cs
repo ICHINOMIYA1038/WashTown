@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 洗浄する対象を規定するクラス
+/// このクラスのインスタンスにメインのテクスチャと汚れのテクスチャを保持する。
+/// </summary>
 [RequireComponent(typeof(MeshCollider))]
 public class WashableObject : MonoBehaviour
 {
     [SerializeField]Texture mainTexture;
-    Texture dirtyTexture;
+    [SerializeField] Texture dirtyTexture;
     [SerializeField] Material washableMaterial;
     [SerializeField] Material dirtyMaterial;
     [SerializeField] Color maincolor;
@@ -39,8 +43,9 @@ public class WashableObject : MonoBehaviour
             
             texture.Apply();
             dirtyTexture = texture;
-            washableMaterial.SetTexture("_DirtyTex", dirtyTexture);
         }
+        washableMaterial.SetTexture("_DirtyTex", dirtyTexture);
+
         calcDirty();
 
 
@@ -49,6 +54,11 @@ public class WashableObject : MonoBehaviour
     void Update()
     {
 
+    }
+
+    void setTexture(Texture2D srcTexture)
+    {
+        dirtyTexture = srcTexture;
     }
 
     public Texture2D getDirtyTexture()
