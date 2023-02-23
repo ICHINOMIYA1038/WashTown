@@ -70,10 +70,13 @@ public class TextureEditor : EditorWindow
                     _texture.SetPixel(x, y, new Color(1f, 1f, 1f, 0f));
         }
         GUILayout.EndHorizontal();
+        GUILayout.BeginHorizontal();
         GUILayout.Label("ドラッグ中にペイントするかどうか");
         paintOnMouseDrag = EditorGUILayout.Toggle(paintOnMouseDrag);
         GUILayout.Label("ブラシサイズ");
         brushSize = EditorGUILayout.IntField(brushSize);
+        color = EditorGUILayout.ColorField(color,null);
+        GUILayout.EndHorizontal();
         originalTexture = (Texture2D)EditorGUILayout.ObjectField("Texture", originalTexture, typeof(Texture2D), false);
         washableObject = (WashableObject)EditorGUILayout.ObjectField("Texture", washableObject, typeof(WashableObject), false);
         if (_texture == null)
