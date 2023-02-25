@@ -10,7 +10,9 @@ using UnityEngine;
 public class WashableObject : MonoBehaviour
 {
     [SerializeField]Texture mainTexture;
-    [SerializeField] Texture dirtyTexture;
+    private Texture dirtyTexture;
+    [SerializeField] Texture2D mudTexture;
+    [SerializeField] Texture2D sampler;
     [SerializeField] Material washableMaterial;
     [SerializeField] Material dirtyMaterial;
     [SerializeField] Color maincolor;
@@ -37,12 +39,28 @@ public class WashableObject : MonoBehaviour
 
         }
         washableMaterial.SetTexture("_MainTex", mainTexture);
-        if (dirtyTexture == null)
+        
+
+        if (mudTexture == null)
         {
             var texture = CreateDirtyTexture(textureSize, textureSize, new Vector4(1f, 1f, 1f, 0f));
-            
+            if (sampler != null)
+            {
+                texture = TextureMultipy(sampler, texture);
+            }
             texture.Apply();
             dirtyTexture = texture;
+        }
+        else
+        {
+                var texture = CreateDirtyTexture(textureSize, textureSize, new Vector4(1f, 1f, 1f, 0f));
+                if (sampler != null)
+                {
+                    texture = TextureMultipy(sampler, mudTexture);
+                    texture.Apply();
+                    dirtyTexture = texture;
+                }
+            
         }
         washableMaterial.SetTexture("_DirtyTex", dirtyTexture);
 
@@ -74,7 +92,7 @@ public class WashableObject : MonoBehaviour
 
     public void changeTexture(Vector2 hitPosi, float blushScale, Texture BlushTexture, Color blushColor)
     {
-
+        dirtyTexture = washableMaterial.GetTexture("_DirtyTex");
         dirtyMaterial.SetVector("_PaintUV", hitPosi);
         dirtyMaterial.SetTexture("_Blush", BlushTexture);
         dirtyMaterial.SetFloat("_BlushScale", blushScale);
@@ -172,5 +190,69 @@ public class WashableObject : MonoBehaviour
         result.Apply();
         RenderTexture.active = currentRT;
         return result;
+    }
+
+    public static void InvertAlpha32(Texture2D texture)
+    {
+        // テクスチャのピクセルデータを取得する
+        Color32[] pixels = texture.GetPixels32();
+
+        // すべてのピクセルを走査し、α値を反転させる
+        for (int i = 0; i < pixels.Length; i++)
+        {
+            Color32 pixel = pixels[i];
+            // α値が0より大きい場合は0に変更し、0の場合は255に変更する
+            if (pixel.a > 0)
+            {
+                pixel.a = 0;
+            }
+            else
+            {
+                pixel.a = 255;
+            }
+            pixels[i] = pixel;
+
+            texture.SetPixels32(pixels);
+            texture.Apply();
+        }
+    }
+
+        public static Texture2D TextureMultipy(Texture2D _texture1, Texture2D _texture2)
+    {
+        // テクスチャが2つ入力されているか確認する
+        if (_texture1 == null || _texture2 == null)
+        {
+            Debug.LogError("Please input two textures.");
+            return null;
+        }
+
+        // テクスチャのサイズが同じか確認する
+        if (_texture1.width != _texture2.width || _texture1.height != _texture2.height)
+        {
+            Debug.LogError("Texture sizes are different.");
+            return null;
+        }
+
+        // 出力するテクスチャを作成する
+        var outputTexture = new Texture2D(_texture1.width, _texture1.height);
+
+        // すべてのピクセルを走査し、テクスチャを乗算する
+        for (int y = 0; y < outputTexture.height; y++)
+        {
+            for (int x = 0; x < outputTexture.width; x++)
+            {
+                // 2つのテクスチャのピクセルを取得する
+                var color1 = _texture1.GetPixel(x, y);
+                var color2 = _texture2.GetPixel(x, y);
+
+                // 2つのピクセルの色を乗算して、出力する色を作成する
+                var outputColor = new Color(color1.r * color2.r, color1.g * color2.g, color1.b * color2.b, color1.a * color2.a);
+                outputTexture.SetPixel(x, y, outputColor);
+            }
+        }
+
+        // ピクセルデータをテクスチャに書き込み、適用する
+        outputTexture.Apply();
+        return outputTexture;
     }
 }

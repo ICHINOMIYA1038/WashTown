@@ -229,6 +229,16 @@ public class GameManager : MonoBehaviour
         itemList = savedata.playerData[index].itemList;
     }
 
+    public static void LoadFromDataBase()
+    {
+
+    }
+
+    public static void SaveToDataBase()
+    {
+
+    }
+
     public static void SceneChanage(int src, int dst)
     {
         SceneIndex = dst;

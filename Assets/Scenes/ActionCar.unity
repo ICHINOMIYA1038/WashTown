@@ -979,7 +979,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundManager: {fileID: 761686235}
   washableObjects:
-  - {fileID: 1847502135}
+  - {fileID: 1554478909}
   - {fileID: 920568027}
   headerMsg: {fileID: 734628502}
   text: {fileID: 1857392554}
@@ -7154,21 +7154,53 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1466304125639543170, guid: 60cd620bac44240c7a62c99606f2fc5a, type: 3}
+      propertyPath: sampler
+      value: 
+      objectReference: {fileID: 2800000, guid: 8d90c88547217084db9797e7e9301e8f, type: 3}
+    - target: {fileID: 1466304125639543170, guid: 60cd620bac44240c7a62c99606f2fc5a, type: 3}
+      propertyPath: dirtyRatio
+      value: 0.537
+      objectReference: {fileID: 0}
     - target: {fileID: 3885648474672750956, guid: 60cd620bac44240c7a62c99606f2fc5a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 37fc64ee5e7cd3142bbecfa9906c7ca2, type: 2}
     - target: {fileID: 3885648474672750957, guid: 60cd620bac44240c7a62c99606f2fc5a, type: 3}
+      propertyPath: sampler
+      value: 
+      objectReference: {fileID: 2800000, guid: 19c08e8dabeaeae42a499e0a2720a4eb, type: 3}
+    - target: {fileID: 3885648474672750957, guid: 60cd620bac44240c7a62c99606f2fc5a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3885648474672750957, guid: 60cd620bac44240c7a62c99606f2fc5a, type: 3}
       propertyPath: dirtyRatio
-      value: 0
+      value: 0.407
       objectReference: {fileID: 0}
     - target: {fileID: 3885648474672750957, guid: 60cd620bac44240c7a62c99606f2fc5a, type: 3}
       propertyPath: dirtyTexture
       value: 
-      objectReference: {fileID: 2800000, guid: bd95af5fe23ea2a47841ef4df4908d1c, type: 3}
+      objectReference: {fileID: 2800000, guid: 8a77ae1c7b0eec643a4ccacb4c0bf657, type: 3}
+    - target: {fileID: 3896789597305373402, guid: 60cd620bac44240c7a62c99606f2fc5a, type: 3}
+      propertyPath: sampler
+      value: 
+      objectReference: {fileID: 2800000, guid: 8d1496a754164c6419604d9db0f2d1bc, type: 3}
+    - target: {fileID: 3896789597305373402, guid: 60cd620bac44240c7a62c99606f2fc5a, type: 3}
+      propertyPath: dirtyRatio
+      value: 0.157
+      objectReference: {fileID: 0}
     - target: {fileID: 3896789597305373402, guid: 60cd620bac44240c7a62c99606f2fc5a, type: 3}
       propertyPath: mainTexture
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4034664441923137180, guid: 60cd620bac44240c7a62c99606f2fc5a, type: 3}
+      propertyPath: sampler
+      value: 
+      objectReference: {fileID: 2800000, guid: 54d1c4d2b57328a4683df93c81fe9f78, type: 3}
+    - target: {fileID: 4034664441923137180, guid: 60cd620bac44240c7a62c99606f2fc5a, type: 3}
+      propertyPath: dirtyRatio
+      value: 0.252
       objectReference: {fileID: 0}
     - target: {fileID: 4822378737865491724, guid: 60cd620bac44240c7a62c99606f2fc5a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8612,6 +8644,17 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 2937111751795527389, guid: a06cc6d0842bd42edb19196e1747ea94, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a06cc6d0842bd42edb19196e1747ea94, type: 3}
+--- !u!114 &1554478909 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3885648474672750957, guid: 60cd620bac44240c7a62c99606f2fc5a, type: 3}
+  m_PrefabInstance: {fileID: 1316696161}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4848208d4b1004d42a4d17769df23443, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1589065229
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10863,7 +10906,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainTexture: {fileID: 0}
-  dirtyTexture: {fileID: 0}
+  mudTexture: {fileID: 0}
+  sampler: {fileID: 0}
   washableMaterial: {fileID: 0}
   dirtyMaterial: {fileID: 0}
   maincolor: {r: 0, g: 0, b: 0, a: 0}

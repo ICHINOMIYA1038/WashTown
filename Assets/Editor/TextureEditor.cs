@@ -37,7 +37,13 @@ public class TextureEditor : EditorWindow
         directoryPath = Application.dataPath;
         myFunction = clickBtn;
         color = Color.red;
-        Debug.Log(isPainting);
+        if (_texture == null)
+        {
+            _texture = new Texture2D(textureWidth, textureHeight, TextureFormat.RGBAFloat, false);
+            for (int y = 0; y < _texture.height; y++)
+                for (int x = 0; x < _texture.width; x++)
+                    _texture.SetPixel(x, y, new Color(1f, 1f, 1f, 0f));
+        }
     }
 
     [MenuItem("Original/Texture Editor")]
@@ -76,17 +82,23 @@ public class TextureEditor : EditorWindow
         GUILayout.Label("ブラシサイズ");
         brushSize = EditorGUILayout.IntField(brushSize);
         color = EditorGUILayout.ColorField(color,null);
+        if (GUILayout.Button("Paint All"))
+        {
+            _texture = null;
+            _texture = new Texture2D(textureWidth, textureHeight, TextureFormat.RGBAFloat, false);
+            for (int y = 0; y < _texture.height; y++)
+                for (int x = 0; x < _texture.width; x++)
+                    _texture.SetPixel(x, y, color);
+        }
         GUILayout.EndHorizontal();
         originalTexture = (Texture2D)EditorGUILayout.ObjectField("Texture", originalTexture, typeof(Texture2D), false);
         washableObject = (WashableObject)EditorGUILayout.ObjectField("Texture", washableObject, typeof(WashableObject), false);
-        if (_texture == null)
+        
+        if(_texture!=null)
         {
-            _texture = new Texture2D(textureWidth,textureHeight, TextureFormat.RGBAFloat,false);
-            for (int y = 0; y < _texture.height; y++)
-                for (int x = 0; x < _texture.width; x++)
-                    _texture.SetPixel(x, y, new Color(1f,1f,1f,0f));
+            EditorGUI.DrawTextureTransparent(new Rect(0, layoutOffset, position.width, position.height - layoutOffset), _texture);
         }
-        EditorGUI.DrawTextureTransparent(new Rect(0, layoutOffset, position.width, position.height - layoutOffset), _texture);
+        
 
         GUILayout.Label("作成するファイル名");
         fileName = GUILayout.TextField(fileName);
@@ -184,8 +196,8 @@ public class TextureEditor : EditorWindow
             return;
         }
             Vector2 mousePosition = Event.current.mousePosition;
-            mousePosition.x = mousePosition.x / position.width * _texture.width;
-            mousePosition.y = (1 - ((mousePosition.y - layoutOffset) / (position.height - layoutOffset))) * _texture.height;
+        mousePosition.x = mousePosition.x / position.width * textureWidth;
+            mousePosition.y = (1 - ((mousePosition.y - layoutOffset) / (position.height - layoutOffset))) * textureHeight;
             Vector2Int uvPosi = new Vector2Int(Mathf.CeilToInt(mousePosition.x), (Mathf.CeilToInt(mousePosition.y)));
         
 
