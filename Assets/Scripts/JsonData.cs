@@ -77,7 +77,7 @@ public class PlayerData
 {
     [SerializeField]
     //　名前
-    public string name;
+    public string username;
     [SerializeField]
     //　publicデータ
     public int money;
@@ -94,7 +94,7 @@ public class PlayerData
 
     public PlayerData(string name, int money, int shopRate, int townRate, int[] itemList)
     {
-        this.name = name;
+        this.username = name;
         this.money = money;
         this.shopRate = shopRate;
         this.townRate = townRate;

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,17 +7,26 @@ using UnityEngine.UI;
 
 public class LoadFromDatabase : MonoBehaviour
 {
+    public static LoadFromDatabase instance;
 
-    private string baseUrl = "https://ichinomiya.gekidankatakago.com/Unity/load.php";
-    private string url;
-    private int id;
-    public InputField usernameInputField;
-    public InputField passwordInputField;
-    public Button loginButton;
-    public Text resultText;
+
+    
+    private static string baseUrl = "https://ichinomiya.gekidankatakago.com/Unity/load.php";
+    static private string url;
+    static private int id;
+    private static string DataResult = "";
     // Start is called before the first frame update
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
     void Start()
     {
+        id = 7;
         url = baseUrl;
     }
 
@@ -26,12 +36,26 @@ public class LoadFromDatabase : MonoBehaviour
         
     }
 
-    public string loadData()
+    public static void setId(int num)
     {
-        StartCoroutine(WaitForResponse());
+        id = num;
     }
 
-    IEnumerator WaitForResponse()
+    public static void LoadData()
+    {
+        instance.StartCoroutine(WaitForResponse(result =>
+        {
+            DataResult = result;
+        }));
+    }
+
+    public static string getData()
+    {
+        Debug.Log(DataResult);
+        return DataResult;
+    }
+
+    static IEnumerator  WaitForResponse(Action<string> callback)
     {
 
 
@@ -42,9 +66,8 @@ public class LoadFromDatabase : MonoBehaviour
         // エラーが起きた場合はエラーテキストを表示して終了
         if (request.result != UnityWebRequest.Result.Success)
         {
-            resultText.color = Color.red;
-            resultText.text = "データベースの接続エラー";
             Debug.LogError("Error");
+            callback("Error");
             yield break;
         }
 
@@ -52,15 +75,13 @@ public class LoadFromDatabase : MonoBehaviour
         string responseText = request.downloadHandler.text;
         if (responseText == "OK")
         {
-            resultText.color = Color.green;
-            resultText.text = "ログインに成功しました。";
+            callback(responseText);
             // 認証が成功した場合はメインシーンに遷移
             UnityEngine.SceneManagement.SceneManager.LoadScene("main");
         }
         else
         {
-            resultText.color = Color.red;
-            resultText.text = responseText;
+            callback(responseText);
         }
 
     }

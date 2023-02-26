@@ -6,9 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    /*
+    
     public static GameManager instance;
 
+    /*
     private void Awake()
     {
         if (instance == null)
@@ -223,15 +224,30 @@ public class GameManager : MonoBehaviour
         
         savedata = JsonUtility.FromJson<SaveData>(jsonText);
         money = savedata.playerData[index].money;
-        playerName = savedata.playerData[index].name;
+        playerName = savedata.playerData[index].username;
         townRate = savedata.playerData[index].townRate;
         shopRate = savedata.playerData[index].shopRate;
         itemList = savedata.playerData[index].itemList;
     }
 
-    public static void LoadFromDataBase()
+    public static void LoadFromDataBase(int index)
     {
-
+        MonoBehaviour monoBehaviour = new MonoBehaviour();
+        LoadFromDatabase.setId(index);
+        LoadFromDatabase.LoadData();
+        string jsonText = LoadFromDatabase.getData();
+        Debug.Log(jsonText);
+        PlayerData playerData = JsonUtility.FromJson<PlayerData>(jsonText);
+        money = playerData.money;
+        playerName = playerData.username;
+        townRate = playerData.townRate;
+        shopRate = playerData.shopRate;
+        itemList = playerData.itemList;
+        Debug.Log(money);
+        Debug.Log(playerName);
+        Debug.Log(townRate);
+        Debug.Log(shopRate);
+        Debug.Log(itemList);
     }
 
     public static void SaveToDataBase()

@@ -25,7 +25,8 @@ public class GameStartButton : OriginalBtn
         {
             return;
         }
-        GameManager.Load(playerNum);
+        //GameManager.Load(playerNum);
+        GameManager.LoadFromDataBase(playerNum);
         GameManager.SceneChanage(GameManager.SCENE_TITLE,GameManager.SCENE_MAIN);
         SceneManager.LoadScene(1);
 

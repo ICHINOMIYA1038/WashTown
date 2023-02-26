@@ -42,7 +42,7 @@ public class LoadDataCon : choicedManager
             //Texture2D loadTexture = new Texture2D(1, 1); //mock size 1x1
             //loadTexture.LoadImage(bytes);
             //panels[i].transform.GetChild(1).GetComponent<RawImage>().texture = loadTexture;
-            panels[i].transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "name:" + data.playerData[i].name;
+            panels[i].transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "name:" + data.playerData[i].username;
             panels[i].transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "shopRate:"+ data.playerData[i].shopRate;
             panels[i].transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "townRate:" + data.playerData[i].townRate;
             panels[i].transform.GetChild(5).GetComponent<TextMeshProUGUI>().text = "money:" + data.playerData[i].money;
