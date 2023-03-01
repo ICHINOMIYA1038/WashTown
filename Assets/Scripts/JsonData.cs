@@ -59,7 +59,7 @@ public class SaveData
     public PlayerData[] playerData = null;
 
 
-    public void upDateData(string name,int money, int shopRate, int townRate, int[] itemList, int playerIndex)
+    public void upDateData(string name,int money, int shopRate, int townRate, int itemList, int playerIndex)
     {
         PlayerData data = new PlayerData(name,money, shopRate, townRate, itemList);
         playerData[playerIndex] = data;
@@ -90,9 +90,9 @@ public class PlayerData
     public int townRate;
 
     [SerializeField]
-    public int[] itemList;
+    public int itemList;
 
-    public PlayerData(string name, int money, int shopRate, int townRate, int[] itemList)
+    public PlayerData(string name, int money, int shopRate, int townRate, int itemList)
     {
         this.username = name;
         this.money = money;

@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Networking;
+using System;
 
 public class LoginForm : MonoBehaviour
 {
@@ -10,6 +11,12 @@ public class LoginForm : MonoBehaviour
     public InputField passwordInputField;
     public Button loginButton;
     public Text resultText;
+    public GameObject Loadcanvas;
+    public Image Loadimage;
+    public Sprite image0;
+    public Sprite image1;
+    public Sprite image2;
+
 
     private string url = "https://ichinomiya.gekidankatakago.com/Unity/login.php";
 
@@ -20,9 +27,22 @@ public class LoginForm : MonoBehaviour
 
     void Login()
     {
-        
+        StartCoroutine(nowLoading());
         // レスポンスを待機
         StartCoroutine(WaitForResponse());
+    }
+
+    IEnumerator nowLoading()
+    {
+        Loadcanvas.SetActive(true);
+        yield return new WaitForSeconds(1.1f);
+        Loadimage.sprite = image0;
+        yield return new WaitForSeconds(1.1f);
+        Loadimage.sprite = image1;
+        yield return new WaitForSeconds(1.1f);
+        Loadimage.sprite = image2;
+        Loadcanvas.SetActive(false);
+        
     }
 
     IEnumerator WaitForResponse()
@@ -50,12 +70,17 @@ public class LoginForm : MonoBehaviour
 
         // レスポンスのテキストを取得して、成功テキストを表示してから3秒後にシーンを遷移する
         string responseText = request.downloadHandler.text;
-        if (responseText == "OK")
+        string[] arr = new string[2];
+        arr = responseText.Split(',');
+        if (!arr[0].Equals("NG"))
         {
+            int id = Int32.Parse(arr[1]);
             resultText.color = Color.green;
             resultText.text = "ログインに成功しました。";
             // 認証が成功した場合はメインシーンに遷移
-            UnityEngine.SceneManagement.SceneManager.LoadScene("main");
+            GameManager.LoadFromDataBase(id);
+            
+
         }
         else
         {

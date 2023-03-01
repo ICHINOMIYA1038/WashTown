@@ -36,7 +36,6 @@ public class ItemChoicedPanel : choicedManager
             tempBtn.choicedManager = this;
             tempBtn.index = i;
             string path = basePath + data.itemData[i].fileName;
-            Debug.Log(path);
             byte[] bytes = File.ReadAllBytes(path);
             Texture2D loadTexture = new Texture2D(1, 1); //mock size 1x1
             loadTexture.LoadImage(bytes);

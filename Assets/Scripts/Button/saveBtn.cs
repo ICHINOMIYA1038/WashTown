@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class saveBtn : OriginalBtn
@@ -21,11 +22,11 @@ public class saveBtn : OriginalBtn
         
     }
 
-    void clickEvent()
+    async void clickEvent()
     {
         if(option == EXITWITHSAVE)
         {
-            save();
+            await save();
             exit();
         }
         else if(option == EXITWITHOUTSAVE)
@@ -34,7 +35,7 @@ public class saveBtn : OriginalBtn
         }
         else if(option == SAVEONLY)
         {
-            save();
+            await save();
         }
     }
 
@@ -47,8 +48,9 @@ public class saveBtn : OriginalBtn
         # endif
     }
 
-    void save()
+    async Task save()
     {
-        gameManager.save();
+        await Task.Delay(2000);
+        GameManager.SavetoDataBase();
     }
 }

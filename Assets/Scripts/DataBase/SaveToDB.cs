@@ -5,13 +5,13 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
-public class LoadFromDatabase : MonoBehaviour
+public class SaveToDB : MonoBehaviour
 {
-    public static LoadFromDatabase instance;
+    public static SaveToDB instance;
 
 
-    
-    private static string baseUrl = "https://ichinomiya.gekidankatakago.com/Unity/load.php";
+
+    private static string baseUrl = "https://ichinomiya.gekidankatakago.com/Unity/update.php";
     static private string url;
     static private int id;
     private static string DataResult = "";
@@ -41,27 +41,31 @@ public class LoadFromDatabase : MonoBehaviour
         id = num;
     }
 
-    public static void LoadData()
+    public static void SaveData(int money, int shopRate, int townRate, int itemList)
     {
-        Debug.Log(id);
-        instance.StartCoroutine(WaitForResponse(result =>
+        instance.StartCoroutine(WaitForResponse( money, shopRate,townRate, itemList, result =>
         {
             DataResult = result;
         }));
     }
 
-    public static string getData()
-    {
-        Debug.Log(DataResult);
-        return DataResult;
-    }
 
-    static IEnumerator  WaitForResponse(Action<string> callback)
+    static IEnumerator  WaitForResponse( int money ,int shopRate,int townRate,int itemList, Action<string> callback)
     {
 
 
         url = baseUrl + "/?id=" + id;
-        using UnityWebRequest request = UnityWebRequest.Get(url);
+        Debug.Log(url);
+        WWWForm form = new WWWForm();
+
+        form.AddField("money", money);
+        form.AddField("shopRate", shopRate);
+        form.AddField("townRate", townRate);
+        form.AddField("itemList", itemList);
+        form.AddField("id", id);
+
+        // データを送信してレスポンスを受け取る
+        using UnityWebRequest request = UnityWebRequest.Post(url, form);
         yield return request.SendWebRequest();
 
         // エラーが起きた場合はエラーテキストを表示して終了
@@ -74,11 +78,12 @@ public class LoadFromDatabase : MonoBehaviour
 
         // レスポンスのテキストを取得して、成功テキストを表示してから3秒後にシーンを遷移する
         string responseText = request.downloadHandler.text;
+        Debug.Log(responseText);
         if (responseText == "OK")
         {
             callback(responseText);
             // 認証が成功した場合はメインシーンに遷移
-           
+            
         }
         else
         {

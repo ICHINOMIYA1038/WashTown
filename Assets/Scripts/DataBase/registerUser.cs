@@ -15,6 +15,11 @@ public class registerUser : MonoBehaviour
     public InputField passwordInput;
     public Button insertButton;
     public Text resultText;
+    public GameObject Loadcanvas;
+    public Image Loadimage;
+    public Sprite image0;
+    public Sprite image1;
+    public Sprite image2;
     private string url = "https://ichinomiya.gekidankatakago.com/Unity/register.php"; 
 
     void Start()
@@ -24,7 +29,21 @@ public class registerUser : MonoBehaviour
 
     void Insert()
     {
+        StartCoroutine(nowLoading());
         StartCoroutine(InsertCoroutine());
+    }
+
+    IEnumerator nowLoading()
+    {
+        Loadcanvas.SetActive(true);
+        yield return new WaitForSeconds(1.1f);
+        Loadimage.sprite = image0;
+        yield return new WaitForSeconds(1.1f);
+        Loadimage.sprite = image1;
+        yield return new WaitForSeconds(1.1f);
+        Loadimage.sprite = image2;
+        Loadcanvas.SetActive(false);
+        
     }
 
     IEnumerator InsertCoroutine()
@@ -53,12 +72,15 @@ public class registerUser : MonoBehaviour
         
         // レスポンスのテキストを取得して、成功テキストを表示してから3秒後にシーンを遷移する
         string responseText = request.downloadHandler.text;
-        if(responseText=="OK")
+        string[] arr = new string[2];
+        arr = responseText.Split(',');
+        if (!arr[0].Equals("NG"))
         {
             resultText.color = Color.green;
             resultText.text = "新規ユーザー登録が完了しました。";
             yield return new WaitForSeconds(3);
-            UnityEngine.SceneManagement.SceneManager.LoadScene("main");
+            int id = Int32.Parse(arr[1]);
+            GameManager.NewGame(id, usernameInput.text);
         }
         else
         {

@@ -7,13 +7,13 @@ public class StarGenerator : MonoBehaviour
 {
     [SerializeField] Texture2D starImage;
     [SerializeField] Texture2D blankStarImage;
-    [SerializeField] int starNum=0;
-    RawImage[] images;
+    private int starNum=0;
+    [SerializeField]RawImage[] images;
 
     // Start is called before the first frame update
     void Start()
     {
-        images = this.transform.GetComponentsInChildren<RawImage>();
+        
         
         foreach(var elem in images)
         {
@@ -32,5 +32,11 @@ public class StarGenerator : MonoBehaviour
         {
             images[i].texture = blankStarImage;
         }
+    }
+
+    public void setStarNum(int star)
+    {
+        starNum = star;
+        setStar(); 
     }
 }

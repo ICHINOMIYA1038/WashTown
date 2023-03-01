@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using UnityEngine.SceneManagement;
+using System.Threading.Tasks;
 
 public class GameManager : MonoBehaviour
 {
@@ -31,7 +32,7 @@ public class GameManager : MonoBehaviour
     public static string playerName;
     int dataSlot = 5;
     static SaveData savedata;
-    PlayerData playerData;
+    static PlayerData playerData;
     public static int playerIndex = 0;
     public static int[] itemList;
 
@@ -41,6 +42,9 @@ public class GameManager : MonoBehaviour
     public static readonly int SCENE_ACTION = 2;
 
     public static bool gameEnd = false;
+    public static int defaultTownRate = 0;
+    public static int defaultShopRate = 0;
+    public static int defaultMoney = 5000;
 
     /// <summary>
     /// UI??Update?????????I?u?W?F?N?g
@@ -52,7 +56,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     InventoryPanelCon inventoryPanelCon;
 
-
+   
     public void Start()
     {
         
@@ -118,26 +122,37 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// townRate??townRank?????????????????[?g?l
     /// </summary>
-    public static int townRate =100;
+    public static int townRate =0;
     /// <summary>
     /// shopRate??shopRank?????????????????[?g?l
     /// </summary>
-    public static int shopRate = 200;
+    public static int shopRate = 0;
     /// <summary>
     /// ?X????????????????(4byte???????A2147483647?????????????C???t????)
     /// </summary>
     public static int money = 10000;
+
+
 
     public int getMoney()
     {
         return money;
     }
 
+    public static int returnMoney()
+    {
+        return money;
+    }
+
+
+
     public void setMoney(int num)
     {
         money = num;
         mainUIManager.changeMoney();
     }
+
+    
 
     public void textUpdate()
     {
@@ -149,9 +164,19 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public int getShopRank()
+    public static int getShopRank()
     {
         return shopRank;
+    }
+
+
+    public  static int getShopRate()
+    {
+        return shopRate;
+    }
+    public static  void setShopRate(int num)
+    {
+        shopRate = num;
     }
 
     public int getTownRank()
@@ -203,19 +228,41 @@ public class GameManager : MonoBehaviour
         createSaveData();
         StreamWriter writer;
         
-        savedata.upDateData(playerName,money,shopRate,townRate,itemList,playerIndex);
+        savedata.upDateData(playerName,money,shopRate,townRate, DigitsToNumber(itemList), playerIndex);
         string jsonstr = JsonUtility.ToJson(savedata);
         writer = new StreamWriter(Application.streamingAssetsPath + "/savedata/savedata.json", false);
         writer.Write(jsonstr);
         writer.Flush();
         writer.Close();
+    }
+
+    public static void SavetoDataBase()
+    {
+        SaveToDB.setId(playerIndex);
+        Debug.Log(money);
+        SaveToDB.SaveData(money,shopRate,townRate, DigitsToNumber(itemList));
+        
+        
+    }
+
+    public static void NewGame(int id,string userName)
+    {
+        playerIndex = id;
+        money = defaultMoney;
+        playerName = userName;
+        townRate = defaultTownRate;
+        shopRate = defaultShopRate;
+        itemList = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        UnityEngine.SceneManagement.SceneManager.LoadScene("main");
 
     }
+
+
 
     public static void Load(int index)
     {
         playerIndex = index;
-        itemList = new int[10];
+        itemList = new int[9];
 
         var textReader = new StreamReader(Application.streamingAssetsPath + "/savedata/savedata.json");
         string jsonText = textReader.ReadToEnd();
@@ -227,27 +274,61 @@ public class GameManager : MonoBehaviour
         playerName = savedata.playerData[index].username;
         townRate = savedata.playerData[index].townRate;
         shopRate = savedata.playerData[index].shopRate;
-        itemList = savedata.playerData[index].itemList;
+        itemList = NumberToDigits(savedata.playerData[index].itemList);
     }
 
-    public static void LoadFromDataBase(int index)
+    
+
+    public static  async void LoadFromDataBase(int index)
     {
-        MonoBehaviour monoBehaviour = new MonoBehaviour();
-        LoadFromDatabase.setId(index);
+        playerIndex = index;
+        LoadFromDatabase.setId(playerIndex);
         LoadFromDatabase.LoadData();
+        await LoginTask();
+
+    }
+
+    public static async Task LoginTask()
+    {
+        await Task.Delay(3000);
         string jsonText = LoadFromDatabase.getData();
-        Debug.Log(jsonText);
-        PlayerData playerData = JsonUtility.FromJson<PlayerData>(jsonText);
+        if (jsonText == "" || jsonText==null)
+        {
+            Debug.LogError("Error");
+            return;
+        }
+        playerData = JsonUtility.FromJson<PlayerData>(jsonText);
         money = playerData.money;
         playerName = playerData.username;
         townRate = playerData.townRate;
         shopRate = playerData.shopRate;
-        itemList = playerData.itemList;
-        Debug.Log(money);
-        Debug.Log(playerName);
-        Debug.Log(townRate);
-        Debug.Log(shopRate);
-        Debug.Log(itemList);
+        itemList = NumberToDigits(playerData.itemList);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("main");
+    }
+
+    static int[] NumberToDigits(long number)
+    {
+        int[] digits = new int[9];
+
+        for (int i = 8; i >= 0; i--)
+        {
+            digits[i] = (int)(number % 10);
+            number /= 10;
+        }
+
+        return digits;
+    }
+
+    static int DigitsToNumber(int[] digits)
+    {
+        int number = 0;
+
+        for (int i = 0; i < 9; i++)
+        {
+            number = number * 10 + digits[i];
+        }
+
+        return number;
     }
 
     public static void SaveToDataBase()

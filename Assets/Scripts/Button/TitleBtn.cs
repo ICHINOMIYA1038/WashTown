@@ -5,6 +5,7 @@ using UnityEngine;
 public class TitleBtn : OriginalBtn
 {
     [SerializeField] GameObject canvas;
+    [SerializeField] GameObject Maincanvas;
     bool isOpen = false;
     // Start is called before the first frame update
     void Start()
@@ -40,6 +41,7 @@ public class TitleBtn : OriginalBtn
         {
             canvas.SetActive(true);
             isOpen = true;
+            Maincanvas.SetActive(false);
         }
 
     }

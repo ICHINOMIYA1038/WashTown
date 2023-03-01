@@ -142,9 +142,9 @@ public class PurchaseManager : MonoBehaviour
         foreach(var elem in purchaseList)
         {
             GameManager.itemList[elem.Key] += elem.Value;
-            if (GameManager.itemList[elem.Key] > 99)
+            if (GameManager.itemList[elem.Key] > 9)
             {
-                GameManager.itemList[elem.Key] = 99;
+                GameManager.itemList[elem.Key] = 9;
             }
         }
        
