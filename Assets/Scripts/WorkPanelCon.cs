@@ -33,6 +33,30 @@ public class WorkPanelCon : choicedManager
         show();
     }
 
+    public override void openEvent()
+    {
+        Debug.Log("topenEvents");
+        for (int i = 0; i < num; i++)
+        {
+           
+            workChoiceBtn tempBtn = panels[i].GetComponent<workChoiceBtn>();
+            
+            tempBtn.index = i;
+           
+            tempBtn.status = GameManager.workIndex[i];
+            Debug.Log(tempBtn.status);
+            if (tempBtn.getStatus() == 0)
+            {
+                tempBtn.comingSoonPanel.SetActive(true);
+            }
+            else if (tempBtn.getStatus() != 0)
+            {
+                tempBtn.comingSoonPanel.SetActive(false);
+            }
+
+        }
+    }
+
     public void show()
     {
         basePath = Application.streamingAssetsPath + "/Image/WorkImage/";

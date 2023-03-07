@@ -69,6 +69,7 @@ public class InventCanvas : MonoBehaviour
             starNum += 1;
             
             GameManager.setShopRate(starNum);
+            gameManager.setWorkIndex(starNum,1);
             UpdateCanvas();
         }
         changeButton();
@@ -94,6 +95,7 @@ public class InventCanvas : MonoBehaviour
         if (starNum <5)
         {
             starGenerators[2].setStarNum(starNum + 1);
+            moneyText.text = "“X‚ðŠg‘å‚·‚é‚Ì‚É $" + requiredMoney[starNum] + " •K—v‚Å‚·";
         }
         else if (starNum==5)
         {

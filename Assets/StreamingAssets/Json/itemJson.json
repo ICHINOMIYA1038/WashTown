@@ -19,52 +19,52 @@
             "effect": "妨害を防ぎます。"
         },
         {
-            "itemName": "洗剤",
-            "fileName": "detergent.png",
+            "itemName": "準備中",
+            "fileName": "nowLoading.png",
             "cost": 100,
-            "effect": "よく汚れが落ちます。"
+            "effect": "準備中です"
         },
         {
-            "itemName": "洗剤",
-            "fileName": "detergent.png",
+            "itemName": "準備中",
+            "fileName": "nowLoading.png",
             "cost": 100,
-            "effect": "よく汚れが落ちます。"
+            "effect": "準備中です"
         },
         {
-            "itemName": "洗剤",
-            "fileName": "detergent.png",
+            "itemName": "準備中",
+            "fileName": "nowLoading.png",
             "cost": 100,
-            "effect": "よく汚れが落ちます。"
+            "effect": "準備中です"
         },
         {
-            "itemName": "洗剤",
-            "fileName": "detergent.png",
+            "itemName": "準備中",
+            "fileName": "nowLoading.png",
             "cost": 100,
-            "effect": "よく汚れが落ちます。"
+            "effect": "準備中です"
         },
         {
-            "itemName": "洗剤g",
-            "fileName": "detergent.png",
+            "itemName": "準備中",
+            "fileName": "nowLoading.png",
             "cost": 100,
-            "effect": "よく汚れが落ちます。"
+            "effect": "準備中です"
         },
         {
-            "itemName": "洗剤",
-            "fileName": "detergent.png",
+            "itemName": "準備中",
+            "fileName": "nowLoading.png",
             "cost": 100,
-            "effect": "よく汚れが落ちます。"
+            "effect": "準備中です"
         },
         {
-            "itemName": "洗剤",
-            "fileName": "detergent.png",
+            "itemName": "準備中",
+            "fileName": "nowLoading.png",
             "cost": 100,
-            "effect": "よく汚れが落ちます。"
+            "effect": "準備中です"
         },
         {
-            "itemName": "洗剤",
-            "fileName": "detergent.png",
+            "itemName": "準備中",
+            "fileName": "nowLoading.png",
             "cost": 100,
-            "effect": "よく汚れが落ちます。"
+            "effect": "準備中です"
         }
 
     ]

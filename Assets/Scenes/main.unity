@@ -181,10 +181,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0ebda64749e174253bf5a82cb88fa3da, type: 2}
-  m_sharedMaterial: {fileID: -1412369661745177714, guid: 0ebda64749e174253bf5a82cb88fa3da, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: adbc735363b6aaf46ab14eb38d53ef57, type: 2}
+  m_sharedMaterial: {fileID: 6200734623228321737, guid: adbc735363b6aaf46ab14eb38d53ef57, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -673,10 +673,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0ebda64749e174253bf5a82cb88fa3da, type: 2}
-  m_sharedMaterial: {fileID: -1412369661745177714, guid: 0ebda64749e174253bf5a82cb88fa3da, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: adbc735363b6aaf46ab14eb38d53ef57, type: 2}
+  m_sharedMaterial: {fileID: 6200734623228321737, guid: adbc735363b6aaf46ab14eb38d53ef57, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1360,6 +1360,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   canvasManager: {fileID: 286968435}
   canvas: {fileID: 1321762187}
+  gameManager: {fileID: 0}
 --- !u!114 &204900150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2049,6 +2050,7 @@ MonoBehaviour:
   itemChoicedPanel: {fileID: 286968437}
   mainUIManager: {fileID: 286968433}
   inventoryPanelCon: {fileID: 286968434}
+  workPanelCon: {fileID: 286968429}
 --- !u!114 &286968437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3381,7 +3383,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0.9999999, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4058,6 +4060,7 @@ MonoBehaviour:
   audioSource: {fileID: 603387926}
   canvasManager: {fileID: 286968435}
   canvas: {fileID: 34228583}
+  gameManager: {fileID: 0}
 --- !u!82 &603387926
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6185,7 +6188,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 518728563}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9999999
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -7502,6 +7505,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   canvasManager: {fileID: 286968435}
   canvas: {fileID: 374939702}
+  gameManager: {fileID: 0}
 --- !u!82 &1105439474
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10151,6 +10155,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   canvasManager: {fileID: 286968435}
   canvas: {fileID: 842157807}
+  gameManager: {fileID: 286968436}
 --- !u!82 &1472820858
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10572,7 +10577,8 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 7daa31005f1140446ba5fd5fe912df0c, type: 3}
   - {fileID: 2800000, guid: dfa89bfaf1a1cf740ae0ef7b4c2270fd, type: 3}
   - {fileID: 2800000, guid: dfa89bfaf1a1cf740ae0ef7b4c2270fd, type: 3}
-  requiredMoney: b80b000088130000401f00001027000030750000
+  - {fileID: 2800000, guid: dfa89bfaf1a1cf740ae0ef7b4c2270fd, type: 3}
+  requiredMoney: b80b000088130000401f0000102700003075000050c30000
   gameManager: {fileID: 286968436}
 --- !u!1 &1622893414
 GameObject:
@@ -12533,7 +12539,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1512253680}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.24399044
+  m_Size: 0.2439904
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -13636,6 +13642,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   canvasManager: {fileID: 286968435}
   canvas: {fileID: 1619933599}
+  gameManager: {fileID: 0}
 --- !u!82 &2070751407
 AudioSource:
   m_ObjectHideFlags: 0

@@ -55,8 +55,10 @@ public class GameManager : MonoBehaviour
     MainUIManager mainUIManager;
     [SerializeField]
     InventoryPanelCon inventoryPanelCon;
+    [SerializeField]
+    WorkPanelCon workPanelCon;
 
-   
+
     public void Start()
     {
         
@@ -278,6 +280,10 @@ public class GameManager : MonoBehaviour
     }
 
     
+    public  void setWorkIndex(int index, int flag) {     
+        workIndex[index] = flag;
+        Debug.Log(workIndex[index]);
+}
 
     public static  async void LoadFromDataBase(int index)
     {

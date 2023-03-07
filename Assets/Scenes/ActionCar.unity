@@ -7154,10 +7154,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 313991250682460530, guid: 60cd620bac44240c7a62c99606f2fc5a, type: 3}
+      propertyPath: sampler
+      value: 
+      objectReference: {fileID: 2800000, guid: 0b3dd8c6f506c524d840f6cacf5ecaf9, type: 3}
+    - target: {fileID: 313991250682460530, guid: 60cd620bac44240c7a62c99606f2fc5a, type: 3}
+      propertyPath: dirtyRatio
+      value: 0.411
+      objectReference: {fileID: 0}
     - target: {fileID: 1466304125639543170, guid: 60cd620bac44240c7a62c99606f2fc5a, type: 3}
       propertyPath: sampler
       value: 
-      objectReference: {fileID: 2800000, guid: 8d90c88547217084db9797e7e9301e8f, type: 3}
+      objectReference: {fileID: 2800000, guid: 68d62bfdf0b5a5b42887b6621c0cc2c4, type: 3}
     - target: {fileID: 1466304125639543170, guid: 60cd620bac44240c7a62c99606f2fc5a, type: 3}
       propertyPath: dirtyRatio
       value: 0.537
@@ -7169,14 +7177,14 @@ PrefabInstance:
     - target: {fileID: 3885648474672750957, guid: 60cd620bac44240c7a62c99606f2fc5a, type: 3}
       propertyPath: sampler
       value: 
-      objectReference: {fileID: 2800000, guid: 19c08e8dabeaeae42a499e0a2720a4eb, type: 3}
+      objectReference: {fileID: 2800000, guid: f682a167c74914c4c99590a7d96e0c89, type: 3}
     - target: {fileID: 3885648474672750957, guid: 60cd620bac44240c7a62c99606f2fc5a, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3885648474672750957, guid: 60cd620bac44240c7a62c99606f2fc5a, type: 3}
       propertyPath: dirtyRatio
-      value: 0.407
+      value: 0.229
       objectReference: {fileID: 0}
     - target: {fileID: 3885648474672750957, guid: 60cd620bac44240c7a62c99606f2fc5a, type: 3}
       propertyPath: dirtyTexture

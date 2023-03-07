@@ -34,4 +34,9 @@ public class choicedManager : MonoBehaviour
         }
         return choicedBtn.index;
     }
+
+    public virtual void openEvent()
+    {
+
+    }
 }

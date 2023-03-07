@@ -10,7 +10,7 @@ public class TextureEditor : EditorWindow
 {
     private int textureWidth;
     private int textureHeight;
-    public Texture2D _texture;
+    private Texture2D _texture;
     public Texture2D _completeTexture;
     public int[] textureSize;
     // 任意の関数を実行するためのデリゲート
@@ -21,8 +21,6 @@ public class TextureEditor : EditorWindow
     Color color;
     int layoutOffset = 450;
 
-    // オリジナルの画像
-    private Texture2D originalTexture;
 
     // 画像をクリックしたときに実行する関数
     private string fileName = "test.png"; // 作成するファイル名
@@ -30,8 +28,10 @@ public class TextureEditor : EditorWindow
     private bool isPainting = false; // ペイント中かどうか
     private List<Vector2Int> paintedIndices = new List<Vector2Int>(); // ペイント済みのインデックスを一時的に格納するリスト
     private Queue<Vector2Int> paintQueue = new Queue<Vector2Int>();
-    private WashableObject washableObject;
     
+    /// <summary>
+    /// 初期化処理
+    /// </summary>
     private void OnEnable()
     {
         directoryPath = Application.dataPath;
@@ -91,13 +91,16 @@ public class TextureEditor : EditorWindow
                     _texture.SetPixel(x, y, color);
         }
         GUILayout.EndHorizontal();
-        originalTexture = (Texture2D)EditorGUILayout.ObjectField("Texture", originalTexture, typeof(Texture2D), false);
-        washableObject = (WashableObject)EditorGUILayout.ObjectField("Texture", washableObject, typeof(WashableObject), false);
+        if (GUILayout.Button("Invert Alpha"))
+        {
+            InvertAlpha32(_texture);
+        }
         
-        if(_texture!=null)
+        if (_texture!=null)
         {
             EditorGUI.DrawTextureTransparent(new Rect(0, layoutOffset, position.width, position.height - layoutOffset), _texture);
         }
+        
         
 
         GUILayout.Label("作成するファイル名");
@@ -225,15 +228,6 @@ public class TextureEditor : EditorWindow
             paintedIndices.Clear();
             
         }
-
-
-
-
-
-
-
-
-        
     }
 
    void clickBtn()
@@ -328,6 +322,32 @@ public class TextureEditor : EditorWindow
         }
             isPainting = false;
             paintedIndices.Clear();
+    }
+
+    public void InvertAlpha32(Texture2D texture)
+    {
+        // テクスチャのピクセルデータを取得する
+        Color32[] pixels = texture.GetPixels32();
+
+        // すべてのピクセルを走査し、α値を反転させる
+        for (int i = 0; i < pixels.Length; i++)
+        {
+            Color32 pixel = pixels[i];
+            // α値が0より大きい場合は0に変更し、0の場合は255に変更する
+            if (pixel.a > 0)
+            {
+                pixel.a = 0;
+            }
+            else
+            {
+                pixel.a = 255;
+            }
+            pixels[i] = pixel;
+        }
+
+        // ピクセルデータをテクスチャに書き込み、適用する
+        texture.SetPixels32(pixels);
+        texture.Apply();
     }
 
     private Vector2 ConvertToTexturePosition(Vector2 mousePosition)
