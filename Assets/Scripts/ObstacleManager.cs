@@ -28,7 +28,6 @@ public class ObstacleManager : MonoBehaviour
                 if (rand.Next(0, 1000) < 1)
                 {
                     elem.Enable();
-                    Debug.Log("tomato");
                 }
                
             }

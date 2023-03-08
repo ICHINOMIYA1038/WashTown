@@ -70,7 +70,9 @@ public class WaterManager : MonoBehaviour
                 Debug.DrawLine(ray.origin, hit.point, Color.blue, 5f);
                 if (hit.transform.gameObject.tag == "washable")
                 {
+                    
                     WashableObject washableObject = hit.transform.gameObject.GetComponent<WashableObject>();
+                    
                     Vector2 hitPosi = hit.textureCoord;
                     washableObject.changeTexture(hitPosi, blushScale * 3f, BlushTexture, new Color(0f, 0f, 0f, 0f));
                 }

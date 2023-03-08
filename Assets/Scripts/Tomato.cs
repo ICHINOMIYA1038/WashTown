@@ -31,9 +31,7 @@ public class Tomato : ObstacleObject
         if (Physics.Raycast(ray, out hit, 2))
         {
 
-            Debug.Log("hit");
             Debug.DrawLine(ray.origin, hit.point, Color.blue, 5f);
-            Debug.Log(hit.transform.gameObject.name);
             if (hit.transform.gameObject.tag == "washable")
             {
                 WashableObject washableObject = hit.transform.gameObject.GetComponent<WashableObject>();

@@ -31,7 +31,6 @@ public class ActionSoundManager : MonoBehaviour
     {
         audioSource.clip = SEWater;
         audioSource.Play();
-        Debug.Log("waterSE");
     }
 
     public void stopSoundWater()

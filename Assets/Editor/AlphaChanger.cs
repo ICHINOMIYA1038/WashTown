@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using System.IO;
 
 public class AlphaChanger : EditorWindow
 {
@@ -59,7 +60,10 @@ public class AlphaChanger : EditorWindow
             // ピクセルデータをテクスチャに書き込み、適用する
             texture.SetPixels32(pixels);
             texture.Apply();
-        }
+            var png = texture.EncodeToPNG();
+            string path = AssetDatabase.GetAssetPath(_texture);
+            File.WriteAllBytes(path, png);
+    }
     }
 
 

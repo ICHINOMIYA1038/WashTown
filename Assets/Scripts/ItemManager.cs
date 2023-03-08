@@ -22,9 +22,11 @@ public class ItemManager : MonoBehaviour
     GameObject itemImage2;
     [SerializeField]
     GameObject itemImage3;
+    //それぞれのシーンで使用するアイテムのインデックス
+    //シーンごとに個別に指定する。
     [SerializeField]
     int[] indexList;
-    static bool item1Active = true;
+    static bool item1Active = false;
     static bool item2Active = false;
     static bool item3Active = false;
     [SerializeField] WaterManager watermanager;
@@ -54,7 +56,15 @@ public class ItemManager : MonoBehaviour
 
     void CheckItem()
     {
-        for(int i=0; i<3; i++)
+        if (items == null)
+        {
+            return;
+        }
+        if (items.Count == 0)
+        {
+            return;
+        }
+        for (int i=0; i<3; i++)
         {
             if (items.Contains(indexList[i]))
             {
@@ -111,12 +121,19 @@ public class ItemManager : MonoBehaviour
 
     static void ItemClear()
     {
+        if (items == null)
+        {
+            return;
+        }
         items.Clear();
     }
 
     void ItemEffect()
     {
-
+        if (items == null)
+        {
+            return;
+        }
 
         ///洗剤の効果
         if (items.Contains(0))
