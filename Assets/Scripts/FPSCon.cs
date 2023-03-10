@@ -59,6 +59,10 @@ public class FPSCon : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!canMove)
+        {
+            return;
+        }
         x = 0;
         z = 0;
 

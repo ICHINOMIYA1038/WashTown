@@ -7,6 +7,7 @@ using UnityEngine;
 /// </summary>
 public class WaterManager : MonoBehaviour
 {
+    [SerializeField] FPSCon fpscon;
     [SerializeField]ActionSoundManager soundManager;
     [SerializeField] Material dirtyMaterial;
     [SerializeField] Texture MainTexture;
@@ -51,6 +52,10 @@ public class WaterManager : MonoBehaviour
     {
         //ゲームが終了していたら、処理をやめる。
         if (GameManager.gameEnd == true)
+        {
+            return;
+        }
+        if (fpscon.canMove == false)
         {
             return;
         }
