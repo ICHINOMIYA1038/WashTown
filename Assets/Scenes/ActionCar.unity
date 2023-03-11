@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 262.3369, g: 325.0498, b: 430.21924, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3782,6 +3782,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd0fe7012f04f074cbc847386a80d2f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fpscon: {fileID: 208654775}
   soundManager: {fileID: 761686235}
   dirtyMaterial: {fileID: 2100000, guid: e808d2de3324b5342ad32d0e255e847f, type: 2}
   MainTexture: {fileID: 2800000, guid: e69dd734f89328046b1dfe7d7ebd4686, type: 3}

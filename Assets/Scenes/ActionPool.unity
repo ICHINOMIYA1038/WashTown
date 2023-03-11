@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 262.3369, g: 325.0498, b: 430.21924, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7073,8 +7073,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 414f16f03e6714790bc2d3dfa3d7899f, type: 2}
-  m_sharedMaterial: {fileID: 6200734623228321737, guid: 414f16f03e6714790bc2d3dfa3d7899f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: adbc735363b6aaf46ab14eb38d53ef57, type: 2}
+  m_sharedMaterial: {fileID: 6200734623228321737, guid: adbc735363b6aaf46ab14eb38d53ef57, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -11901,6 +11901,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 489356479, guid: 1ce9c898ad5b7034b9e8e887fbc1278d, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: adbc735363b6aaf46ab14eb38d53ef57, type: 2}
+    - target: {fileID: 489356479, guid: 1ce9c898ad5b7034b9e8e887fbc1278d, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 6200734623228321737, guid: adbc735363b6aaf46ab14eb38d53ef57, type: 2}
     - target: {fileID: 639648359, guid: 1ce9c898ad5b7034b9e8e887fbc1278d, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -11941,6 +11949,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -170.90002
       objectReference: {fileID: 0}
+    - target: {fileID: 1278938632, guid: 1ce9c898ad5b7034b9e8e887fbc1278d, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: adbc735363b6aaf46ab14eb38d53ef57, type: 2}
+    - target: {fileID: 1278938632, guid: 1ce9c898ad5b7034b9e8e887fbc1278d, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 6200734623228321737, guid: adbc735363b6aaf46ab14eb38d53ef57, type: 2}
     - target: {fileID: 1486051825, guid: 1ce9c898ad5b7034b9e8e887fbc1278d, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -11981,6 +11997,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -171
       objectReference: {fileID: 0}
+    - target: {fileID: 1990828823, guid: 1ce9c898ad5b7034b9e8e887fbc1278d, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: adbc735363b6aaf46ab14eb38d53ef57, type: 2}
+    - target: {fileID: 1990828823, guid: 1ce9c898ad5b7034b9e8e887fbc1278d, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 6200734623228321737, guid: adbc735363b6aaf46ab14eb38d53ef57, type: 2}
+    - target: {fileID: 2089029502, guid: 1ce9c898ad5b7034b9e8e887fbc1278d, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: adbc735363b6aaf46ab14eb38d53ef57, type: 2}
+    - target: {fileID: 2089029502, guid: 1ce9c898ad5b7034b9e8e887fbc1278d, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 6200734623228321737, guid: adbc735363b6aaf46ab14eb38d53ef57, type: 2}
     - target: {fileID: 720432663638612072, guid: 1ce9c898ad5b7034b9e8e887fbc1278d, type: 3}
       propertyPath: range
       value: 25
@@ -12045,10 +12077,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2791878378324645479, guid: 1ce9c898ad5b7034b9e8e887fbc1278d, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: adbc735363b6aaf46ab14eb38d53ef57, type: 2}
+    - target: {fileID: 2791878378324645479, guid: 1ce9c898ad5b7034b9e8e887fbc1278d, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 6200734623228321737, guid: adbc735363b6aaf46ab14eb38d53ef57, type: 2}
     - target: {fileID: 3336895309441477522, guid: 1ce9c898ad5b7034b9e8e887fbc1278d, type: 3}
       propertyPath: m_Name
       value: The Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 5111973317835952275, guid: 1ce9c898ad5b7034b9e8e887fbc1278d, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: adbc735363b6aaf46ab14eb38d53ef57, type: 2}
+    - target: {fileID: 5111973317835952275, guid: 1ce9c898ad5b7034b9e8e887fbc1278d, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 6200734623228321737, guid: adbc735363b6aaf46ab14eb38d53ef57, type: 2}
     - target: {fileID: 6757867886172689890, guid: 1ce9c898ad5b7034b9e8e887fbc1278d, type: 3}
       propertyPath: m_IsActive
       value: 1
