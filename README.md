@@ -28,14 +28,15 @@
 *モデルに汚れをつけるために、オリジナルの拡張エディタを使用しています。<br>
 ![カスタムエディタのデモ画像](./demoImage/customEditor.gif  "カスタムエディタ")<br>
 
-<details>
-<summary>シェーダーコード(抜粋)</summary>
-
 # 会話システム(作成中)
-
 Indie Wafflus氏の動画を参考に会話の流れをノードベースで作成するエディタを作成中...
 https://www.youtube.com/playlist?list=PL0yxB6cCkoWK38XT4stSztcLueJ_kTx5f
 ![会話画面のイメージ画像](./demoImage/dialogue.gif  "カスタムエディタ")<br>
+
+
+
+<details>
+<summary>シェーダーコード(抜粋)</summary>
 
 ```
 Shader "Custom/dirtyTexture"
