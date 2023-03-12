@@ -8,40 +8,51 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 
-public class ExampleGraphEditorWindow : EditorWindow
+public class DialogCreator : EditorWindow
 {
-    [MenuItem("Original/NodeEditor")]
+    [MenuItem("Original/DialogCreater")]
     public static void Open()
     {
-        GetWindow<ExampleGraphEditorWindow>(ObjectNames.NicifyVariableName(nameof(ExampleGraphEditorWindow)));
+        DialogCreator dialogCreaterwindow = GetWindow<DialogCreator>();
+        dialogCreaterwindow.titleContent = new GUIContent(ObjectNames.NicifyVariableName(nameof(DialogCreator)));
     }
 
     void OnEnable()
     {
         var graphView = new NodeEditor(this);
+        //rootVisualElementは、EditorWindowクラスが持つプロパティ
+
         rootVisualElement.Add(graphView);
     }
 }
 
+/*********************************/
+//GraphViewクラスを継承した自作クラス。GraphViewはVisualElementsを継承している。
+/*********************************/
+
+#region GraphView
+
 public class NodeEditor : GraphView
 {
+
+    private DialogCreator dialogCreator;
     public NodeEditor(EditorWindow editorWindow)
     {
+        dialogCreator = (DialogCreator)editorWindow;
         // ノードを追加
         AddElement(new ExampleNode());
-
+        
+        //最初はエレメントの大きさが0なので、
         // 親のサイズに合わせてGraphViewのサイズを設定
         this.StretchToParentSize();
+        //見た目じゃわかりにくいが、グリッドを入れる。
 
-        // MMBスクロールでズームインアウトができるように
-        SetupZoom(ContentZoomer.DefaultMinScale, ContentZoomer.DefaultMaxScale);
-        // MMBドラッグで描画範囲を動かせるように
-        this.AddManipulator(new ContentDragger());
-        // LMBドラッグで選択した要素を動かせるように
-        this.AddManipulator(new SelectionDragger());
-        // LMBドラッグで範囲選択ができるように
-        this.AddManipulator(new RectangleSelector());
-        this.AddManipulator(new GraphViewCopyPaste());
+        AddGridBackground();
+        AddStyles();
+
+        AddManipulator();
+        CreateNode();
+
 
         // 右クリックメニューを追加
         var menuWindowProvider = ScriptableObject.CreateInstance<SearchMenuWindowProvider>();
@@ -52,11 +63,81 @@ public class NodeEditor : GraphView
         };
     }
 
+    private void CreateNode()
+    {
+        //DSNode node = new DSNode();
+        //node.Initialize();
+        //node.Draw();
+        //AddElement(node);
+        
+    }
+    void AddManipulator()
+    {
+        // MMBスクロールでズームインアウトができるように
+        SetupZoom(ContentZoomer.DefaultMinScale, ContentZoomer.DefaultMaxScale);
+        // MMBドラッグで描画範囲を動かせるように
+        this.AddManipulator(new ContentDragger());
+        // LMBドラッグで選択した要素を動かせるように
+        this.AddManipulator(new SelectionDragger());
+        // LMBドラッグで範囲選択ができるように
+        this.AddManipulator(new RectangleSelector());
+
+        this.AddManipulator(CreateGroupContextualMenu());
+    }
+
+    private IManipulator CreateGroupContextualMenu() 
+    {
+        ContextualMenuManipulator contextualMenuManipulator = new ContextualMenuManipulator(
+            menuEvent => menuEvent.menu.AppendAction("Add Group", actionEvent => AddElement(CreateGroup("DialogueGroup", GetLocalMousePosition(actionEvent.eventInfo.localMousePosition))
+            )));
+        return contextualMenuManipulator;
+    }
+
+    public Vector2 GetLocalMousePosition(Vector2 mousePosition, bool isSearchWindow = false)
+    {
+        Vector2 worldMousePosition = mousePosition;
+
+        if (isSearchWindow)
+        {
+            worldMousePosition = dialogCreator.rootVisualElement.ChangeCoordinatesTo(dialogCreator.rootVisualElement.parent, mousePosition - dialogCreator.position.position);
+        }
+
+        Vector2 localMousePosition = contentViewContainer.WorldToLocal(worldMousePosition);
+
+        return localMousePosition;
+    }
+
+    private GraphElement CreateGroup(string title,Vector2 localMousePosition)
+    {
+        Group group = new Group()
+        {
+            title = title
+        };
+        group.SetPosition(new Rect(localMousePosition, Vector2.zero));
+        return group;
+    }
+
+    void AddGridBackground()
+    {
+        GridBackground gridBackground = new GridBackground();
+        gridBackground.StretchToParentSize();
+        Insert(0, gridBackground);
+    }
+
+    void AddStyles()
+    {
+        StyleSheet styleSheet = (StyleSheet)EditorGUIUtility.Load("GridBackground.uss");
+        styleSheets.Add(styleSheet);
+        StyleSheet nodeStyleSheet = (StyleSheet)EditorGUIUtility.Load("DSNodeStyles.uss");
+        styleSheets.Add(nodeStyleSheet);
+    }
+
     // GetCompatiblePortsをオーバーライドする
     public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter)
     {
         var compatiblePorts = new List<Port>();
 
+        ///AddRangeで複数項目をまとめてポートに
         compatiblePorts.AddRange(ports.ToList().Where(port =>
         {
             // 同じノードには繋げない
@@ -77,14 +158,164 @@ public class NodeEditor : GraphView
         return compatiblePorts;
     }
 }
+#endregion
+
+#region NodeType
+public enum DSDialogType
+{
+    singleChoice,
+    MultipleChoice
+}
+#endregion
+
+#region node definition
+//******************************************//
+//ノードの設定//
+//*****************************************//
+public class DSSingleChoiceNode : DSNode
+{
+    public DSSingleChoiceNode()
+    {
+
+    }
+    public override void Initialize()
+    {
+        base.Initialize();
+        DialogType = DSDialogType.singleChoice;
+
+        Choices.Add("Next Dialogue");
+       
+    }
+
+    public override void Draw()
+    {
+        base.Draw();
+
+        foreach(string choice in Choices)
+        {
+            Port choicePort = InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Single, typeof(bool));
+            choicePort.portName = choice;
+            outputContainer.Add(choicePort);
+        }
+        RefreshExpandedState();
+    }
+}
+
+public class DSMultipleChoiceNode : DSNode
+{
+    public DSMultipleChoiceNode()
+    {
+
+    }
+    public override void Initialize()
+    {
+        base.Initialize();
+        DialogType = DSDialogType.MultipleChoice;
+
+        Choices.Add("New Choice");
+    }
+
+    public override void Draw()
+    {
+        base.Draw();
+
+        Button addChoiceButton = new Button()
+        {
+            text = "Add Choice"
+        };
+        mainContainer.Insert(1,addChoiceButton);
+
+        foreach (string choice in Choices)
+        {
+            Port choicePort = InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Single, typeof(bool));
+            choicePort.portName = choice;
+
+            Button deleteChoiceButton = new Button()
+            {
+                text = "x"
+            };
+            TextField choiceTextField = new TextField()
+            {
+                value = choice
+            };
+            choiceTextField.AddToClassList("ds-node__textfield");
+            choiceTextField.AddToClassList("ds-node__choice-textfield");
+            choiceTextField.AddToClassList("ds-node__textfield__hideen");
 
 
 
+            choicePort.Add(choiceTextField);
+            choicePort.Add(deleteChoiceButton);
+            outputContainer.Add(choicePort);
+        }
+        RefreshExpandedState();
+    }
+}
 
-    //******************************************//
-    //ノードの設定//
-    //*****************************************//
 
+public class DSNode : Node
+{
+    public DSNode()
+    {
+        Initialize();
+        Draw();
+    }
+        
+    public string ID { get; set; }
+    public string DialogueName { get; set; }
+    public List<string> Choices { get; set; }
+    public string Text { get; set; }
+    public DSDialogType DialogType { get; set; }
+
+    public virtual void Initialize()
+    {
+        DialogueName = "DialoguName";
+        Choices = new List<string>();
+        Text = "Dialogue Text.";
+        //スタイルシートの適応のためのクラスの追加
+        extensionContainer.AddToClassList("ds-node__extension-container");
+        mainContainer.AddToClassList("ds-node__main-container");
+
+    }
+
+    public virtual void Draw()
+    {
+        /*タイトルコンテナの中身*/
+
+        TextField dialogueNameTextField = new TextField()
+        {
+            value = DialogueName
+        };
+        titleContainer.Insert(0, dialogueNameTextField);
+        dialogueNameTextField.AddToClassList("ds-node__textfield");
+        dialogueNameTextField.AddToClassList("ds-node__filename-textfield");
+        dialogueNameTextField.AddToClassList("ds-node__textfield__hidden");
+
+        /*ポートコンテナの中身*/
+        Port inputPort = InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Multi, typeof(bool));
+        inputPort.portName = "Dialogue Connection";
+        inputContainer.Add(inputPort);
+
+        /*拡張コンテナの中身*/
+        VisualElement customDataContainer = new VisualElement();
+        Foldout textFoldout = new Foldout()
+        {
+            text = "Dialogue Text"
+    };
+        TextField textTextField = new TextField()
+        {
+            value = Text
+        };
+        textTextField.AddToClassList("ds-node__textfield");
+        textTextField.AddToClassList("ds-node__quote-textfield");
+        
+        textFoldout.Add(textTextField);
+        customDataContainer.Add(textFoldout);
+        extensionContainer.Add(customDataContainer);
+        //追加した拡張コンテナを可視化するために追加
+        RefreshExpandedState();
+    }
+}
     public class ExampleNode : Node
     {
         public ExampleNode()
@@ -168,6 +399,8 @@ public class StringValueNode : Node
         RefreshExpandedState();
     }
 }
+
+#endregion
 public class SearchMenuWindowProvider : ScriptableObject, ISearchWindowProvider
     {
         private NodeEditor _graphView;
@@ -187,11 +420,15 @@ public class SearchMenuWindowProvider : ScriptableObject, ISearchWindowProvider
             // Exampleというグループを追加
             entries.Add(new SearchTreeGroupEntry(new GUIContent("Example")) { level = 1 });
 
-            // Exampleグループの下に各ノードを作るためのメニューを追加
-            entries.Add(new SearchTreeEntry(new GUIContent(nameof(ValueNode))) { level = 2, userData = typeof(ValueNode) });
+        // Exampleグループの下に各ノードを作るためのメニューを追加
+        entries.Add(new SearchTreeEntry(new GUIContent(nameof(ValueNode))) { level = 2, userData = typeof(ValueNode) });
             entries.Add(new SearchTreeEntry(new GUIContent(nameof(AddNode))) { level = 2, userData = typeof(AddNode) });
             entries.Add(new SearchTreeEntry(new GUIContent(nameof(OutputNode))) { level = 2, userData = typeof(OutputNode) });
             entries.Add(new SearchTreeEntry(new GUIContent(nameof(StringValueNode))) { level = 2, userData = typeof(StringValueNode) });
+            entries.Add(new SearchTreeEntry(new GUIContent(nameof(DSNode))) { level = 2, userData = typeof(DSNode) });
+            entries.Add(new SearchTreeEntry(new GUIContent(nameof(DSSingleChoiceNode))) { level = 2, userData = typeof(DSSingleChoiceNode) });
+            entries.Add(new SearchTreeEntry(new GUIContent(nameof(DSMultipleChoiceNode))) { level = 2, userData = typeof(DSMultipleChoiceNode) });
+        entries.Add(new SearchTreeEntry(new GUIContent(nameof(Group))) { level = 2, userData = typeof(Group) });
         return entries;
         }
 

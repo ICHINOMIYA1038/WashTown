@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 262.3369, g: 325.0498, b: 430.21924, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2581,8 +2581,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 165.5, y: 147}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 275.61453, y: 161.57}
+  m_SizeDelta: {x: 147.1705, y: 29.0151}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &497683504
 MonoBehaviour:
@@ -2631,8 +2631,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2667,7 +2667,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -58.775574, y: 0, z: -34.934692, w: 0}
+  m_margin: {x: 3.6867063, y: 0, z: -1.0879974, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2688,12 +2688,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 497683502}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2300a4cddd424a75bf601ef26df9d9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeLimit: 60
+  timeLimit: 300
   timeLeft: 0
   text: {fileID: 497683504}
   autoBegin: 1
@@ -6746,8 +6746,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 98.268, y: 141.07}
-  m_SizeDelta: {x: 564.9355, y: 120.1413}
+  m_AnchoredPosition: {x: 265.1595, y: 161.57}
+  m_SizeDelta: {x: 231.1525, y: 79.141}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1231352372
 MonoBehaviour:
@@ -7073,8 +7073,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: adbc735363b6aaf46ab14eb38d53ef57, type: 2}
-  m_sharedMaterial: {fileID: 6200734623228321737, guid: adbc735363b6aaf46ab14eb38d53ef57, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -12080,11 +12080,11 @@ PrefabInstance:
     - target: {fileID: 2791878378324645479, guid: 1ce9c898ad5b7034b9e8e887fbc1278d, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: adbc735363b6aaf46ab14eb38d53ef57, type: 2}
+      objectReference: {fileID: 11400000, guid: 414f16f03e6714790bc2d3dfa3d7899f, type: 2}
     - target: {fileID: 2791878378324645479, guid: 1ce9c898ad5b7034b9e8e887fbc1278d, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 6200734623228321737, guid: adbc735363b6aaf46ab14eb38d53ef57, type: 2}
+      objectReference: {fileID: 6200734623228321737, guid: 414f16f03e6714790bc2d3dfa3d7899f, type: 2}
     - target: {fileID: 3336895309441477522, guid: 1ce9c898ad5b7034b9e8e887fbc1278d, type: 3}
       propertyPath: m_Name
       value: The Boss
@@ -12092,11 +12092,11 @@ PrefabInstance:
     - target: {fileID: 5111973317835952275, guid: 1ce9c898ad5b7034b9e8e887fbc1278d, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: adbc735363b6aaf46ab14eb38d53ef57, type: 2}
+      objectReference: {fileID: 11400000, guid: 414f16f03e6714790bc2d3dfa3d7899f, type: 2}
     - target: {fileID: 5111973317835952275, guid: 1ce9c898ad5b7034b9e8e887fbc1278d, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 6200734623228321737, guid: adbc735363b6aaf46ab14eb38d53ef57, type: 2}
+      objectReference: {fileID: 6200734623228321737, guid: 414f16f03e6714790bc2d3dfa3d7899f, type: 2}
     - target: {fileID: 6757867886172689890, guid: 1ce9c898ad5b7034b9e8e887fbc1278d, type: 3}
       propertyPath: m_IsActive
       value: 1
