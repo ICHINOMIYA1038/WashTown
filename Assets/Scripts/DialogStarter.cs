@@ -13,7 +13,7 @@ public class DialogStarter : MonoBehaviour
     {
         if((player.transform.position - this.transform.position).magnitude>range)
         {
-            Debug.Log((player.transform.position - this.transform.position).magnitude);
+            //Debug.Log((player.transform.position - this.transform.position).magnitude);
             return;
         }
         if(Input.GetKeyDown(KeyCode.E))
@@ -27,7 +27,6 @@ public class DialogStarter : MonoBehaviour
                 float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
                 transform.rotation = Quaternion.Euler(0, angle, 0);
             }
-            Debug.Log("E");
             nPCConversation.StartConversation();
         }
         

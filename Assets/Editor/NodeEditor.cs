@@ -8,6 +8,10 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 
+/*********************************/
+//EditorWindowクラスを継承した自作クラス。拡張エディタを作成。
+/*********************************/
+#region EditorWindow
 public class DialogCreator : EditorWindow
 {
     [MenuItem("Original/DialogCreater")]
@@ -25,11 +29,11 @@ public class DialogCreator : EditorWindow
         rootVisualElement.Add(graphView);
     }
 }
+#endregion
 
 /*********************************/
 //GraphViewクラスを継承した自作クラス。GraphViewはVisualElementsを継承している。
 /*********************************/
-
 #region GraphView
 
 public class NodeEditor : GraphView
@@ -160,6 +164,7 @@ public class NodeEditor : GraphView
 }
 #endregion
 
+
 #region NodeType
 public enum DSDialogType
 {
@@ -168,10 +173,11 @@ public enum DSDialogType
 }
 #endregion
 
-#region node definition
 //******************************************//
 //ノードの設定//
 //*****************************************//
+#region Node Definition
+
 public class DSSingleChoiceNode : DSNode
 {
     public DSSingleChoiceNode()
@@ -219,36 +225,56 @@ public class DSMultipleChoiceNode : DSNode
     {
         base.Draw();
 
-        Button addChoiceButton = new Button()
+        Button addChoiceButton = DSElementUtility.CreateButton("Add Choice", ()=>
         {
-            text = "Add Choice"
-        };
+            Port choicePort = CreateChoicePort("New Choice");
+            Choices.Add("New Choice");
+            outputContainer.Add(choicePort);
+
+
+
+        });
+        addChoiceButton.AddToClassList("ds-node__button");
         mainContainer.Insert(1,addChoiceButton);
 
         foreach (string choice in Choices)
         {
-            Port choicePort = InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Single, typeof(bool));
-            choicePort.portName = choice;
-
-            Button deleteChoiceButton = new Button()
-            {
-                text = "x"
-            };
-            TextField choiceTextField = new TextField()
-            {
-                value = choice
-            };
-            choiceTextField.AddToClassList("ds-node__textfield");
-            choiceTextField.AddToClassList("ds-node__choice-textfield");
-            choiceTextField.AddToClassList("ds-node__textfield__hideen");
-
-
-
-            choicePort.Add(choiceTextField);
-            choicePort.Add(deleteChoiceButton);
+            Port choicePort = CreateChoicePort(choice);
             outputContainer.Add(choicePort);
         }
         RefreshExpandedState();
+    }
+
+    private Port CreateChoicePort(string choice)
+    {
+        Port choicePort = this.CreatePort();
+
+        Button deleteChoiceButton = DSElementUtility.CreateButton("x", () =>
+        {
+            if (Choices.Count == 1)
+            {
+                return;
+            }
+
+            if (choicePort.connected)
+            {
+                graphView.DeleteElements(choicePort.connections);
+            }
+
+            Choices.RemoveAt(0);
+
+            graphView.RemoveElement(choicePort);
+        });
+    
+        deleteChoiceButton.AddToClassList("ds-node__button");
+        TextField choiceTextField = DSElementUtility.CreateTextField(choice);
+        choiceTextField.AddToClassList("ds-node__textfield");
+        choiceTextField.AddToClassList("ds-node__choice-textfield");
+        choiceTextField.AddToClassList("ds-node__textfield__hideen");
+
+        choicePort.Add(choiceTextField);
+        choicePort.Add(deleteChoiceButton);
+        return choicePort;
     }
 }
 
@@ -267,9 +293,11 @@ public class DSNode : Node
     public string Text { get; set; }
     public DSDialogType DialogType { get; set; }
 
+    protected NodeEditor graphView;
+
     public virtual void Initialize()
     {
-        DialogueName = "DialoguName";
+        DialogueName = "DialogueName";
         Choices = new List<string>();
         Text = "Dialogue Text.";
         //スタイルシートの適応のためのクラスの追加
@@ -278,34 +306,29 @@ public class DSNode : Node
 
     }
 
+    public void setGraphView(NodeEditor graphview)
+    {
+        graphView = graphview;
+    }
+
     public virtual void Draw()
     {
         /*タイトルコンテナの中身*/
 
-        TextField dialogueNameTextField = new TextField()
-        {
-            value = DialogueName
-        };
+        TextField dialogueNameTextField = DSElementUtility.CreateTextField(DialogueName);
         titleContainer.Insert(0, dialogueNameTextField);
         dialogueNameTextField.AddToClassList("ds-node__textfield");
         dialogueNameTextField.AddToClassList("ds-node__filename-textfield");
         dialogueNameTextField.AddToClassList("ds-node__textfield__hidden");
 
         /*ポートコンテナの中身*/
-        Port inputPort = InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Multi, typeof(bool));
-        inputPort.portName = "Dialogue Connection";
+        Port inputPort = this.CreatePort("Dialogue Connection", Orientation.Horizontal, Direction.Input, Port.Capacity.Multi);
         inputContainer.Add(inputPort);
 
         /*拡張コンテナの中身*/
         VisualElement customDataContainer = new VisualElement();
-        Foldout textFoldout = new Foldout()
-        {
-            text = "Dialogue Text"
-    };
-        TextField textTextField = new TextField()
-        {
-            value = Text
-        };
+        Foldout textFoldout = DSElementUtility.CreateFoldout("Dialogue Text");
+        TextField textTextField = DSElementUtility.CreateTextArea(Text);
         textTextField.AddToClassList("ds-node__textfield");
         textTextField.AddToClassList("ds-node__quote-textfield");
         
@@ -399,8 +422,9 @@ public class StringValueNode : Node
         RefreshExpandedState();
     }
 }
-
 #endregion
+
+
 public class SearchMenuWindowProvider : ScriptableObject, ISearchWindowProvider
     {
         private NodeEditor _graphView;
@@ -428,7 +452,7 @@ public class SearchMenuWindowProvider : ScriptableObject, ISearchWindowProvider
             entries.Add(new SearchTreeEntry(new GUIContent(nameof(DSNode))) { level = 2, userData = typeof(DSNode) });
             entries.Add(new SearchTreeEntry(new GUIContent(nameof(DSSingleChoiceNode))) { level = 2, userData = typeof(DSSingleChoiceNode) });
             entries.Add(new SearchTreeEntry(new GUIContent(nameof(DSMultipleChoiceNode))) { level = 2, userData = typeof(DSMultipleChoiceNode) });
-        entries.Add(new SearchTreeEntry(new GUIContent(nameof(Group))) { level = 2, userData = typeof(Group) });
+            entries.Add(new SearchTreeEntry(new GUIContent(nameof(Group))) { level = 2, userData = typeof(Group) });
         return entries;
         }
 
@@ -441,9 +465,59 @@ public class SearchMenuWindowProvider : ScriptableObject, ISearchWindowProvider
             var worldMousePosition = _editorWindow.rootVisualElement.ChangeCoordinatesTo(_editorWindow.rootVisualElement.parent, context.screenMousePosition - _editorWindow.position.position);
             var localMousePosition = _graphView.contentViewContainer.WorldToLocal(worldMousePosition);
             node.SetPosition(new Rect(localMousePosition, new Vector2(100, 100)));
+        if(node is DSNode)
+        {
+            DSNode dsnode = (DSNode)node;
 
+            dsnode.setGraphView(_graphView);
+        }
             _graphView.AddElement(node);
             return true;
         }
     }
 
+
+    public static class DSElementUtility
+    {
+
+    public static Port CreatePort(this DSNode node,string portName = "",Orientation orientation = Orientation.Horizontal,Direction direction = Direction.Output,Port.Capacity capacity = Port.Capacity.Single )
+    {
+        Port port = node.InstantiatePort(orientation, direction, capacity, typeof(bool));
+        port.portName = portName;
+        return port;
+    
+    }
+    public static Button CreateButton(string text, Action onClick = null)
+    {
+        Button button = new Button(onClick)
+        {
+            text = text
+        };
+        return button;
+    }
+    public static Foldout CreateFoldout(string title, bool collapsed = false)
+        {
+            Foldout foldout = new Foldout()
+            {
+                text = title,
+                value = !collapsed
+            };
+            return foldout;
+        }
+        public static TextField CreateTextField(string value = null, EventCallback<ChangeEvent<string>>onValueChanged = null)
+        {
+            TextField textField = new TextField() { value = value };
+            if(onValueChanged != null)
+            {
+                textField.RegisterValueChangedCallback(onValueChanged);
+            }
+            return textField;
+        }
+
+        public static TextField CreateTextArea(string value = null, EventCallback<ChangeEvent<string>> onValueChanged = null)
+        {
+            TextField textArea = CreateTextField(value, onValueChanged);
+            textArea.multiline = true;
+            return textArea;
+        }
+    }
