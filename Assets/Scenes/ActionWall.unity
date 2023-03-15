@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 262.0923, g: 324.7036, b: 429.77197, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3781,11 +3781,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd0fe7012f04f074cbc847386a80d2f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fpscon: {fileID: 208654775}
   soundManager: {fileID: 761686235}
   dirtyMaterial: {fileID: 2100000, guid: e808d2de3324b5342ad32d0e255e847f, type: 2}
   MainTexture: {fileID: 2800000, guid: e69dd734f89328046b1dfe7d7ebd4686, type: 3}
   BlushTexture: {fileID: 2800000, guid: fb6307fbe7bc28f42a2a8d461111011d, type: 3}
-  blushScale: 0.1
+  blushScale1: 0.03
+  blushScale2: 0.05
+  blushScale3: 0.1
   blushColor: {x: 0, y: 0, z: 0, w: 0}
   _material: {fileID: 2100000, guid: bbda2879fcb47ba4e8237364bf584360, type: 2}
   _material2: {fileID: 2100000, guid: 17c0c9128082f944c9403956592c889b, type: 2}
@@ -5314,6 +5317,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainTexture: {fileID: 2800000, guid: add3e05fe01175d488628368e07a0cf5, type: 3}
+  mudTexture: {fileID: 0}
+  sampler: {fileID: 0}
   washableMaterial: {fileID: 2100000, guid: feb45cc9c8f984441a57f5fc0b0be6f9, type: 2}
   dirtyMaterial: {fileID: 2100000, guid: e808d2de3324b5342ad32d0e255e847f, type: 2}
   maincolor: {r: 1, g: 0.4481132, b: 0.4481132, a: 0}
@@ -8058,6 +8063,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effect: {fileID: 1450496161}
+  fPSCon: {fileID: 0}
   src: {fileID: 76599346}
 --- !u!1001 &1461578566
 PrefabInstance:

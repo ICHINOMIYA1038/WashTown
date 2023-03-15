@@ -15,8 +15,14 @@ public class AchievePanelGenerator : MonoBehaviour
     [SerializeField] TextMeshProUGUI headerText;
     [SerializeField] TextMeshProUGUI descText;
     [SerializeField] AchievementSystem achievementSystem;
-
+    [SerializeField] Vector2 StartPosi;
+    [SerializeField] Vector2 EndPosi;
     Queue<achieveData> sendData = new Queue<achieveData>();
+    //パネルの出現速度
+    [SerializeField] float swipeSpeed;
+    //パネル出現後の待機時間
+    [SerializeField] float waitTime;
+    bool isExecute=false;
 
     public void Start()
     {
@@ -31,7 +37,7 @@ public class AchievePanelGenerator : MonoBehaviour
     {
         if (achievementSystem == null)
         {
-            Debug.Log("aa");
+            return;
         }
         AchievementSystem.elemData data = achievementSystem.getFromId(id);
         byte[] bytes = File.ReadAllBytes(Application.dataPath +"/Image/Achievement/"+ data.filename);
@@ -45,7 +51,21 @@ public class AchievePanelGenerator : MonoBehaviour
         };
         sendData.Enqueue(achiveData);
 
-       
+
+    }
+
+    public void Update()
+    {
+        if (sendData.Count <= 0)
+        {
+            return;
+        }
+        if (!isExecute)
+        {
+            isExecute = true;
+            execute();
+        }
+        
     }
 
     struct achieveData
@@ -83,6 +103,33 @@ public class AchievePanelGenerator : MonoBehaviour
             setImage(executeData.texture);
             setHeader(executeData.header);
             setDescText(executeData.desc);
-             
+        StartCoroutine(SwingPanel());
+        
+    }
+
+    IEnumerator SwingPanel()
+    {
+        
+        RectTransform recttransform = this.GetComponent<RectTransform>();
+        Vector2 posi = recttransform.anchoredPosition;
+        Debug.Log("exe");
+        //ズレの許容
+        float delta = 3.0f;
+        while (delta < Mathf.Abs(EndPosi.x - posi.x))
+        {
+            posi.x += swipeSpeed*(EndPosi.x - StartPosi.x) / Mathf.Abs(EndPosi.x - StartPosi.x);
+            recttransform.anchoredPosition = posi;
+            yield return null;
+        }
+        yield return new WaitForSeconds(waitTime);
+        while (delta < Mathf.Abs(StartPosi.x - posi.x))
+        {
+            posi.x -= swipeSpeed * (EndPosi.x - StartPosi.x) / Mathf.Abs(EndPosi.x - StartPosi.x);
+            recttransform.anchoredPosition = posi;
+     
+            yield return null;
+        }
+        isExecute = false;
+
     }
 }

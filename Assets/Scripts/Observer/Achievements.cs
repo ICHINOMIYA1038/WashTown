@@ -6,7 +6,7 @@ using System;
 public class Achievements : MonoBehaviour, IObserver<int>
 {
     [SerializeField] AchievePanelGenerator achievePanelGenerator;
-    public void Awake()
+    public void Start()
     {
         Observable observable = new Observable();
         IDisposable disposableA = observable.Subscribe(this);
@@ -33,7 +33,6 @@ public class Achievements : MonoBehaviour, IObserver<int>
     void IObserver<int>.OnNext(int value)
     {
         achievePanelGenerator.receiveNotification(value);
-        achievePanelGenerator.execute();
     }
     #endregion
 

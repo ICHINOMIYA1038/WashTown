@@ -6,6 +6,10 @@ using UnityEditor;
 using UnityEngine;
 
 
+/// <summary>
+/// テクスチャを編集するためのウィンドウ
+/// 
+/// </summary>
 public class TextureEditor : EditorWindow
 {
     private int textureWidth;
