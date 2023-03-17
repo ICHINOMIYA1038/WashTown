@@ -35,9 +35,9 @@ public class Effect : MonoBehaviour
         {
             effect.SendEvent("OnPlay");
             //OnPlay??Event Name???w???????C????????
-            effect.SetVector3("position", position);
-            effect.SetVector3("normal", normal);
-            effect.SetVector3("dir", dir);
+            //effect.SetVector3("position", position);
+            //effect.SetVector3("normal", normal);
+            //effect.SetVector3("dir", dir);
             Ray ray = new Ray(this.transform.position, this.transform.forward);
         }
     }
