@@ -256,6 +256,8 @@ public class GameManager : MonoBehaviour
         shopRate = defaultShopRate;
         itemList = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0};
         UnityEngine.SceneManagement.SceneManager.LoadScene("main");
+        //é¿ê—ÇÃí ím
+        Achievements.SendNotice(0);
 
     }
 

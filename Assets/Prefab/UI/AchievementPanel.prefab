@@ -68,8 +68,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u30FB\u5BA2\u306B3\u56DE\u8A71\u3057\u304B\u3051\u308B"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: adbc735363b6aaf46ab14eb38d53ef57, type: 2}
-  m_sharedMaterial: {fileID: 6200734623228321737, guid: adbc735363b6aaf46ab14eb38d53ef57, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 2731872768196349556}
   - component: {fileID: 2731872768196349558}
   - component: {fileID: 2731872768196349557}
-  - component: {fileID: 2979367546772745451}
+  - component: {fileID: 9202752499604523697}
   m_Layer: 5
   m_Name: AchievementPanel
   m_TagString: Untagged
@@ -290,7 +290,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2979367546772745451
+--- !u!114 &9202752499604523697
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -306,6 +306,10 @@ MonoBehaviour:
   headerText: {fileID: 7686212919093433425}
   descText: {fileID: 8163759940693001270}
   achievementSystem: {fileID: 0}
+  StartPosi: {x: 529.6, y: -151}
+  EndPosi: {x: 234.32, y: -151}
+  swipeSpeed: 3
+  waitTime: 1
 --- !u!1 &3341097159049888584
 GameObject:
   m_ObjectHideFlags: 0
@@ -527,8 +531,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u9054\u6210"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: adbc735363b6aaf46ab14eb38d53ef57, type: 2}
-  m_sharedMaterial: {fileID: 6200734623228321737, guid: adbc735363b6aaf46ab14eb38d53ef57, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -662,8 +666,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u611B\u5B0C\u3042\u308B\u30AA\u30FC\u30CA\u30FC"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: adbc735363b6aaf46ab14eb38d53ef57, type: 2}
-  m_sharedMaterial: {fileID: 6200734623228321737, guid: adbc735363b6aaf46ab14eb38d53ef57, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

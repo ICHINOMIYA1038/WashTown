@@ -17,5 +17,6 @@ public class BuyBtn : OriginalBtn
     void clickEvent()
     {
         purchaseManager.buy();
+
     }
 }

@@ -19,7 +19,7 @@ public class Observable : MonoBehaviour, IObservable<int>
         return new Unsubscriber(m_observers, observer);
     }
 
-    public void SendNotice()
+    public void SendNoticeSample()
     {
         //‚·‚×‚Ä‚Ì”­sæ‚É‘Î‚µ‚Ä1,2,3‚ğ”­s‚·‚é
         foreach (var observer in m_observers)
@@ -28,6 +28,14 @@ public class Observable : MonoBehaviour, IObservable<int>
             observer.OnNext(2);
             observer.OnNext(3);
             observer.OnCompleted();
+        }
+    }
+    
+    public void SendNotice(int id)
+    {
+        foreach (var observer in m_observers)
+        {
+            observer.OnNext(id);
         }
     }
 

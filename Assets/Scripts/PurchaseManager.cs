@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System.IO;
+using System.Linq;
 
 public class PurchaseManager : MonoBehaviour
 {
@@ -79,8 +80,35 @@ public class PurchaseManager : MonoBehaviour
         {
             delete(index);
         }
+
         textUpdate();
     }
+
+    public void addNum(int index)
+    {
+        // キーの値でソートされたリストを取得する
+        List<int> sortedKeys = purchaseList.Keys.ToList();
+        sortedKeys.Sort();
+        if (sortedKeys.Count > index )
+        {
+            add(sortedKeys[index], 1);
+        }
+       
+    }
+
+    public void deleteNum(int index)
+    {
+        // キーの値でソートされたリストを取得する
+        List<int> sortedKeys = purchaseList.Keys.ToList();
+        sortedKeys.Sort();
+        if(sortedKeys.Count > index)
+        {
+            decrement(sortedKeys[index]);
+        }
+        
+    }
+
+    
 
     public void textUpdate()
     {
@@ -156,6 +184,8 @@ public class PurchaseManager : MonoBehaviour
         gameManager.setMoney(GameManager.money - costSum());
         gameManager.textUpdate();
         cancel();
+        //実績の通知
+        Achievements.SendNotice(1);
     }
 
 }

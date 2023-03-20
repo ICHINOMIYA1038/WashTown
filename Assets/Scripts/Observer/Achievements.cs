@@ -3,16 +3,46 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+//実績を判断し通知を送るスクリプト
 public class Achievements : MonoBehaviour, IObserver<int>
 {
     [SerializeField] AchievePanelGenerator achievePanelGenerator;
+    static Observable observable;
     public void Start()
     {
-        Observable observable = new Observable();
+        observable = new Observable();
         IDisposable disposableA = observable.Subscribe(this);
-        observable.SendNotice();
-        disposableA.Dispose();
-        observable.SendNotice();
+        //SendNotice(1);
+        //observable.SendNoticeSample();
+        //disposableA.Dispose();
+        //observable.SendNoticeSample();
+    }
+
+  
+
+    private static Achievements _instance;
+
+    private void Awake()
+    {
+        if (_instance == null)
+        {
+            _instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public static void SendNotice(int id)
+    {
+        observable.SendNotice(id);
+    }
+
+    public static Achievements Instance
+    {
+        get { return _instance; }
     }
 
 
